@@ -13,6 +13,9 @@ const DEFAULT_URL = 'https://dev-jonghoonpark.github.io/crossfit-guide';
 /** 뒤 슬래시 제거 */
 const trim = (u) => String(u || '').replace(/\/+$/, '');
 
+/** GA 측정 ID 는 그대로 <script> 안에 박히므로 허용 문자만 남긴다 */
+const gaId = (v) => String(v || '').replace(/[^A-Za-z0-9-]/g, '');
+
 export const site = {
   url: trim(process.env.SITE_URL || DEFAULT_URL),
   name: '크로스핏 가이드',
@@ -24,6 +27,16 @@ export const site = {
   locale: 'ko_KR',
   lang: 'ko',
   themeColor: '#0c0f14',
+
+  /**
+   * Google Analytics 4 측정 ID. 값이 있으면 모든 페이지 <head> 에 gtag 가 들어간다.
+   * 로컬에서 통계를 오염시키기 싫으면 GA_ID= 를 빈 값으로 주고 빌드하면 꺼진다:
+   *   GA_ID= npm run build
+   */
+  gaId: gaId(process.env.GA_ID ?? 'G-KKQH4RTLZL'),
+
+  /** 소스 저장소. 동작·와드 추가 요청 안내가 여기 이슈로 연결된다. */
+  repo: trim(process.env.SITE_REPO || 'https://github.com/dev-jonghoonpark/crossfit-guide'),
 
   /** 콘텐츠 발행 · 최종 수정일 (ISO 8601). 내용을 크게 고치면 갱신할 것. */
   datePublished: '2026-08-28',

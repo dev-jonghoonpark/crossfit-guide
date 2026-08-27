@@ -202,6 +202,13 @@ ${hasOgImage ? `<meta name="twitter:image" content="${esc(abs(site.ogImage))}">`
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d7ff3e'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='900' text-anchor='middle' font-family='sans-serif' fill='%2310140a'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="${base}styles.css">
 ${ld({ '@context': 'https://schema.org', '@graph': graph })}
+${site.gaId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${site.gaId}');
+</script>` : ''}
 </head>
 <body>
 <a class="skip-link" href="#main">본문 바로가기</a>
@@ -261,6 +268,17 @@ function movementCard(mv, base = '') {
     </div>
   </div>
 </a>`;
+}
+
+/** 없는 항목을 요청하도록 GitHub 이슈로 보내는 안내 상자 */
+function requestCallout(heading, kind) {
+  const url = `${site.repo}/issues/new?title=${encodeURIComponent(`[${kind} 추가 요청] `)}`;
+  return `<div class="callout">
+      <strong>${esc(heading)}</strong>
+      추가되었으면 하는 ${esc(kind)}이 있다면 GitHub 이슈로 남겨 주세요.
+      ${esc(kind)} 이름(한글 또는 영문)과 어느 와드에서 봤는지만 적어 주시면 충분합니다.
+      <a href="${esc(url)}" rel="noopener">이슈 남기기 →</a>
+    </div>`;
 }
 
 function playerMarkup(mv) {
@@ -1169,6 +1187,10 @@ function pageMovements() {
     ${movements.map((m) => movementCard(m)).join('\n    ')}
   </div>
   <p id="mv-empty" style="display:none;color:var(--text-mute);padding:30px 0">검색 결과가 없습니다.</p>
+
+  <section class="section">
+    ${requestCallout('찾는 동작이 없나요?', '동작')}
+  </section>
 </div>`;
 
   return layout({
