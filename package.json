@@ -1,0 +1,13 @@
+{
+  "name": "crossfit-guide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "크로스핏 입문자를 위한 정적 가이드 사이트 (용어 · 운영 방식 · 동작 스켈레톤 애니메이션)",
+  "scripts": {
+    "build": "node build.mjs",
+    "dev": "node build.mjs && python3 -m http.server 4173 --directory dist",
+    "og": "node build.mjs && node tools/make-og-template.mjs",
+    "clean": "rm -rf dist"
+  }
+}
