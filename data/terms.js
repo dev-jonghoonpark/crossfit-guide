@@ -138,6 +138,17 @@ export const termGroups = [
           'Rx는 목표일 뿐이고, 초보자가 Scaled로 하는 건 전혀 부끄러운 일이 아니다.',
       },
       {
+        id: 'rx-plus',
+        term: 'Rx+ / Rxd+',
+        full: 'Rx Plus',
+        ko: 'Rx 위 단계',
+        desc:
+          'Rx 가 너무 쉬운 사람을 위해 코치가 하나 더 얹어 두는 상향 옵션. ' +
+          '보통 무게를 올리거나 동작을 더 어려운 것으로 바꾼다. ' +
+          '"*Rxd+ : 2-3RMU" 는 바 뮤스클업 자리를 링 뮤스클업 2~3회로 바꿔서 하라는 뜻이다.',
+        example: '*Rxd+ : 2-3RMU',
+      },
+      {
         id: 'scaled',
         term: 'Scaled / Scaling',
         full: 'Scaling',
@@ -246,6 +257,19 @@ export const termGroups = [
         desc: 'Unbroken 조건을 빼 준다는 뜻. 중간에 바를 내려놓고 쉬어도 인정된다.',
       },
       {
+        id: 'rep-conversion',
+        term: '1BMU=2C2B=3PU',
+        full: 'Rep Conversion',
+        ko: '렙 환산',
+        desc:
+          '어려운 동작을 못 할 때 "몇 개로 바꿔서 하라"고 미리 정해 둔 환산표다. ' +
+          '바 뮤스클업 1개 대신 체스트 투 바 2개, 그것도 어려우면 풀업 3개를 하라는 뜻. ' +
+          '동작이 쉬워지는 만큼 개수를 늘려 라운드 시간을 비슷하게 맞추는 게 목적이라, ' +
+          '"3 Bar muscle-Ups" 는 풀업으로 바꾸면 9개가 된다.',
+        example: '3 Bar muscle-Ups (1BMU=2C2B=3PU)',
+        movement: 'bar-muscle-up',
+      },
+      {
         id: 'band-scale',
         term: 'BB / GB',
         full: 'Band-assisted variations',
@@ -342,6 +366,8 @@ export const termGroups = [
       { id: 'du', term: 'DU', full: 'Double Under', ko: '더블 언더', desc: '한 번 점프에 줄이 두 번 지나가는 줄넘기.', movement: 'double-under' },
       { id: 't2b', term: 'T2B', full: 'Toes To Bar', ko: '토투바', desc: '철봉에 매달려 발끝을 봉에 닿게 올리는 동작.', movement: 'toes-to-bar' },
       { id: 'c2b', term: 'C2B', full: 'Chest To Bar', ko: '체스트투바', desc: '가슴이 봉에 닿는 풀업.', movement: 'chest-to-bar-pull-up' },
+      { id: 'bmu', term: 'BMU', full: 'Bar Muscle-Up', ko: '바 뮤스클업', desc: '철봉 아래에서 봉 위로 넘어가 팔을 완전히 펴는 동작. 풀업 + 딥을 한 번에 이은 것.', movement: 'bar-muscle-up' },
+      { id: 'rmu', term: 'RMU', full: 'Ring Muscle-Up', ko: '링 뮤스클업', desc: '같은 동작을 링에서 하는 버전. 링이 흔들려서 바 뮤스클업보다 한 단계 더 어렵다.' },
       { id: 'hspu', term: 'HSPU', full: 'Handstand Push-up', ko: '핸드스탠드 푸시업', desc: '물구나무 상태에서 하는 푸시업.', movement: 'handstand-push-up' },
       { id: 'ohs', term: 'OHS', full: 'Overhead Squat', ko: '오버헤드 스쿼트', desc: '바를 머리 위에 든 채 하는 스쿼트. 스쿼트 스내치를 받는 자세이기도 하다.', movement: 'squat-snatch' },
       { id: 'kbs', term: 'KBS', full: 'Kettlebell Swing', ko: '케틀벨 스윙', desc: '케틀벨을 힙 힌지로 스윙하는 동작.' },
@@ -355,7 +381,7 @@ export const termGroups = [
       { id: 'ps-pistol', term: 'Pistol', full: 'Pistol Squat', ko: '피스톨 스쿼트', desc: '한 다리로 앉았다 일어서는 스쿼트.', movement: 'pistol-squat' },
       { id: 'deficit', term: 'Deficit', full: 'Deficit', ko: '디피싯', desc: '손이나 발을 받침 위에 올려 가동 범위를 늘리는 것. (4.5"/2.5") 는 받침 높이다.', movement: 'deficit-push-up' },
       { id: 'alt', term: 'alt.', full: 'Alternating', ko: '좌우 번갈아', desc: '매 렙 좌우를 번갈아 수행하라는 뜻. "16 Pistol Squats alt." 는 좌우 합쳐 16회다.' },
-      { id: 'dual-db', term: 'Dual DB', full: 'Dual Dumbbell', ko: '양손 덤벨', desc: '양손에 각각 덤벨을 든다는 뜻. "Dual 22.5/15kg" 은 한쪽 손마다 그 무게다.', movement: 'dumbbell-deadlift' },
+      { id: 'dual-db', term: 'Dual DB', full: 'Dual Dumbbell', ko: '양손 덤벨', desc: '양손에 각각 덤벨을 든다는 뜻. "Dual 22.5/15kg" 이나 "Dumbbell(x2) 22.5/15" 은 한쪽 손마다 그 무게다 — 실제로 드는 총 무게는 두 배.', movement: 'dumbbell-deadlift' },
       { id: 'cal', term: 'Cal', full: 'Calorie', ko: '칼로리', desc: '거리 대신 기구 화면의 칼로리로 목표를 정하는 방식. "15/12 Cal" 은 남 15 / 여 12 칼로리.', movement: 'row' },
       { id: 'damper', term: 'Damper', full: 'Damper Setting', ko: '댐퍼', desc: '에르그 옆 레버(1~10). 무게가 아니라 들어오는 공기량이다. 로잉은 3~5, 바이크는 와드 지시대로.', movement: 'row' },
       { id: 'box-height', term: '(24"/20")', full: 'Box Height', ko: '박스 높이', desc: '슬래시 앞이 남성, 뒤가 여성 기준 박스 높이(인치).', movement: 'box-jump' },

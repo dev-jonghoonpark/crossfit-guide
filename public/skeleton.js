@@ -289,13 +289,14 @@
     const backLayer = svg.querySelector('.sk-prop-back');
     const frontLayer = svg.querySelector('.sk-prop-front');
 
-    // 바 이동 경로(점선) — 역도 동작에서 바가 어떤 궤적을 그리는지
-    const barPts = phases.map((ph) => ph.pose.bar).filter(Boolean);
-    if (barPts.length > 1) {
-      const d = barPts.map((b, i) => `${i ? 'L' : 'M'} ${b[0]} ${b[1]}`).join(' ');
+    // 도구 이동 경로(점선) — 바가 어떤 궤적을 그리는지, 월볼이면 볼이 얼마나 높이 가는지
+    const pathKey = phases.some((ph) => ph.pose.bar) ? 'bar' : 'ball';
+    const pathPts = phases.map((ph) => ph.pose[pathKey]).filter(Boolean);
+    if (pathPts.length > 1) {
+      const d = pathPts.map((b, i) => `${i ? 'L' : 'M'} ${b[0]} ${b[1]}`).join(' ');
       pathLayer.innerHTML =
         `<path class="sk-barpath" d="${d}"/>` +
-        barPts.map((b) => `<circle class="sk-barpath-dot" cx="${b[0]}" cy="${b[1]}" r="2.6"/>`).join('');
+        pathPts.map((b) => `<circle class="sk-barpath-dot" cx="${b[0]}" cy="${b[1]}" r="2.6"/>`).join('');
     }
     let showPath = false;
     const applyPath = () => pathLayer.setAttribute('opacity', showPath ? '1' : '0');

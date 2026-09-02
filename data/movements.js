@@ -1138,6 +1138,101 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'bar-muscle-up',
+    seoTitle: '바 뮤스클업(BMU) 하는 법 — 트랜지션이 안 넘어가는 이유',
+    seoDesc:
+      '바 뮤스클업은 철봉 아래에서 봉 위로 한 번에 올라가는 동작입니다. 킵·하이 풀·트랜지션·서포트 6단계와 "1BMU=2C2B=3PU" 환산, 스케일링을 정리했습니다.',
+    thumb: 4,
+    ko: '바 뮤스클업',
+    en: 'Bar Muscle-up',
+    abbr: 'BMU',
+    category: '체조',
+    level: '고급',
+    equipment: ['철봉'],
+    tagline: '철봉에 매달린 상태에서 봉 위로 넘어가 팔을 완전히 펴는 동작',
+    intro:
+      '풀업과 딥을 한 동작으로 이어 붙인 것이라고 보면 된다. 다만 둘을 합친 것보다 어려운 이유는 ' +
+      '가운데 있는 "트랜지션" — 몸이 봉 아래에서 봉 위로 넘어가는 구간 — 때문이다. ' +
+      '체스트 투 바를 3~5개 할 수 있게 된 뒤에 시작하는 게 순서다. 힘이 아니라 봉을 몸 쪽으로 당기는 궤적의 문제라, ' +
+      '팔 힘이 세다고 되는 동작이 아니다.',
+    phases: [
+      {
+        name: '데드 행',
+        pose: 'bmuHang',
+        desc: '팔을 완전히 편 채 매달린다. 그립은 풀업보다 조금 넓게, 엄지를 봉 위로 감아 잡는다.',
+        cues: ['엄지를 봉 위로 감아 잡기', '어깨는 완전히 늘어뜨리지 않기', '다리는 모아서'],
+        emphasis: ['lats', 'forearms', 'core'],
+      },
+      {
+        name: '아치 (킵 뒤)',
+        pose: 'bmuArch',
+        desc: '가슴을 내밀고 발을 뒤로 보내 활을 만든다. BMU 는 이 진폭이 클수록 뒤가 쉬워진다.',
+        cues: ['어깨로 크게 밀기', '팔은 편 채', '리듬을 서두르지 않기'],
+        emphasis: ['lats', 'delts', 'core'],
+      },
+      {
+        name: '호로우 · 고관절 스냅',
+        pose: 'bmuHollow',
+        desc: '발을 앞으로 차면서 고관절을 접었다 펴는 스냅으로 몸을 위로 쏘아 올린다.',
+        cues: ['발끝을 앞으로 차기', '배를 조여 갈비뼈 닫기', '스냅은 짧고 강하게'],
+        emphasis: ['core', 'hipflexors', 'glutes'],
+      },
+      {
+        name: '하이 풀',
+        pose: 'bmuPull',
+        desc:
+          '봉을 가슴이 아니라 배꼽 쪽으로 당기면서 상체를 뒤로 눕힌다. ' +
+          'C2B 보다 더 높이, 더 뒤로 가야 다음 구간에서 몸이 봉 위로 넘어간다.',
+        cues: ['봉을 배꼽으로 당긴다는 느낌', '상체를 뒤로 눕히기', '팔꿈치는 뒤로 높게'],
+        emphasis: ['lats', 'biceps', 'traps', 'core'],
+      },
+      {
+        name: '트랜지션',
+        pose: 'bmuTransition',
+        desc:
+          '가슴이 봉을 넘어가는 순간 팔꿈치를 빠르게 아래로 접어 손목을 봉 위로 돌린다. BMU 가 막히는 지점은 거의 전부 여기다.',
+        cues: ['봉을 몸에 붙인 채 넘기기', '팔꿈치를 빠르게 아래로', '머리를 봉 앞으로 넣기'],
+        emphasis: ['lats', 'biceps', 'chest', 'core'],
+      },
+      {
+        name: '서포트 락아웃',
+        pose: 'bmuSupport',
+        desc: '봉 위에서 팔을 완전히 펴면 1렙 인정이다. 여기까지 안 펴면 노렙.',
+        cues: ['팔꿈치를 끝까지 펴기', '가슴을 세우고 어깨는 아래로', '내려올 때 봉을 밀어내며'],
+        emphasis: ['triceps', 'delts', 'chest', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'lats', level: 'primary' },
+      { key: 'biceps', level: 'primary' },
+      { key: 'triceps', level: 'primary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'chest', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'hipflexors', level: 'stabilizer' },
+      { key: 'glutes', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '가슴까지는 오는데 넘어가지 않는다', fix: '높이가 아니라 궤적 문제다. 봉을 몸에서 떨어뜨린 채 위로만 당기면 절대 안 넘어간다. 봉을 배꼽 쪽으로 당기며 상체를 뒤로 눕힌다.' },
+      { problem: '트랜지션에서 팔꿈치가 벌어진다', fix: '팔꿈치를 옆이 아니라 아래·뒤로 빠르게 접는다. 밴드 보조로 트랜지션만 반복 연습하는 게 가장 빠르다.' },
+      { problem: '한 개 하고 나면 다음이 안 된다', fix: '내려올 때 봉을 밀어내며 아치로 이어야 킵이 살아 있다. 그냥 떨어지면 매 렙 처음부터 다시 만들어야 한다.' },
+      { problem: '어깨 앞쪽이나 팔꿈치가 아프다', fix: '근력 없이 반동으로만 넘기고 있다는 신호다. C2B 와 스트릭트 딥으로 기초를 먼저 만든다.' },
+    ],
+    scaling: [
+      '체스트 투 바 풀업으로 환산 (1BMU = 2C2B)',
+      '일반 풀업으로 환산 (1BMU = 3PU)',
+      '밴드 보조 BMU — 밴드에 발을 걸고 트랜지션만 반복',
+      '점핑 BMU — 박스를 밟고 뛰어 올라 넘어가는 감각만 익히기',
+      '낮은 봉에서 하는 저 바 뮤스클업 (발이 바닥에 닿는 높이)',
+    ],
+    related: ['chest-to-bar-pull-up', 'pull-up', 'ring-dip'],
+    terms: ['bmu', 'rep-conversion', 'c2b', 'kipping', 'no-rep'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'toes-to-bar',
     seoTitle: '토투바(T2B) 하는 법과 발이 안 올라가는 이유',
     seoDesc:
@@ -1678,15 +1773,26 @@ export const movements = [
       {
         name: '드라이브 · 던지기',
         pose: 'wbThrow',
-        desc: '다리로 폭발적으로 일어서면서 그 관성을 그대로 팔로 이어 볼을 타깃으로 던진다. 팔로만 던지면 금방 지친다.',
-        cues: ['다리가 먼저, 팔은 이어받기', '볼은 수직으로', '완전 신전에서 손을 떠나게'],
+        desc:
+          '다리로 폭발적으로 일어서면서 그 관성을 그대로 팔로 이어 볼을 위로 던진다. ' +
+          '앞(벽)이 아니라 위로 던져야 하고, 몸이 다 펴지는 순간 볼이 손을 떠난다.',
+        cues: ['다리가 먼저, 팔은 이어받기', '앞이 아니라 위로', '완전 신전에서 손을 떠나게'],
         emphasis: ['quads', 'glutes', 'delts', 'triceps'],
       },
       {
-        name: '타깃 · 받기',
+        name: '타깃',
         pose: 'wbFlight',
-        desc: '볼이 타깃에 닿으면 렙 인정. 떨어지는 볼을 팔로 받아 바로 다음 스쿼트로 흡수한다.',
-        cues: ['볼을 눈으로 끝까지 따라가기', '받으면서 바로 앉기', '팔로 버티지 말고 다리로 흡수'],
+        desc:
+          '볼이 거의 수직으로 올라가 타깃(남 10ft·약 305cm / 여 9ft·약 274cm)에 닿으면 렙 인정이다. ' +
+          '키의 1.5~1.8배 높이라 팔 힘만으로는 절대 안 닿는다.',
+        cues: ['볼을 눈으로 끝까지 따라가기', '타깃 아래쪽이 아니라 중앙을 노리기', '올라가는 동안 자리를 지키기'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+      {
+        name: '받기',
+        pose: 'wbCatch',
+        desc: '떨어지는 볼을 손 위로 받아 그대로 다음 스쿼트로 흡수한다. 팔로 버티면 어깨가 먼저 탄다.',
+        cues: ['받으면서 바로 앉기', '팔로 버티지 말고 다리로 흡수', '볼을 가슴에 다시 붙이기'],
         emphasis: ['delts', 'core', 'quads'],
       },
     ],
@@ -1705,6 +1811,7 @@ export const movements = [
       { problem: '깊이가 안 나온다', fix: '고관절이 무릎보다 아래로 내려가야 인정된다. 볼을 몸에 붙이고 상체를 세우면 깊이가 나온다.' },
       { problem: '벽에서 너무 멀리 선다', fix: '멀수록 볼이 앞으로 날아가 매번 쫓아가게 된다. 볼을 안고 팔을 뻗어 벽에 닿는 정도의 거리가 적당하다.' },
       { problem: '받을 때 팔로 버틴다', fix: '받자마자 다리로 흡수해 다음 스쿼트로 이어야 어깨가 오래 버틴다.' },
+      { problem: '볼이 타깃 아래를 맞고 굴러떨어진다', fix: '앞으로 밀어 던져서 그렇다. 볼이 몸 바로 앞을 따라 수직으로 올라가도록 다리 신전 타이밍에 맞춰 손을 떠나게 한다.' },
     ],
     scaling: [
       '가벼운 볼로 (14 → 10 → 6 lb)',
@@ -1940,6 +2047,80 @@ export const movements = [
     ],
     related: ['hang-squat-clean', 'dumbbell-deadlift', 'dumbbell-shoulder-to-overhead'],
     terms: ['hang', 'dual-db', 'front-rack'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-front-squat',
+    seoTitle: '덤벨 프론트 스쿼트 하는 법 — 덤벨이 어깨에서 흘러내릴 때',
+    seoDesc:
+      '양손 덤벨을 어깨에 얹고 하는 프론트 스쿼트입니다. 바벨과 달라지는 팔꿈치 위치, 깊이 기준, 와드에서 흔한 (22.5/15) 표기를 4단계로 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 프론트 스쿼트',
+    en: 'Dumbbell Front Squat',
+    abbr: 'DB FS',
+    category: '덤벨',
+    level: '초급',
+    equipment: ['덤벨 2개'],
+    tagline: '양손 덤벨을 어깨 위에 얹은 채 앉았다 일어서는 스쿼트',
+    intro:
+      '바벨 프론트 스쿼트를 덤벨 두 개로 바꾼 것이다. 바가 없어 손목이 편한 대신, ' +
+      '덤벨이 좌우로 따로 놀아서 어깨에 얹은 자리를 유지하는 게 어렵다. ' +
+      '와드에서 (22.5/15) 처럼 적히면 그건 덤벨 한 개당 무게이고, 양손에 하나씩이라 실제로는 두 배를 든다.',
+    phases: [
+      {
+        name: '랙 포지션',
+        pose: 'dbRack',
+        desc: '덤벨 한쪽 끝을 어깨 위에 얹고 팔꿈치는 앞·위로 든다. 발은 어깨너비, 발끝은 살짝 바깥.',
+        cues: ['덤벨을 어깨에 "얹기" — 들고 있지 말기', '팔꿈치는 앞으로 높게', '가슴은 세우고 시선은 정면'],
+        emphasis: ['delts', 'core', 'traps'],
+      },
+      {
+        name: '내려가기',
+        pose: 'dbFrontSquatMid',
+        desc: '무릎과 고관절을 같이 접으며 상체를 세운 채 내려간다. 덤벨이 앞으로 쏠리면 그대로 넘어진다.',
+        cues: ['무게는 발 중앙에', '무릎은 발끝 방향으로', '상체를 최대한 세우기'],
+        emphasis: ['quads', 'glutes', 'core', 'erectors'],
+      },
+      {
+        name: '스쿼트 바닥',
+        pose: 'dbFrontSquatBottom',
+        desc: '고관절이 무릎보다 아래로 내려가야 인정된다. 바닥에서 팔꿈치가 떨어지지 않게 계속 든다.',
+        cues: ['고관절이 무릎 아래까지', '팔꿈치를 계속 높게', '허리는 말지 않기'],
+        emphasis: ['quads', 'glutes', 'core', 'erectors'],
+      },
+      {
+        name: '일어서기 · 락아웃',
+        pose: 'dbRack',
+        desc: '고관절과 무릎을 동시에 펴서 일어선다. 완전히 서면 1렙이다.',
+        cues: ['엉덩이만 먼저 올라오지 않게', '무릎과 고관절을 같이 펴기', '끝에서 완전히 서기'],
+        emphasis: ['quads', 'glutes', 'hamstrings'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'core', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'traps', level: 'stabilizer' },
+      { key: 'calves', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '덤벨이 어깨에서 흘러내린다', fix: '팔꿈치가 내려가서 그렇다. 팔꿈치를 앞·위로 계속 들고 있으면 덤벨이 어깨에 얹힌 채로 버틴다.' },
+      { problem: '상체가 앞으로 숙여진다', fix: '덤벨 무게가 앞에 있어 조금만 숙여도 무너진다. 발목이 뻣뻣하면 뒤꿈치에 작은 원판을 받쳐 본다.' },
+      { problem: '깊이가 안 나온다', fix: '고관절이 무릎보다 아래로 가야 인정이다. 깊이가 안 나오면 무게를 낮추는 게 먼저다.' },
+      { problem: '팔이 먼저 지친다', fix: '덤벨을 "들고" 있어서다. 어깨에 얹어 뼈로 받치면 팔은 방향만 잡는 역할이 된다.' },
+    ],
+    scaling: [
+      '덤벨 무게 낮추기 (22.5 → 15 → 10kg)',
+      '덤벨 하나만 가슴에 안고 하는 고블릿 스쿼트',
+      '맨몸 에어 스쿼트',
+      '박스에 앉았다 일어나는 박스 스쿼트로 깊이 기준 잡기',
+    ],
+    related: ['air-squat', 'dumbbell-hang-power-clean', 'wall-ball'],
+    terms: ['dual-db', 'front-rack', 'lbs-notation'],
   },
 
   /* ==================================================================== */

@@ -194,6 +194,7 @@ export const notationGroups = [
       { wrote: '22.5/15kg', read: '남 22.5kg / 여 15kg', note: '국내 박스는 kg 로 적는 경우가 많다.' },
       { wrote: '20-15/12.5-10kg', read: '남 20~15kg / 여 12.5~10kg', note: '범위는 "이 사이에서 고르라"는 뜻.' },
       { wrote: 'All Dual 22.5/15kg', read: '덤벨을 양손에 하나씩', note: 'Dual = 양손. 무게는 한 개 기준이다.' },
+      { wrote: 'Dumbbell(x2) ... (22.5/15)', read: '덤벨 두 개, 한 개당 22.5/15kg', note: '(x2) 도 Dual 과 같은 뜻. 실제로 드는 총 무게는 두 배다.', term: 'dual-db' },
       { wrote: '(24"/20")', read: '남 24인치 / 여 20인치 높이', note: '박스 점프·디피싯의 높이. 큰따옴표는 인치.' },
       { wrote: '@Clean & Jerk 70-80%', read: '클린 앤 저크 1RM의 70~80%', note: '@ 뒤는 기준값. 1RM을 모르면 반복 가능한 무게로.', term: 'percentage' },
       { wrote: '60% Build to heavy', read: '60%에서 시작해 점점 올리기', note: '고정 무게가 아니라 세트마다 올린다.' },
@@ -210,6 +211,7 @@ export const notationGroups = [
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '@Damper 10', read: '기구 설정값', note: '@ 는 무게 말고 설정에도 쓴다.' },
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
+      { wrote: '*Rxd+ : 2-3RMU', read: 'Rx 위 단계 옵션', note: 'Rx 가 쉬운 사람을 위해 더 어려운 동작으로 바꿔 두는 줄.', term: 'rx-plus' },
     ],
   },
   {
@@ -222,6 +224,7 @@ export const notationGroups = [
       { wrote: 'HSH', read: '핸드스탠드 홀드', note: 'HSPU 를 못 하면 버티기로 대체.', term: 'hsh' },
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
+      { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
     ],
   },

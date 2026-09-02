@@ -241,6 +241,15 @@ ${bodyEnd}
 
 /* --------------------------------------------------------- 컴포넌트 */
 
+/** 경로 토글 문구 — 바가 있으면 "바", 월볼처럼 볼만 있으면 "볼".
+    두 구간 이상에 있어야 궤적이 그려지므로(skeleton.js) 기준을 맞춘다. */
+function pathToggleLabel(mv) {
+  const on = (key) => mv.phases.filter((p) => p.pose[key]).length > 1;
+  if (on('bar')) return '바';
+  if (on('ball')) return '볼';
+  return '';
+}
+
 function thumbSvg(mv) {
   const idx = mv.thumb ?? Math.min(mv.phases.length - 1, Math.floor(mv.phases.length / 2));
   return Skeleton.render(mv.phases[idx].pose, { ground: false });
@@ -297,8 +306,8 @@ function playerMarkup(mv) {
         ${mv.phases.map((p, i) => `<button class="chip" data-chip aria-pressed="${i === 0}">${i + 1}. ${esc(p.name)}</button>`).join('\n        ')}
       </div>
       ${
-        mv.phases.some((p) => p.pose.bar)
-          ? `<div class="toggle-row"><label><input type="checkbox" data-toggle-path> 바 이동 경로 보기</label></div>`
+        pathToggleLabel(mv)
+          ? `<div class="toggle-row"><label><input type="checkbox" data-toggle-path> ${pathToggleLabel(mv)} 이동 경로 보기</label></div>`
           : ''
       }
     </div>
