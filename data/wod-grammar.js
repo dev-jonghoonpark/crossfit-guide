@@ -84,14 +84,27 @@ export const formats = [
   {
     id: 'exmom',
     name: 'E2MOM · Every X:00',
-    wrote: ['E2MOM 20', 'Every 2:00 x 5'],
+    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 70seconds x 12sets'],
     means:
       'EMOM의 간격이 1분이 아닌 버전. E2MOM 20 은 2분 간격으로 20분(=10라운드), ' +
-      'Every 2:00 x 5 는 2분 간격으로 5라운드(=10분)라는 뜻이다.',
+      'Every 2:00 x 5 는 2분 간격으로 5라운드(=10분)라는 뜻이다. ' +
+      '간격이 초로 적히기도 한다 — Every 70seconds x 12sets 는 70초 간격 12세트(=14분)다.',
     clock: '간격 × 라운드 = 총 시간. 둘 중 어느 쪽이 적혔는지 확인한다.',
     score: '사용한 무게 / 라운드별 성공 여부',
     term: 'e2mom',
     tag: 'E2MOM',
+  },
+  {
+    id: 'interval',
+    name: 'Interval (On / Off)',
+    wrote: ['5set 30Seconds On 60Seconds Off'],
+    means:
+      '앞이 운동 시간, 뒤가 휴식 시간이다. 정해진 세트만큼 반복한다. ' +
+      '휴식이 운동보다 길면 매 세트를 전력으로 하라는 뜻이다.',
+    clock: '(운동 + 휴식) × 세트 = 총 시간. 30/60 × 5세트면 7분 30초.',
+    score: '세트별 결과(칼로리·개수)를 각각 적는다',
+    term: 'on-off',
+    tag: '인터벌',
   },
   {
     id: 'tabata',
@@ -182,6 +195,8 @@ export const notationGroups = [
       { wrote: '1. / 2. / 3. / 4.', read: '① ② ③ ④ 스테이션 번호', note: 'EMOM에서 분마다 하나씩 돌아가며 하는 순서.', term: 'emom' },
       { wrote: '7 Unbroken Power Snatch', read: '파워 스내치 7회를 쉬지 않고', note: '바를 내려놓거나 손을 놓으면 처음부터.', term: 'unbroken' },
       { wrote: '15/12 Cal Row', read: '로우 — 남 15칼로리 / 여 12칼로리', note: '머신은 횟수 대신 칼로리로 센다.' },
+      { wrote: "10m DB Farmer's Carry", read: '덤벨을 들고 10m 걷기', note: '동작 앞의 숫자가 개수가 아니라 거리(m)인 경우.', term: 'fc' },
+      { wrote: 'Max Unbroken Hang Power Clean', read: '끊기지 않고 할 수 있는 최대 개수', note: '개수가 정해져 있지 않다. 바를 놓는 순간이 그 세트의 끝.', term: 'unbroken' },
       { wrote: '(Above knee) / (Below Knee)', read: '무릎 위 / 무릎 아래에서 시작', note: '같은 동작이라도 시작 높이를 지정한다.', term: 'hang' },
     ],
   },
@@ -211,6 +226,7 @@ export const notationGroups = [
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '@Damper 10', read: '기구 설정값', note: '@ 는 무게 말고 설정에도 쓴다.' },
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
+      { wrote: 'Score:Complete sets + HPC reps', read: '기록 방법을 코치가 직접 적어 둔 줄', note: '무엇으로 점수를 매기는지 = 이 와드의 목표가 뭔지.', term: 'score-line' },
       { wrote: '*Rxd+ : 2-3RMU', read: 'Rx 위 단계 옵션', note: 'Rx 가 쉬운 사람을 위해 더 어려운 동작으로 바꿔 두는 줄.', term: 'rx-plus' },
     ],
   },

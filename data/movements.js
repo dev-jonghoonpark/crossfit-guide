@@ -192,6 +192,96 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'hang-power-clean',
+    seoTitle: '행 파워 클린(HPC) 하는 법 — 스쿼트 클린과 뭐가 다른가',
+    seoDesc:
+      '행 파워 클린은 허벅지에서 시작해 하프 스쿼트로 받는 클린입니다. 파워 캐치 기준과 언브로큰으로 이어 가는 요령, 스쿼트 클린과의 차이를 6단계로 정리했습니다.',
+    thumb: 2,
+    ko: '행 파워 클린',
+    en: 'Hang Power Clean',
+    abbr: 'HPC',
+    category: '역도',
+    level: '중급',
+    equipment: ['바벨', '원판'],
+    tagline: '허벅지(행 포지션)에서 시작해 고관절이 무릎 위인 하프 스쿼트로 받는 클린',
+    intro:
+      '행 스쿼트 클린과 출발은 같지만 받는 깊이가 다르다. "파워"는 고관절이 무릎보다 위에서 받는다는 뜻이라, ' +
+      '풀 스쿼트까지 앉지 않는 만큼 한 렙이 짧고 빠르다. 대신 바를 더 높이 띄워야 해서 신전이 약하면 바로 막힌다. ' +
+      '와드에서 "Max Unbroken HPC" 처럼 연속 렙으로 나오면 다리보다 그립과 등이 먼저 지친다.',
+    phases: [
+      {
+        name: '시작 (스탠딩)',
+        pose: 'standHold',
+        desc: '바닥에서 데드리프트로 세워 올려 팔을 편 채 허벅지 앞에 들고 선다.',
+        cues: ['훅 그립', '어깨는 뒤로, 가슴은 위로', '바는 허벅지에 붙여서'],
+        emphasis: ['forearms', 'erectors'],
+      },
+      {
+        name: '행 포지션 (힙 힌지)',
+        pose: 'hang',
+        desc: '무릎을 살짝 굽히고 엉덩이를 뒤로 빼며 바를 허벅지 중간까지 내린다. 여기가 매 렙의 시작점이다.',
+        cues: ['등 각도 고정, 엉덩이만 뒤로', '어깨가 바보다 앞', '체중은 발 중앙~뒤꿈치'],
+        emphasis: ['hamstrings', 'erectors', 'lats'],
+      },
+      {
+        name: '폭발적 신전',
+        pose: 'extension',
+        desc: '고관절로 바를 쳐 올린다. 파워로 받으려면 스쿼트 클린보다 바를 더 높이 띄워야 한다.',
+        cues: ['수직으로 점프하듯', '바를 몸에 붙인 채', '팔은 마지막에'],
+        emphasis: ['glutes', 'hamstrings', 'traps', 'calves'],
+      },
+      {
+        name: '풀 언더',
+        pose: 'pullUnder',
+        desc: '팔꿈치를 빠르게 회전시켜 바 밑으로 들어간다. 파워 클린은 여기서 아주 조금만 내려간다.',
+        cues: ['팔꿈치 회전 속도가 전부', '발은 살짝만 벌리기', '고개는 살짝 뒤로'],
+        emphasis: ['traps', 'delts', 'core'],
+      },
+      {
+        name: '파워 캐치',
+        pose: 'powerCatch',
+        desc: '고관절이 무릎보다 위인 하프 스쿼트에서 프론트 랙으로 받는다. 무릎 아래로 내려가면 파워가 아니라 스쿼트 클린이다.',
+        cues: ['팔꿈치 높게', '상체 수직', '고관절은 무릎 위에서 멈추기'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '일어서기',
+        pose: 'frontRack',
+        desc: '완전히 서면 1렙. 연속 렙은 여기서 다시 허벅지까지 컨트롤해서 내린다.',
+        cues: ['완전 신전으로 마무리', '내릴 때 바를 몸에 붙여서', '허벅지에서 바로 다음 렙'],
+        emphasis: ['quads', 'glutes'],
+      },
+    ],
+    muscles: [
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'traps', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'lats', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '받을 때 무릎 아래까지 앉는다', fix: '그건 스쿼트 클린이다. 무게를 낮춰 하프 스쿼트에서 멈출 수 있게 한다.' },
+      { problem: '팔로 당겨 올린다', fix: '고관절이 다 펴지기 전엔 팔꿈치를 굽히지 않는다. 신전이 끝난 뒤에 팔이 따라온다.' },
+      { problem: '언브로큰이 3~4개에서 끊긴다', fix: '내릴 때 바를 떨어뜨리지 말고 컨트롤해서 허벅지까지만 내린다. 그립이 아니라 리듬 문제인 경우가 많다.' },
+      { problem: '연속 렙에서 등이 말린다', fix: '피로가 쌓이면 행 포지션에서 등이 먼저 무너진다. 등이 둥글어지면 그 세트는 거기서 끊는다.' },
+    ],
+    scaling: [
+      '무게 낮추기 (115/75 lb → 남 43~50kg / 여 30~35kg 등)',
+      '하이 행(허벅지 상단)에서 시작해 가동 범위 축소',
+      '덤벨 행 파워 클린으로 대체',
+      '언브로큰 조건을 빼고 개수로만 수행',
+    ],
+    related: ['hang-squat-clean', 'squat-clean', 'dumbbell-hang-power-clean'],
+    terms: ['hpc', 'hang', 'front-rack', 'triple-extension', 'unbroken'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'split-jerk',
     seoTitle: '스플릿 저크 동작 방법과 사용 근육',
     seoDesc:
@@ -2121,6 +2211,163 @@ export const movements = [
     ],
     related: ['air-squat', 'dumbbell-hang-power-clean', 'wall-ball'],
     terms: ['dual-db', 'front-rack', 'lbs-notation'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-power-clean',
+    seoTitle: '덤벨 파워 클린 하는 법 — 바닥에서 어깨까지',
+    seoDesc:
+      '양손 덤벨을 바닥에서 어깨까지 한 번에 올리는 동작입니다. 바벨과 달라지는 궤적과 손목 각도, 연속 렙에서 등이 먼저 지치는 이유를 5단계로 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 파워 클린',
+    en: 'Dumbbell Power Clean',
+    abbr: 'DB PC',
+    category: '덤벨',
+    level: '초중급',
+    equipment: ['덤벨 2개'],
+    tagline: '바닥에 놓인 양손 덤벨을 고관절 신전으로 어깨까지 한 번에 올리는 동작',
+    intro:
+      '바벨 클린과 원리는 같지만 덤벨은 몸 옆에 있어서 정강이를 스칠 필요가 없다. ' +
+      '궤적이 자유로운 만큼 팔로 들어 올리기도 쉬워서, "다리로 띄우고 팔은 방향만 잡는다"는 원칙이 더 잘 무너진다. ' +
+      '와드에서는 파머스 캐리처럼 이미 그립이 지친 상태로 나오는 경우가 많다.',
+    phases: [
+      {
+        name: '바닥 셋업',
+        pose: 'dbFloor',
+        desc: '덤벨을 발 옆(또는 발 중앙 선상)에 두고 엉덩이를 뒤로 빼 잡는다. 등은 평평하게.',
+        cues: ['가슴 열고 등은 평평하게', '팔은 편 채', '체중은 발 중앙'],
+        emphasis: ['erectors', 'hamstrings', 'forearms'],
+      },
+      {
+        name: '무릎 통과',
+        pose: 'dbHang',
+        desc: '다리로 밀어 덤벨을 무릎 위까지 세워 올린다. 상체 각도는 유지한 채 무릎만 뒤로 빠진다.',
+        cues: ['상체 각도 유지', '덤벨을 몸 가까이', '어깨가 덤벨보다 앞'],
+        emphasis: ['hamstrings', 'erectors', 'quads'],
+      },
+      {
+        name: '폭발적 신전',
+        pose: 'dbExtension',
+        desc: '발목·무릎·고관절을 동시에 펴며 덤벨을 위로 쳐 올린다. 여기까지 팔은 아직 편 채다.',
+        cues: ['수직으로 점프하듯', '어깨를 으쓱', '팔은 마지막에'],
+        emphasis: ['glutes', 'hamstrings', 'traps', 'calves'],
+      },
+      {
+        name: '파워 캐치',
+        pose: 'dbCatch',
+        desc: '팔꿈치를 빠르게 돌려 덤벨 밑으로 들어가 어깨에 받는다. 살짝 앉으며 충격을 흡수한다.',
+        cues: ['팔꿈치를 빠르게 앞으로', '덤벨을 어깨에 얹기', '살짝 앉으며 받기'],
+        emphasis: ['traps', 'delts', 'quads'],
+      },
+      {
+        name: '스탠드업',
+        pose: 'dbRack',
+        desc: '완전히 서면 1렙. 다음 렙은 컨트롤해서 다시 바닥으로 내린다.',
+        cues: ['완전 신전으로 마무리', '내릴 때 등을 펴고', '덤벨을 던지지 않기'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'traps', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'calves', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '팔로 들어 올린다', fix: '고관절이 다 펴지기 전엔 팔꿈치를 굽히지 않는다. 무게를 낮추고 신전 타이밍부터 맞춘다.' },
+      { problem: '덤벨이 몸에서 멀어진다', fix: '멀수록 등에 실린다. 덤벨을 허벅지·옆구리에 스치듯 붙여서 올린다.' },
+      { problem: '연속 렙에서 등이 먼저 지친다', fix: '매 렙 바닥에서 셋업을 다시 잡는다. 등이 둥글어지면 그 세트는 끊는다.' },
+      { problem: '내릴 때 그냥 떨어뜨린다', fix: '덤벨이 튀어 다음 셋업이 흐트러진다. 고관절을 접으며 컨트롤해서 내린다.' },
+    ],
+    scaling: [
+      '덤벨 무게 낮추기 (22.5 → 15 → 10kg)',
+      '덤벨 행 파워 클린으로 (바닥 구간 빼기)',
+      '덤벨 데드리프트 + 어깨까지 나눠서',
+      '개수를 줄여 세트로 나누기',
+    ],
+    related: ['dumbbell-hang-power-clean', 'dumbbell-deadlift', 'hang-power-clean'],
+    terms: ['dual-db', 'triple-extension', 'front-rack'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-farmers-carry',
+    seoTitle: "덤벨 파머스 캐리 하는 법 — 10m 캐리가 힘든 이유",
+    seoDesc:
+      '양손에 덤벨을 들고 걷는 동작입니다. 그립·코어·상부 등을 동시에 태우는 원리와 와드에서 10m 표기를 읽는 법, 스케일링을 4단계로 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 파머스 캐리',
+    en: "Dumbbell Farmer's Carry",
+    abbr: 'FC',
+    category: '덤벨',
+    level: '초급',
+    equipment: ['덤벨 2개'],
+    tagline: '양손에 덤벨을 들고 정해진 거리를 걸어가는 동작',
+    intro:
+      '동작이라기보다 "버티며 걷기"에 가깝다. 팔은 그냥 걸어 두는 고리일 뿐이고, ' +
+      '실제로 일하는 건 그립과 코어, 그리고 어깨가 앞으로 말리지 않게 잡아 주는 상부 등이다. ' +
+      '와드에서 "10m DB Farmer\'s Carry" 는 박스에 표시된 10m 구간을 한 번 지나가라는 뜻이다.',
+    phases: [
+      {
+        name: '픽업',
+        pose: 'dbFloor',
+        desc: '덤벨을 발 옆에 두고 데드리프트처럼 등을 편 채 잡아 세운다. 여기서 등이 말리면 걷는 내내 말린다.',
+        cues: ['등은 평평하게', '다리로 세워 올리기', '덤벨은 몸 옆에'],
+        emphasis: ['erectors', 'hamstrings', 'forearms'],
+      },
+      {
+        name: '브레이싱',
+        pose: 'dbStand',
+        desc: '완전히 선 채로 갈비뼈를 닫고 배를 조인다. 어깨는 뒤로, 덤벨은 몸 옆에 붙인다.',
+        cues: ['갈비뼈 닫고 배 조이기', '어깨를 뒤·아래로', '시선은 정면'],
+        emphasis: ['core', 'traps', 'forearms'],
+      },
+      {
+        name: '걸음 (한쪽)',
+        pose: 'fcStrideA',
+        desc: '보폭을 평소보다 짧게 해서 몸통이 좌우로 흔들리지 않게 걷는다. 덤벨은 흔들지 않는다.',
+        cues: ['보폭은 짧고 빠르게', '몸통을 좌우로 흔들지 않기', '덤벨이 다리에 부딪히지 않게'],
+        emphasis: ['core', 'forearms', 'glutes'],
+      },
+      {
+        name: '걸음 (반대쪽)',
+        pose: 'fcStrideB',
+        desc: '같은 리듬으로 반대쪽 발. 숨을 참지 말고 짧게 계속 쉰다.',
+        cues: ['같은 리듬 유지', '숨 참지 않기', '목표 지점까지 멈추지 않기'],
+        emphasis: ['core', 'forearms', 'quads'],
+      },
+    ],
+    muscles: [
+      { key: 'forearms', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'traps', level: 'primary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'glutes', level: 'secondary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'delts', level: 'stabilizer' },
+      { key: 'lats', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '어깨가 앞으로 말린다', fix: '무게에 끌려가는 신호다. 어깨를 뒤·아래로 두고 상부 등으로 버틴다. 안 되면 무게를 낮춘다.' },
+      { problem: '몸통이 좌우로 흔들린다', fix: '보폭이 너무 크다. 보폭을 절반으로 줄이고 발을 빠르게 놓는다.' },
+      { problem: '그립이 먼저 터진다', fix: '덤벨을 손가락 끝이 아니라 손바닥 깊이 잡는다. 와드 전에 데드행으로 그립 지구력을 따로 만든다.' },
+      { problem: '숨을 참고 걷는다', fix: '10m 는 참을 수 있어도 그다음 동작에서 대가를 치른다. 짧게 계속 호흡한다.' },
+    ],
+    scaling: [
+      '덤벨 무게 낮추기',
+      '거리 줄이기 (10m → 5m 왕복 등)',
+      '케틀벨이나 원판으로 대체',
+      '한 손 캐리(수트케이스 캐리)로 나눠서',
+    ],
+    related: ['dumbbell-deadlift', 'dumbbell-power-clean', 'dumbbell-front-squat'],
+    terms: ['fc', 'dual-db'],
   },
 
   /* ==================================================================== */
