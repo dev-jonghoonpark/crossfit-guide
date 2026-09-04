@@ -1327,7 +1327,7 @@ export const movements = [
     seoTitle: '토투바(T2B) 하는 법과 발이 안 올라가는 이유',
     seoDesc:
       '토투바는 매달린 채 발끝을 봉에 닿게 올리는 동작입니다. 광배근으로 봉을 당겨 몸을 눕히는 원리와 K2C 스케일링을 5단계로 정리했습니다.',
-    thumb: 3,
+    thumb: 4,
     ko: '토투바',
     en: 'Toes-to-Bar',
     abbr: 'T2B',
@@ -1355,9 +1355,18 @@ export const movements = [
         emphasis: ['lats', 'delts', 'core'],
       },
       {
-        name: '호로우 + 당기기',
+        name: '호로우',
         pose: 'barHollow',
-        desc: '광배근으로 봉을 당겨 몸을 살짝 뒤로 눕히면서 무릎을 가슴 쪽으로 끌어올린다.',
+        desc: '아치에서 발을 앞으로 차 몸을 바나나 모양으로 바꾼다. 이 방향 전환이 다리를 띄우는 힘이 된다.',
+        cues: ['배를 조여 갈비뼈 닫기', '발끝을 앞으로', '아치-호로우를 리듬으로'],
+        emphasis: ['core', 'hipflexors', 'lats'],
+      },
+      {
+        name: '당기기',
+        pose: 'barT2bPull',
+        desc:
+          '광배근으로 봉을 아래로 당겨 상체를 뒤로 눕히면서, 고관절을 접어 다리를 앞·위로 올린다. ' +
+          '복근으로 다리를 드는 게 아니라 상체를 눕혀서 다리가 올라갈 공간을 만드는 구간이다.',
         cues: ['봉을 아래로 당겨 몸을 눕히기', '배를 먼저 접기', '팔은 살짝만 굽혀도 된다'],
         emphasis: ['lats', 'core', 'hipflexors'],
       },
