@@ -63,22 +63,63 @@
 
   /** 각도는 짧은 쪽으로 돈다 (350° → 10° 은 20°지 -340° 가 아니다) */
   function lerpAngle(a, b, t) {
-    let d = (b - a) % (Math.PI * 2);
-    if (d > Math.PI) d -= Math.PI * 2;
-    if (d < -Math.PI) d += Math.PI * 2;
-    return a + d * t;
+    return a + wrapPi(b - a) * t;
   }
 
-  /** 골반에서 뻗어 나가는 뼈대 트리. [부모, 자식] 이고 부모가 먼저 나와야 한다. */
+  function wrapPi(d) {
+    d = d % (Math.PI * 2);
+    if (d > Math.PI) d -= Math.PI * 2;
+    if (d < -Math.PI) d += Math.PI * 2;
+    return d;
+  }
+
+  /** 관절이 얼마나 돌아야 하는지.
+      정규화한 두 끝점을 그냥 잇는 게 기본이다 — 그래야 도중에 두 값의 범위를
+      벗어나지 않는다(= 팔꿈치가 반대로 꺾이지 않는다). 다만 그 길이가 반 바퀴를
+      넘으면 감아 도는 쪽이 실제 움직임이라(174° → -162° 는 25° 만 움직이는
+      것이다) 그때만 감아 돈다. */
+  function jointDelta(a, b) {
+    const direct = wrapPi(b) - wrapPi(a);
+    return Math.abs(direct) <= Math.PI ? direct : wrapPi(direct);
+  }
+
+  /** 골반에서 뻗어 나가는 뼈대 트리. [부모관절, 자식관절, 각도 기준이 되는 뼈].
+      부모가 먼저 나와야 하고, 기준 뼈도 먼저 나와야 한다.
+
+      각도를 세상 기준으로 보간하면 안 된다. 뼈마다 따로 짧은 쪽으로 도는 바람에
+      두 뼈 사이 각도 — 즉 관절이 접힌 각도 — 가 도중에 반대로 꺾였다가 돌아온다.
+      (덤벨 파워 클린의 "신전 → 캐치" 에서 팔꿈치가 그랬다.)
+      그래서 각도를 기준 뼈에 대한 상대 각도로 보간한다. 그러면 팔꿈치·무릎이
+      접힌 각도가 두 포즈의 값 사이를 곧장 오가서 반대로 꺾일 수가 없다.
+      다리는 상체를 기준으로 잡는다 — 고관절 각도도 원래 상체 대비로 재는 값이다. */
   const BONE_TREE = [
-    ['hip', 'shoulder'],
-    ['shoulder', 'neck'],
-    ['neck', 'head'],
-    ['shoulder', 'elbowF'], ['elbowF', 'wristF'],
-    ['shoulder', 'elbowB'], ['elbowB', 'wristB'],
-    ['hip', 'kneeF'], ['kneeF', 'ankleF'], ['ankleF', 'toeF'], ['ankleF', 'heelF'],
-    ['hip', 'kneeB'], ['kneeB', 'ankleB'], ['ankleB', 'toeB'], ['ankleB', 'heelB'],
+    ['hip', 'shoulder', null],
+    ['shoulder', 'neck', 'hip-shoulder'],
+    ['neck', 'head', 'shoulder-neck'],
+    ['shoulder', 'elbowF', 'hip-shoulder'], ['elbowF', 'wristF', 'shoulder-elbowF'],
+    ['hip', 'kneeF', 'hip-shoulder'], ['kneeF', 'ankleF', 'hip-kneeF'],
+    ['ankleF', 'toeF', 'kneeF-ankleF'], ['ankleF', 'heelF', 'kneeF-ankleF'],
+    // 먼 쪽(B)은 가까운 쪽(F)을 먼저 돌린 뒤에 온다 — 아래 mirror 규칙이 F 를 참조한다
+    ['shoulder', 'elbowB', 'hip-shoulder'], ['elbowB', 'wristB', 'shoulder-elbowB'],
+    ['hip', 'kneeB', 'hip-shoulder'], ['kneeB', 'ankleB', 'hip-kneeB'],
+    ['ankleB', 'toeB', 'kneeB-ankleB'], ['ankleB', 'heelB', 'kneeB-ankleB'],
   ];
+
+  /** 먼 쪽 뼈는 가까운 쪽 짝을 본다. B 는 F 를 x 로 살짝 민 것이라 두 각도가
+      ±180° 를 사이에 두고 갈릴 때가 있는데, 그러면 한쪽 팔만 반대로 돌아
+      두 팔이 따로 논다. 도는 방향만 F 에 맞춰 준다(도착 각도는 그대로다). */
+  const MIRROR_BONE = {
+    'shoulder-elbowB': 'shoulder-elbowF',
+    'elbowB-wristB': 'elbowF-wristF',
+    'hip-kneeB': 'hip-kneeF',
+    'kneeB-ankleB': 'kneeF-ankleF',
+    'ankleB-toeB': 'ankleF-toeF',
+    'ankleB-heelB': 'ankleF-heelF',
+  };
+
+  /** 'hip-shoulder' → ['hip','shoulder'] 조회표 (트리에서 자동으로 만든다) */
+  const REF_BONE = {};
+  for (const [parent, child] of BONE_TREE) REF_BONE[parent + '-' + child] = [parent, child];
 
   /** 이 중 두 포즈 사이에서 가장 덜 움직이는 관절을 "고정점"으로 본다 */
   const ANCHORS = ['ankleF', 'ankleB', 'wristF', 'wristB'];
@@ -95,11 +136,35 @@
     if (Array.isArray(A.hip) && Array.isArray(B.hip)) {
       out.hip = [lerp(A.hip[0], B.hip[0], t), lerp(A.hip[1], B.hip[1], t)];
       boned.add('hip');
-      for (const [parent, child] of BONE_TREE) {
+      const world = {}; // 보간이 끝난 뼈의 세상 각도 — 자식 뼈의 기준이 된다
+      const delta = {}; // 뼈마다 고른 회전량 — 먼 쪽(B)이 가까운 쪽(F)을 따라가는 데 쓴다
+      for (const [parent, child, refKey] of BONE_TREE) {
         if (!boned.has(parent)) continue;
         if (!Array.isArray(A[parent]) || !Array.isArray(A[child])) continue;
         if (!Array.isArray(B[parent]) || !Array.isArray(B[child])) continue;
-        const ang = lerpAngle(angleOf(A[parent], A[child]), angleOf(B[parent], B[child]), t);
+        const key = parent + '-' + child;
+        const aAng = angleOf(A[parent], A[child]);
+        const bAng = angleOf(B[parent], B[child]);
+        let ang;
+        const ref = refKey && REF_BONE[refKey];
+        if (ref && world[refKey] != null) {
+          // 기준 뼈에 대한 상대 각도(= 관절이 접힌 각도)를 보간한다
+          const aRef = angleOf(A[ref[0]], A[ref[1]]);
+          const bRef = angleOf(B[ref[0]], B[ref[1]]);
+          const from = aAng - aRef;
+          let d = jointDelta(from, bAng - bRef);
+          const twin = MIRROR_BONE[key] && delta[MIRROR_BONE[key]];
+          if (twin != null) {
+            // 반대쪽 짝과 도는 방향을 맞춘다 (도착 각도는 어느 쪽을 골라도 같다)
+            const alt = d + (d > 0 ? -Math.PI * 2 : Math.PI * 2);
+            if (Math.abs(alt - twin) < Math.abs(d - twin)) d = alt;
+          }
+          delta[key] = d;
+          ang = world[refKey] + from + d * t;
+        } else {
+          ang = lerpAngle(aAng, bAng, t);
+        }
+        world[key] = ang;
         const len = lerp(dist(A[parent], A[child]), dist(B[parent], B[child]), t);
         out[child] = [out[parent][0] + Math.cos(ang) * len, out[parent][1] + Math.sin(ang) * len];
         boned.add(child);
