@@ -41,14 +41,88 @@
   const BAR_R = 27;
   const ROPE_LEN = 132;
 
-  /* ---------------------------------------------------------- 보간 유틸 */
+  /* ---------------------------------------------------------- 보간 유틸
+
+     관절의 x·y 를 각각 직선으로 보간하면, 팔·다리가 크게 도는 구간에서
+     뼈가 줄어들었다가 다시 늘어난다. 두 끝점이 서로 다른 방향으로 움직이면
+     그 사이 어딘가에서 두 점이 가까워지기 때문이다. 토투바처럼 다리가
+     180° 가까이 도는 구간에서는 중간 프레임의 다리 길이가 원래의 2% 까지
+     줄어서, 다리가 사라졌다 튀어나오는 그림이 된다.
+
+     그래서 뼈는 (각도, 길이)로 보간한다. 길이가 항상 유지되므로 관절이
+     실제처럼 호를 그리며 돈다. 대신 골반을 기준으로 몸을 다시 쌓아 올리는
+     방식이라 발·손의 절대 위치가 조금 밀리는데, 마지막에 몸 전체를 한 번
+     평행이동해서 "세상에 고정된 지점"(디딘 발이나 봉을 잡은 손)을 제자리로
+     돌려놓는다. 평행이동은 모양을 바꾸지 않으므로 뼈 길이는 그대로다.
+
+     t=0 과 t=1 에서는 각도·길이가 원본 그대로라 두 포즈를 정확히 재현한다. */
 
   const lerp = (a, b, t) => a + (b - a) * t;
+  const dist = (p, q) => Math.hypot(q[0] - p[0], q[1] - p[1]);
+  const angleOf = (p, q) => Math.atan2(q[1] - p[1], q[0] - p[0]);
+
+  /** 각도는 짧은 쪽으로 돈다 (350° → 10° 은 20°지 -340° 가 아니다) */
+  function lerpAngle(a, b, t) {
+    let d = (b - a) % (Math.PI * 2);
+    if (d > Math.PI) d -= Math.PI * 2;
+    if (d < -Math.PI) d += Math.PI * 2;
+    return a + d * t;
+  }
+
+  /** 골반에서 뻗어 나가는 뼈대 트리. [부모, 자식] 이고 부모가 먼저 나와야 한다. */
+  const BONE_TREE = [
+    ['hip', 'shoulder'],
+    ['shoulder', 'neck'],
+    ['neck', 'head'],
+    ['shoulder', 'elbowF'], ['elbowF', 'wristF'],
+    ['shoulder', 'elbowB'], ['elbowB', 'wristB'],
+    ['hip', 'kneeF'], ['kneeF', 'ankleF'], ['ankleF', 'toeF'], ['ankleF', 'heelF'],
+    ['hip', 'kneeB'], ['kneeB', 'ankleB'], ['ankleB', 'toeB'], ['ankleB', 'heelB'],
+  ];
+
+  /** 이 중 두 포즈 사이에서 가장 덜 움직이는 관절을 "고정점"으로 본다 */
+  const ANCHORS = ['ankleF', 'ankleB', 'wristF', 'wristB'];
+
+  /** 손에 들린 도구는 손을 따라가야 봉이 손에서 떨어지지 않는다 */
+  const HELD_PROPS = [['bar', 'wristF'], ['ball', 'wristF'], ['dbF', 'wristF'], ['dbB', 'wristB']];
+  const HELD_RANGE = 30; // 이 안에 있으면 "들고 있다"고 본다
 
   function lerpPose(A, B, t) {
     const out = {};
-    // 도구는 뒤 구간에서만 등장할 수 있으므로 두 포즈의 키를 합쳐서 돈다
+    const boned = new Set();
+
+    // 1) 뼈대 — 골반을 놓고 각 뼈를 (각도, 길이)로 쌓아 올린다
+    if (Array.isArray(A.hip) && Array.isArray(B.hip)) {
+      out.hip = [lerp(A.hip[0], B.hip[0], t), lerp(A.hip[1], B.hip[1], t)];
+      boned.add('hip');
+      for (const [parent, child] of BONE_TREE) {
+        if (!boned.has(parent)) continue;
+        if (!Array.isArray(A[parent]) || !Array.isArray(A[child])) continue;
+        if (!Array.isArray(B[parent]) || !Array.isArray(B[child])) continue;
+        const ang = lerpAngle(angleOf(A[parent], A[child]), angleOf(B[parent], B[child]), t);
+        const len = lerp(dist(A[parent], A[child]), dist(B[parent], B[child]), t);
+        out[child] = [out[parent][0] + Math.cos(ang) * len, out[parent][1] + Math.sin(ang) * len];
+        boned.add(child);
+      }
+
+      // 2) 고정점 보정 — 가장 덜 움직이는 발·손을 직선 보간 위치로 되돌린다
+      let anchor = null;
+      let least = Infinity;
+      for (const k of ANCHORS) {
+        if (!boned.has(k) || !Array.isArray(A[k]) || !Array.isArray(B[k])) continue;
+        const moved = dist(A[k], B[k]);
+        if (moved < least) { least = moved; anchor = k; }
+      }
+      if (anchor) {
+        const dx = lerp(A[anchor][0], B[anchor][0], t) - out[anchor][0];
+        const dy = lerp(A[anchor][1], B[anchor][1], t) - out[anchor][1];
+        for (const k of boned) out[k] = [out[k][0] + dx, out[k][1] + dy];
+      }
+    }
+
+    // 3) 나머지 키 — 도구는 뒤 구간에서만 등장할 수 있으므로 두 포즈의 키를 합쳐서 돈다
     for (const k of new Set([...Object.keys(A), ...Object.keys(B)])) {
+      if (boned.has(k)) continue;
       const a = A[k];
       const b = B[k];
       if (Array.isArray(a) && Array.isArray(b)) {
@@ -63,6 +137,19 @@
         out[k] = t < 0.5 ? a : b;
       }
     }
+
+    // 4) 손에 들린 도구는 손에 붙여 둔다 (양쪽 포즈 모두에서 들고 있을 때만)
+    for (const [prop, hand] of HELD_PROPS) {
+      if (!boned.has(hand)) continue;
+      if (!Array.isArray(A[prop]) || !Array.isArray(B[prop])) continue;
+      if (!Array.isArray(A[hand]) || !Array.isArray(B[hand])) continue;
+      if (dist(A[prop], A[hand]) > HELD_RANGE || dist(B[prop], B[hand]) > HELD_RANGE) continue;
+      out[prop] = [
+        out[hand][0] + lerp(A[prop][0] - A[hand][0], B[prop][0] - B[hand][0], t),
+        out[hand][1] + lerp(A[prop][1] - A[hand][1], B[prop][1] - B[hand][1], t),
+      ];
+    }
+
     return out;
   }
 
