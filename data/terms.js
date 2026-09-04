@@ -64,13 +64,37 @@ export const termGroups = [
       },
       {
         id: 'e2mom',
-        term: 'E2MOM / Every 2:00',
-        full: 'Every 2 Minutes On the Minute',
-        ko: '2분마다',
+        term: 'E2MOM / Every 2:00 / Every 70seconds',
+        full: 'Every X Minutes(Seconds) On the Minute',
+        ko: '정해진 간격마다',
         desc:
-          'EMOM 의 간격이 2분인 버전. "E2MOM 20" 은 2분 간격으로 총 20분 = 10라운드다. ' +
-          '홀수 라운드(Odd)와 짝수 라운드(Even)에 다른 동작을 배치하는 구성이 흔하다.',
-        example: 'E2MOM 20 / Odd: 15/12 Cal Row + 8 C2B · Even: 12 DB Snatch + 12 Box Jump',
+          'EMOM 의 간격이 1분이 아닌 버전. "E2MOM 20" 은 2분 간격으로 총 20분 = 10라운드다. ' +
+          '홀수 라운드(Odd)와 짝수 라운드(Even)에 다른 동작을 배치하는 구성이 흔하다. ' +
+          '간격은 분 단위가 아니어도 된다 — "Every 70seconds x 12sets" 는 70초 간격 12세트(=14분)이고, ' +
+          '스테이션이 4개면 각 스테이션을 3번씩 돌게 된다. 이런 어중간한 간격은 대개 ' +
+          '한 스테이션을 끝내고 20~30초쯤 남도록 맞춘 것이다.',
+        example: 'E2MOM 20 · Every 2:00 x 5 · Every 70seconds x 12sets',
+      },
+      {
+        id: 'on-off',
+        term: '30Seconds On 60Seconds Off',
+        full: 'Work / Rest Interval',
+        ko: '운동 / 휴식 인터벌',
+        desc:
+          '앞이 운동 시간, 뒤가 휴식 시간이다. 30초 하고 60초 쉬는 걸 정해진 세트만큼 반복한다. ' +
+          '휴식이 운동보다 길면 "매 세트를 전력으로 하라"는 뜻이다 — 남겨 두고 하면 인터벌의 의도가 사라진다.',
+        example: '5set / 30Seconds On 60Seconds Off',
+      },
+      {
+        id: 'score-line',
+        term: 'Score: ...',
+        full: 'Score',
+        ko: '기록 방법',
+        desc:
+          '이 와드를 무엇으로 기록하는지 코치가 직접 적어 둔 줄이다. ' +
+          '"Score:Complete sets + HPC reps" 는 완료한 세트 수와 행 파워 클린 렙 수를 같이 적으라는 뜻. ' +
+          '이 줄이 있으면 와드의 목표가 무엇인지도 같이 알 수 있다.',
+        example: 'Score:Complete sets + HPC reps',
       },
       {
         id: 'odd-even',
@@ -363,6 +387,8 @@ export const termGroups = [
       { id: 'pj', term: 'PJ', full: 'Push Jerk', ko: '푸시 저크', desc: '발 위치를 유지한 채 1/4 스쿼트로 받는 저크.', movement: 'push-jerk' },
       { id: 'sj', term: 'SJ', full: 'Split Jerk', ko: '스플릿 저크', desc: '다리를 앞뒤로 갈라 받는 저크.', movement: 'split-jerk' },
       { id: 'cj', term: 'C&J', full: 'Clean & Jerk', ko: '클린 앤 저크', desc: '클린 + 저크를 이어서 하는 올림픽 역도 종목.', movement: 'clean-and-jerk' },
+      { id: 'hpc', term: 'HPC', full: 'Hang Power Clean', ko: '행 파워 클린', desc: '허벅지에서 시작해 하프 스쿼트로 받는 클린. 무릎 아래까지 앉으면 스쿼트 클린이다.', movement: 'hang-power-clean' },
+      { id: 'fc', term: 'FC', full: "Farmer's Carry", ko: '파머스 캐리', desc: '양손에 무거운 걸 들고 정해진 거리를 걷는 동작. 앞에 붙은 숫자가 거리(m)다.', movement: 'dumbbell-farmers-carry' },
       { id: 'du', term: 'DU', full: 'Double Under', ko: '더블 언더', desc: '한 번 점프에 줄이 두 번 지나가는 줄넘기.', movement: 'double-under' },
       { id: 't2b', term: 'T2B', full: 'Toes To Bar', ko: '토투바', desc: '철봉에 매달려 발끝을 봉에 닿게 올리는 동작.', movement: 'toes-to-bar' },
       { id: 'c2b', term: 'C2B', full: 'Chest To Bar', ko: '체스트투바', desc: '가슴이 봉에 닿는 풀업.', movement: 'chest-to-bar-pull-up' },
