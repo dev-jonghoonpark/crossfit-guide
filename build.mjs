@@ -88,7 +88,7 @@ const PUBLISHER = {
   name: site.name,
   url: site.url + '/',
   description: site.tagline,
-  ...(hasOgImage ? { logo: { '@type': 'ImageObject', url: abs(site.ogImage) } } : {}),
+  ...(hasOgImage ? { logo: { '@type': 'ImageObject', url: abs(site.ogImage), width: 1200, height: 630 } } : {}),
 };
 
 const WEBSITE = {
@@ -202,7 +202,8 @@ ${hasOgImage ? `<meta name="twitter:image" content="${esc(abs(site.ogImage))}">`
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d7ff3e'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='900' text-anchor='middle' font-family='sans-serif' fill='%2310140a'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="${base}styles.css">
 ${ld({ '@context': 'https://schema.org', '@graph': graph })}
-${site.gaId ? `<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script>
+${site.gaId ? `<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -231,6 +232,7 @@ ${body}
   <div class="wrap">
     <p class="disclaimer">이 사이트는 크로스핏 입문자를 위한 참고 자료입니다. 실제 동작은 반드시 자격을 갖춘 코치의 지도 아래 배우세요.
     통증이 있거나 기존 부상이 있다면 전문가와 상담 후 운동하세요.</p>
+    <p class="footer-links"><a href="${base}about.html">이 사이트에 대해</a> · <a href="${base}privacy.html">개인정보 처리방침</a></p>
     <p>© ${new Date(site.dateModified).getFullYear()} ${esc(site.name)}</p>
   </div>
 </footer>
@@ -550,12 +552,15 @@ function pageBasics() {
     breadcrumbs: [{ name: '처음 오셨나요', path: 'basics.html' }],
     body,
     jsonld: [
-      articleLd({
-        path: 'basics.html',
-        headline: '크로스핏 처음 가는 날, 수업은 어떻게 진행되나요',
-        description: '크로스핏 수업 60분의 진행 순서와 첫 방문자가 알아두면 좋은 것들.',
-        section: '입문',
-      }),
+      {
+        ...articleLd({
+          path: 'basics.html',
+          headline: '크로스핏 처음 가는 날, 수업은 어떻게 진행되나요',
+          description: '크로스핏 수업 60분의 진행 순서와 첫 방문자가 알아두면 좋은 것들.',
+          section: '입문',
+        }),
+        keywords: '크로스핏, CrossFit, 입문, 첫 수업, 브리핑, 웜업, WOD, 스케일링, Scaling, Rx',
+      },
     ],
   });
 }
@@ -823,14 +828,17 @@ function pageWod() {
     breadcrumbs: [{ name: '와드 읽는 법', path: 'wod.html' }],
     body,
     jsonld: [
-      articleLd({
-        path: 'wod.html',
-        headline: '크로스핏 와드(WOD) 읽는 법',
-        description:
-          '크로스핏 화이트보드의 형식 줄·동작 줄·조건 줄·스케일 줄을 구분하는 법과, ' +
-          '형식 사전·표기 사전·무게 고르는 기준.',
-        section: '입문',
-      }),
+      {
+        ...articleLd({
+          path: 'wod.html',
+          headline: '크로스핏 와드(WOD) 읽는 법',
+          description:
+            '크로스핏 화이트보드의 형식 줄·동작 줄·조건 줄·스케일 줄을 구분하는 법과, ' +
+            '형식 사전·표기 사전·무게 고르는 기준.',
+          section: '입문',
+        }),
+        keywords: '크로스핏, WOD, 화이트보드, AMRAP, EMOM, For Time, Rx, 스케일링, Time Cap',
+      },
     ],
   });
 }
@@ -1434,6 +1442,161 @@ function pageMovement(mv) {
   });
 }
 
+/* -------------------------------------------------- 유틸리티 페이지 (404 / About / Privacy) */
+
+function page404() {
+  return layout({
+    fullTitle: '페이지를 찾을 수 없습니다 — 크로스핏 가이드',
+    desc: '요청하신 페이지가 존재하지 않습니다.',
+    active: '',
+    path: '404.html',
+    body: `
+<div class="wrap" style="text-align:center; padding:60px 0">
+  <h1 style="font-size:clamp(48px,10vw,96px); opacity:.15; margin-bottom:0">404</h1>
+  <p class="lead" style="margin-bottom:24px">요청하신 페이지를 찾을 수 없습니다.</p>
+  <p>주소를 다시 확인하시거나, 아래 링크에서 원하는 내용을 찾아보세요.</p>
+  <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:24px">
+    <a class="btn primary" href="index.html">홈으로 돌아가기</a>
+    <a class="btn" href="movements.html">동작 라이브러리</a>
+    <a class="btn" href="terms.html">용어 사전</a>
+  </div>
+</div>`,
+    jsonld: [],
+  });
+}
+
+function pageAbout() {
+  const body = `
+<div class="wrap">
+  <p class="eyebrow">About</p>
+  <h1>이 사이트에 대해</h1>
+  <div class="answer-block">
+    <p>
+      <strong>크로스핏 가이드</strong>는 크로스핏을 시작하려는 사람이
+      첫 수업 전에 화이트보드를 읽고, 동작 이름을 알아보고, 용어를 찾아볼 수 있도록 만든
+      한국어 참고 자료입니다.
+    </p>
+  </div>
+
+  <section class="section">
+    <h2>만든 사람</h2>
+    <p>
+      이 사이트는 소프트웨어 개발자이면서 크로스핏을 수련하고 있는 개인이 만들었습니다.
+      처음 박스에 갔을 때 화이트보드에 적힌 약어와 동작 이름이 하나도 읽히지 않았고,
+      한국어로 정리된 자료가 부족하다고 느껴 직접 만들기 시작했습니다.
+    </p>
+    <p>
+      코치 자격을 보유한 전문가가 아니며, 이 사이트의 내용은 개인의 학습 과정에서
+      정리한 것입니다. 동작의 생체역학·해부학 정보는 아래 참고 자료를 바탕으로 작성했습니다.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>참고 자료</h2>
+    <ul>
+      <li><a href="https://www.crossfit.com/essentials" target="_blank" rel="noopener">CrossFit Essentials — CrossFit.com</a></li>
+      <li><a href="https://library.crossfit.com/free/pdf/CFJ_English_Level1_TrainingGuide.pdf" target="_blank" rel="noopener">CrossFit Level 1 Training Guide (PDF)</a></li>
+      <li><a href="https://www.crossfit.com/crossfit-movements" target="_blank" rel="noopener">CrossFit Movement Library — CrossFit.com</a></li>
+    </ul>
+  </section>
+
+  <section class="section">
+    <h2>편집 방침</h2>
+    <p>${esc(site.editorialNote)}</p>
+  </section>
+
+  <section class="section">
+    <h2>연락처</h2>
+    <p>
+      오류 제보, 제안, 문의는 이메일
+      <a href="mailto:hooney.dev@gmail.com">hooney.dev@gmail.com</a>으로 보내주세요.
+    </p>
+    <p>
+      이 사이트의 소스 코드는
+      <a href="https://github.com/dev-jonghoonpark/crossfit-guide" target="_blank" rel="noopener">GitHub</a>에서
+      확인할 수 있습니다.
+    </p>
+  </section>
+</div>`;
+
+  return layout({
+    fullTitle: '이 사이트에 대해 — 크로스핏 가이드',
+    desc: '크로스핏 가이드의 제작 목적, 참고 자료, 편집 방침, 연락처 안내.',
+    active: '',
+    path: 'about.html',
+    breadcrumbs: [{ name: '이 사이트에 대해', path: 'about.html' }],
+    body,
+    jsonld: [
+      {
+        '@type': 'AboutPage',
+        '@id': canonicalFor('about.html') + '#aboutpage',
+        url: canonicalFor('about.html'),
+        name: '이 사이트에 대해',
+        description: '크로스핏 가이드의 제작 목적, 참고 자료, 편집 방침, 연락처.',
+        inLanguage: site.lang,
+        isPartOf: { '@id': site.url + '/#website' },
+      },
+    ],
+  });
+}
+
+function pagePrivacy() {
+  const body = `
+<div class="wrap">
+  <p class="eyebrow">Privacy</p>
+  <h1>개인정보 처리방침</h1>
+  <div class="answer-block">
+    <p>
+      <strong>크로스핏 가이드</strong>(${esc(site.url)})는 이용자의 개인정보를 중요하게 생각합니다.
+      이 페이지에서는 사이트 이용 시 수집되는 정보와 그 처리 방법을 안내합니다.
+    </p>
+  </div>
+
+  <section class="section">
+    <h2>수집하는 정보</h2>
+    <p>이 사이트는 회원가입이나 로그인 기능이 없으며, 이용자로부터 이름·이메일 등 개인정보를 직접 수집하지 않습니다.</p>
+    <p>단, <strong>Google Analytics</strong>(측정 ID: <code>${site.gaId}</code>)를 사용하여 아래와 같은 비식별 이용 통계를 자동으로 수집합니다.</p>
+    <ul>
+      <li>방문한 페이지 주소와 체류 시간</li>
+      <li>유입 경로(검색 엔진, 외부 링크 등)</li>
+      <li>기기 유형, 운영체제, 브라우저 종류</li>
+      <li>대략적인 지역 정보(도시 수준)</li>
+    </ul>
+    <p>이 정보는 개인을 식별할 수 없는 형태로 수집되며, 사이트 개선 목적으로만 사용됩니다.</p>
+  </section>
+
+  <section class="section">
+    <h2>쿠키</h2>
+    <p>Google Analytics는 이용자의 브라우저에 쿠키를 설정합니다. 쿠키는 방문 횟수와 행동 패턴을 파악하기 위한 것으로, 브라우저 설정에서 언제든 차단하거나 삭제할 수 있습니다.</p>
+    <p>Google의 데이터 수집 및 처리 방식에 대한 자세한 내용은 <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google 개인정보처리방침</a>을 참고하세요.</p>
+  </section>
+
+  <section class="section">
+    <h2>제3자 제공</h2>
+    <p>수집된 비식별 통계는 Google Analytics 서비스를 통해 Google에 전달됩니다. 그 외 제3자에게 데이터를 제공하지 않습니다.</p>
+  </section>
+
+  <section class="section">
+    <h2>문의</h2>
+    <p>개인정보 처리와 관련한 문의는 <a href="mailto:hooney.dev@gmail.com">hooney.dev@gmail.com</a>으로 보내주세요.</p>
+  </section>
+
+  <section class="section">
+    <p style="color:var(--muted)">최종 수정: ${site.dateModified}</p>
+  </section>
+</div>`;
+
+  return layout({
+    fullTitle: '개인정보 처리방침 — 크로스핏 가이드',
+    desc: '크로스핏 가이드 사이트의 개인정보 수집 항목, 쿠키 사용, 제3자 제공 안내.',
+    active: '',
+    path: 'privacy.html',
+    breadcrumbs: [{ name: '개인정보 처리방침', path: 'privacy.html' }],
+    body,
+    jsonld: [],
+  });
+}
+
 /* -------------------------------------------------- robots / sitemap / llms */
 
 function robotsTxt() {
@@ -1450,8 +1613,6 @@ Sitemap: ${abs('sitemap.xml')}
 }
 
 function sitemapXml(pages) {
-  const priority = (p) =>
-    p === 'index.html' ? '1.0' : p.startsWith('movements/') || p.startsWith('wods/') ? '0.8' : '0.9';
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages
@@ -1459,8 +1620,6 @@ ${pages
     (p) => `  <url>
     <loc>${canonicalFor(p)}</loc>
     <lastmod>${site.dateModified}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>${priority(p)}</priority>
   </url>`
   )
   .join('\n')}
@@ -1602,8 +1761,11 @@ const pages = [
   ['wods.html', pageWods()],
   ['terms.html', pageTerms()],
   ['movements.html', pageMovements()],
+  ['about.html', pageAbout()],
+  ['privacy.html', pagePrivacy()],
   ...wods.map((w, i) => [`wods/${w.id}.html`, pageWodDetail(w, wods[i - 1], wods[i + 1])]),
   ...movements.map((m) => [`movements/${m.id}.html`, pageMovement(m)]),
+  ['404.html', page404()],
 ];
 
 for (const [file, html] of pages) {
@@ -1622,7 +1784,7 @@ async function copyDir(from, to) {
 }
 await copyDir(join(ROOT, 'public'), DIST);
 
-const urls = pages.map(([f]) => f);
+const urls = pages.map(([f]) => f).filter((f) => f !== '404.html');
 await writeFile(join(DIST, 'sitemap.xml'), sitemapXml(urls), 'utf8');
 await writeFile(join(DIST, 'robots.txt'), robotsTxt(urls), 'utf8');
 await writeFile(join(DIST, 'llms.txt'), llmsTxt(), 'utf8');
