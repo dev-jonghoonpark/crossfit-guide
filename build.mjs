@@ -1296,6 +1296,17 @@ function pageMovement(mv) {
     </table>
   </div>
 
+  ${
+    mv.safety
+      ? `<div class="callout warn" style="margin-top:18px">
+    <strong>${esc(mv.safety.title)}</strong>
+    <ul>
+      ${mv.safety.points.map((t) => `<li>${esc(t)}</li>`).join('\n      ')}
+    </ul>
+  </div>`
+      : ''
+  }
+
   <section class="section" style="margin-top:30px">
     <h2>어떻게 움직이나요</h2>
     <p class="lead">${esc(mv.tagline)}</p>

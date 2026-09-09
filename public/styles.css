@@ -763,6 +763,12 @@ a.chipish:hover { color: var(--accent); border-color: var(--accent-dim); text-de
   color: var(--text-dim);
 }
 .callout strong { color: var(--text); }
+.callout ul { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; }
+.callout li { line-height: 1.6; }
+
+/* 다칠 수 있는 동작의 주의 상자 — 실수 카드와 같은 경고색을 쓴다 */
+.callout.warn { border-color: rgba(255, 107, 61, 0.32); background: rgba(255, 107, 61, 0.06); }
+.callout.warn strong { color: #ffb4a0; }
 
 /* --------------------------------------------------------------- 푸터 */
 
