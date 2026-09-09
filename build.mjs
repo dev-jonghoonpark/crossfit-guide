@@ -1509,7 +1509,7 @@ function pageAbout() {
     <h2>연락처</h2>
     <p>
       오류 제보, 제안, 문의는 이메일
-      <a href="mailto:hooney.dev@gmail.com">hooney.dev@gmail.com</a>으로 보내주세요.
+      <a href="mailto:dev@jonghoonpark.com">dev@jonghoonpark.com</a>으로 보내주세요.
     </p>
     <p>
       이 사이트의 소스 코드는
@@ -1578,7 +1578,7 @@ function pagePrivacy() {
 
   <section class="section">
     <h2>문의</h2>
-    <p>개인정보 처리와 관련한 문의는 <a href="mailto:hooney.dev@gmail.com">hooney.dev@gmail.com</a>으로 보내주세요.</p>
+    <p>개인정보 처리와 관련한 문의는 <a href="mailto:dev@jonghoonpark.com">dev@jonghoonpark.com</a>으로 보내주세요.</p>
   </section>
 
   <section class="section">
