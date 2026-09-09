@@ -72,7 +72,7 @@ export const formats = [
   {
     id: 'emom',
     name: 'EMOM',
-    wrote: ['EMOM 32', 'Every 1:00 x 8', 'Every 01:00 x 8'],
+    wrote: ['EMOM 32', 'EMOM 24', 'Every 1:00 x 8', 'Every 01:00 x 8'],
     means:
       '매 분이 시작될 때 정해진 양을 하고 남은 시간은 쉰다. ' +
       '동작이 여러 개면 분마다 하나씩 번갈아 간다.',
@@ -197,6 +197,8 @@ export const notationGroups = [
       { wrote: '15/12 Cal Row', read: '로우 — 남 15칼로리 / 여 12칼로리', note: '머신은 횟수 대신 칼로리로 센다.' },
       { wrote: "10m DB Farmer's Carry", read: '덤벨을 들고 10m 걷기', note: '동작 앞의 숫자가 개수가 아니라 거리(m)인 경우.', term: 'fc' },
       { wrote: 'Max Unbroken Hang Power Clean', read: '끊기지 않고 할 수 있는 최대 개수', note: '개수가 정해져 있지 않다. 바를 놓는 순간이 그 세트의 끝.', term: 'unbroken' },
+      { wrote: 'Max Dumbbell(x2) Push Press', read: '그 시간 안에 할 수 있는 최대 개수', note: 'Max 앞에 Unbroken 이 없으면 끊어서 해도 된다. 정해진 시간이 끝나는 게 그 세트의 끝.' },
+      { wrote: '5 Wall Walk', read: '월 워크 5회', note: '올라갔다 내려와야 1렙이다. 올라간 것만 세지 않는다.', term: 'ww' },
       { wrote: '(Above knee) / (Below Knee)', read: '무릎 위 / 무릎 아래에서 시작', note: '같은 동작이라도 시작 높이를 지정한다.', term: 'hang' },
     ],
   },
@@ -227,6 +229,7 @@ export const notationGroups = [
       { wrote: '@Damper 10', read: '기구 설정값', note: '@ 는 무게 말고 설정에도 쓴다.' },
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
       { wrote: 'Score:Complete sets + HPC reps', read: '기록 방법을 코치가 직접 적어 둔 줄', note: '무엇으로 점수를 매기는지 = 이 와드의 목표가 뭔지.', term: 'score-line' },
+      { wrote: 'Score:Finish Rounds + Push press reps', read: '완료 라운드 + 마지막 동작의 렙 수', note: '같은 Score 줄이라도 무엇을 더하는지는 와드마다 다르다. 그 줄이 곧 오늘의 목표다.', term: 'score-line' },
       { wrote: '*Rxd+ : 2-3RMU', read: 'Rx 위 단계 옵션', note: 'Rx 가 쉬운 사람을 위해 더 어려운 동작으로 바꿔 두는 줄.', term: 'rx-plus' },
     ],
   },
@@ -241,6 +244,7 @@ export const notationGroups = [
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
+      { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
     ],
   },

@@ -463,6 +463,8 @@ a.card:hover { text-decoration: none; border-color: var(--accent-dim); transform
 .sk-rail { stroke: #3c4a63; stroke-width: 4; stroke-linecap: round; }
 .sk-wheel { fill: rgba(77,201,240,.08); stroke: var(--stabilizer); stroke-width: 2.4; }
 .sk-chain { stroke: var(--stabilizer); stroke-width: 2.2; opacity: .8; }
+.sk-crank { stroke: var(--stabilizer); stroke-width: 3; stroke-linecap: round; }
+.sk-pedal { fill: rgba(77,201,240,.2); stroke: var(--stabilizer); stroke-width: 2; }
 .sk-wall { stroke: #3c4a63; stroke-width: 3; }
 .sk-target { fill: none; stroke: var(--secondary); stroke-width: 2.6; stroke-dasharray: 5 4; }
 .sk-dim { opacity: .38; }

@@ -124,8 +124,12 @@
   /** 이 중 두 포즈 사이에서 가장 덜 움직이는 관절을 "고정점"으로 본다 */
   const ANCHORS = ['ankleF', 'ankleB', 'wristF', 'wristB'];
 
-  /** 손에 들린 도구는 손을 따라가야 봉이 손에서 떨어지지 않는다 */
-  const HELD_PROPS = [['bar', 'wristF'], ['ball', 'wristF'], ['dbF', 'wristF'], ['dbB', 'wristB']];
+  /** 손·발에 붙어 있는 도구는 그 관절을 따라가야 봉이 손에서, 페달이 발에서 떨어지지 않는다.
+      (페달은 크랭크 원을 도는데 x·y 를 직선으로 이으면 원 안쪽을 가로질러 발과 어긋난다) */
+  const HELD_PROPS = [
+    ['bar', 'wristF'], ['ball', 'wristF'], ['dbF', 'wristF'], ['dbB', 'wristB'],
+    ['pedalF', 'ankleF'], ['pedalB', 'ankleB'],
+  ];
   const HELD_RANGE = 30; // 이 안에 있으면 "들고 있다"고 본다
 
   function lerpPose(A, B, t) {
@@ -274,6 +278,25 @@
     legTop: [228, 204], // 앞다리 프레임이 플라이휠과 만나는 곳
   };
 
+  /* 바이크 에르그. 로잉과 달리 프레임이 통째로 고정이라 규격만 그대로 그린다.
+     prop 값은 안장 위치 — 사람 키에 맞춰 안장 높이만 옮길 수 있게 해 두었다.
+     페달은 pedalF / pedalB 가 따로 들고 있고, 크랭크 팔은 여기 중심에서 이어 그린다. */
+  const BIKE = {
+    crank: [150, 246], // 크랭크 중심 (페달이 도는 원의 중심)
+    hub: [212, 196],   // 플라이휠 중심
+    wheelR: 34,
+    stem: [196, 150],  // 프레임이 꺾여 모니터·핸들바로 올라가는 지점
+    grip: [216, 112],  // 손잡이
+    footY: 292,        // 앞뒤 받침대가 바닥에 닿는 높이
+  };
+
+  function pedalGlyph(p, cls) {
+    return `<g class="${cls}">
+      <line class="sk-crank" x1="${BIKE.crank[0]}" y1="${BIKE.crank[1]}" x2="${n1(p[0])}" y2="${n1(p[1])}"/>
+      <rect class="sk-pedal" x="${n1(p[0] - 9)}" y="${n1(p[1] - 2.5)}" width="18" height="5" rx="2"/>
+    </g>`;
+  }
+
   const PROPS_BACK = {
     // 벽 — 월볼 타깃·핸드스탠드 푸시업 기준면
     wall: (v) => `<line class="sk-wall" x1="${n1(v[0])}" y1="4" x2="${n1(v[0])}" y2="${VB.ground}"/>`,
@@ -305,6 +328,22 @@
             transform="rotate(${ROWER.footTilt} ${n1(ROWER.foot[0])} ${n1(ROWER.foot[1])})"/>
       <rect x="${n1(v[0] - 19)}" y="${n1(v[1])}" width="38" height="10" rx="4"/>
     </g>`,
+    // 바이크 에르그 — [안장x, 안장 윗면y]. 프레임은 BIKE 규격 그대로다.
+    bike: (v) => `<g class="sk-rack">
+      <line class="sk-rail" x1="${n1(v[0])}" y1="${n1(v[1] + 4)}" x2="${BIKE.crank[0]}" y2="${BIKE.crank[1]}"/>
+      <line class="sk-rail" x1="${n1(v[0])}" y1="${n1(v[1] + 4)}" x2="${BIKE.stem[0]}" y2="${BIKE.stem[1]}"/>
+      <line class="sk-rail" x1="${BIKE.stem[0]}" y1="${BIKE.stem[1]}" x2="${BIKE.hub[0]}" y2="${BIKE.hub[1]}"/>
+      <line class="sk-rail" x1="${BIKE.stem[0]}" y1="${BIKE.stem[1]}" x2="${BIKE.grip[0]}" y2="${BIKE.grip[1]}"/>
+      <line class="sk-rail" x1="${BIKE.crank[0]}" y1="${BIKE.crank[1]}" x2="110" y2="${BIKE.footY}"/>
+      <line class="sk-rail" x1="${BIKE.hub[0]}" y1="${BIKE.hub[1]}" x2="216" y2="${BIKE.footY}"/>
+      <line class="sk-rail" x1="86" y1="${BIKE.footY}" x2="134" y2="${BIKE.footY}"/>
+      <line class="sk-rail" x1="192" y1="${BIKE.footY}" x2="240" y2="${BIKE.footY}"/>
+      <line class="sk-rail" x1="${BIKE.grip[0] - 12}" y1="${BIKE.grip[1] - 5}" x2="${BIKE.grip[0] + 8}" y2="${BIKE.grip[1] + 3}"/>
+      <circle class="sk-wheel" cx="${BIKE.hub[0]}" cy="${BIKE.hub[1]}" r="${BIKE.wheelR}"/>
+      <rect x="${n1(v[0] - 17)}" y="${n1(v[1])}" width="34" height="9" rx="4"/>
+    </g>`,
+    // 먼 쪽 페달은 몸 뒤에 (반 바퀴 반대편이라 늘 가까운 쪽과 짝을 이룬다)
+    pedalB: (v) => pedalGlyph(v, 'sk-dim'),
   };
 
   const PROPS_FRONT = {
@@ -326,6 +365,7 @@
       <circle class="sk-rig-bar" cx="${n1(v[0])}" cy="${n1(v[1])}" r="7"/>
     </g>`,
     ringF: (v) => ringGlyph(v, ''),
+    pedalF: (v) => pedalGlyph(v, ''),
   };
 
   /** 로잉 체인은 손 위치를 따라가므로 포즈 전체가 필요하다 */
