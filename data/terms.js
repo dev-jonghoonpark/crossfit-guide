@@ -403,6 +403,8 @@ export const termGroups = [
       { id: 'sn', term: 'SN / PSN', full: 'Snatch / Power Snatch', ko: '스내치 / 파워 스내치', desc: '바닥에서 머리 위까지 한 번에 보내는 리프트. 풀 스쿼트로 받으면 스쿼트 스내치, 하프 스쿼트면 파워 스내치.', movement: 'power-snatch' },
       { id: 'rd', term: 'RD', full: 'Ring Dip', ko: '링 딥', desc: '링 위에서 몸을 내렸다 밀어 올리는 딥.', movement: 'ring-dip' },
       { id: 'bj', term: 'BJ / (24"/20")', full: 'Box Jump', ko: '박스 점프', desc: '괄호 안 숫자는 박스 높이(인치). 24" ≈ 61cm, 20" ≈ 51cm.', movement: 'box-jump' },
+      { id: 'ww', term: 'WW', full: 'Wall Walk', ko: '월 워크', desc: '엎드린 자세에서 발로 벽을 타고 올라가 손을 벽 앞까지 걸어 들어갔다 돌아오는 동작. 올라갔다 내려와야 1렙이다.', movement: 'wall-walk' },
+      { id: 'pp', term: 'PP', full: 'Push Press', ko: '푸시 프레스', desc: '딥-드라이브로 띄우고 팔로 마무리하는 오버헤드 동작. 밀다가 무릎을 다시 굽히면 푸시 저크다.', movement: 'dumbbell-push-press' },
       { id: 's2oh', term: 'S2OH', full: 'Shoulder to Overhead', ko: '숄더 투 오버헤드', desc: '어깨에서 머리 위로 보내기만 하면 방법은 자유. 프레스·푸시 프레스·저크 아무거나 된다.', movement: 'dumbbell-shoulder-to-overhead' },
       { id: 'ps-pistol', term: 'Pistol', full: 'Pistol Squat', ko: '피스톨 스쿼트', desc: '한 다리로 앉았다 일어서는 스쿼트.', movement: 'pistol-squat' },
       { id: 'deficit', term: 'Deficit', full: 'Deficit', ko: '디피싯', desc: '손이나 발을 받침 위에 올려 가동 범위를 늘리는 것. (4.5"/2.5") 는 받침 높이다.', movement: 'deficit-push-up' },

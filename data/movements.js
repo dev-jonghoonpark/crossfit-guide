@@ -2604,4 +2604,251 @@ export const movements = [
     related: ['double-under'],
     terms: ['c2', 'cal', 'damper', 'e2mom'],
   },
+
+  /* ==================================================================== */
+  {
+    id: 'wall-walk',
+    seoTitle: '월 워크(Wall Walk) 하는 법과 스케일링',
+    seoDesc:
+      '월 워크는 엎드린 자세에서 발로 벽을 타고 올라가 손을 벽 가까이 걸어 들어가는 동작입니다. 5단계 분해와 흔한 실수, 하프 월 워크 스케일링을 정리했습니다.',
+    thumb: 3,
+    ko: '월 워크',
+    en: 'Wall Walk',
+    abbr: 'WW',
+    category: '체조',
+    level: '중급',
+    equipment: ['벽'],
+    tagline: '엎드린 자세에서 발로 벽을 타고 올라가, 손을 벽 앞까지 걸어 들어가는 동작',
+    intro:
+      '핸드스탠드를 벽에 기대어 "걸어서" 만드는 동작이다. 뒤집히는 감각을 배우는 입문 동작이라 ' +
+      'HSPU 전 단계로 자주 쓰이지만, 실제로는 어깨보다 코어가 먼저 지치는 동작이다. ' +
+      '한 번 올라갔다 내려와야 1렙이라 개수가 적어 보여도 시간이 오래 걸린다 — ' +
+      'EMOM 처럼 시간이 정해진 와드에서는 올라가는 속도보다 내려오는 속도를 관리하는 쪽이 중요하다.',
+    phases: [
+      {
+        name: '시작 (엎드림)',
+        pose: 'wwStart',
+        desc: '가슴과 허벅지를 바닥에 대고 엎드린 채 발바닥만 벽 아래에 붙인다. 손은 가슴 옆 바닥.',
+        cues: ['가슴이 바닥에 닿은 상태에서 시작', '손은 가슴 옆', '발바닥으로 벽을 눌러 둔다'],
+        emphasis: ['core', 'chest'],
+      },
+      {
+        name: '밀어 올리기',
+        pose: 'wwPlank',
+        desc: '팔을 펴 몸을 띄우고 발을 벽에 올린 플랭크를 만든다. 여기서부터 몸은 한 줄로 유지한다.',
+        cues: ['배를 조여 허리가 꺼지지 않게', '어깨를 손 위에 두기', '고개는 바닥을 보고'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+      {
+        name: '걸어 올라가기',
+        pose: 'wwMid',
+        desc: '발을 벽 위로 한 칸 올릴 때마다 손을 벽 쪽으로 한 걸음씩 당겨 온다. 발과 손이 번갈아 움직인다.',
+        cues: ['발 한 칸 → 손 한 걸음', '손을 너무 조금씩 옮기지 않기', '팔꿈치는 계속 편 채로'],
+        emphasis: ['delts', 'core', 'triceps'],
+      },
+      {
+        name: '탑',
+        pose: 'wwTop',
+        desc:
+          '가슴과 허벅지가 벽에 닿고 몸이 거의 수직이 된다. ' +
+          '손이 코치가 표시해 둔 선(보통 벽에서 25~30cm) 안에 들어오면 그 렙의 탑이 인정된다.',
+        cues: ['가슴·허벅지를 벽에 붙이기', '손이 표시선 안에 들어왔는지 확인', '갈비뼈 닫고 배 조이기'],
+        emphasis: ['delts', 'triceps', 'core', 'traps'],
+      },
+      {
+        name: '되돌아 내려오기',
+        pose: 'wwDown',
+        desc:
+          '손을 뒤로 걸어 나가면서 발이 벽을 타고 내려온다. 무너지듯 떨어지는 게 아니라 올라간 순서를 그대로 되감는다. ' +
+          '가슴이 다시 바닥에 닿아야 1렙이 끝난다.',
+        cues: ['손부터 뒤로, 발은 따라오게', '떨어뜨리지 말고 버티며 내려오기', '가슴이 바닥에 닿아야 1렙'],
+        emphasis: ['delts', 'core', 'erectors'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'triceps', level: 'primary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'chest', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'forearms', level: 'stabilizer' },
+      { key: 'glutes', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '허리가 꺼져 배가 처진다', fix: '갈비뼈를 닫고 엉덩이를 조인다. 허리가 꺼지면 어깨가 아니라 허리로 버티게 된다.' },
+      { problem: '손을 조금씩만 옮긴다', fix: '한 걸음이 짧으면 벽 앞까지 가는 데 걸음 수가 두 배가 된다. 손바닥 한 뼘씩 확실히 옮긴다.' },
+      { problem: '내려올 때 무너진다', fix: '내려오는 구간에서 어깨를 다치는 경우가 가장 많다. 올라간 순서를 그대로 되감아 통제해서 내려온다.' },
+      { problem: '발이 벽에서 미끄러진다', fix: '발바닥 전체로 벽을 누른다. 신발 바닥이 미끄러우면 벽에서 조금 더 멀리서 시작한다.' },
+      { problem: '숨을 참는다', fix: '뒤집힌 자세라 호흡을 놓치기 쉽다. 걸음마다 짧게 내쉬는 리듬을 정해 둔다.' },
+    ],
+    scaling: [
+      '하프 월 워크 (몸이 45°가 될 때까지만 올라갔다 내려오기)',
+      '스텝 수를 정해 두기 (4스텝 월 워크처럼 몇 걸음까지만)',
+      '벽에 발 올린 파이크 홀드 20~30초',
+      '개수 줄이기 (5회 → 3회)',
+    ],
+    related: ['handstand-push-up', 'push-up', 'deficit-push-up'],
+    terms: ['ww', 'no-rep', 'emom'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-push-press',
+    seoTitle: '덤벨 푸시 프레스 하는 법과 저크와의 차이',
+    seoDesc:
+      '덤벨 푸시 프레스는 딥-드라이브로 띄우고 팔로 마무리하는 동작입니다. 5단계 분해와 푸시 저크·스트릭트 프레스의 차이, Max 렙 요령을 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 푸시 프레스',
+    en: 'Dumbbell Push Press',
+    abbr: 'DB PP',
+    category: '덤벨',
+    level: '초중급',
+    equipment: ['덤벨 2개'],
+    tagline: '다리 반동으로 띄우고 팔로 마무리해 덤벨을 머리 위로 보내는 동작',
+    intro:
+      '어깨의 덤벨을 다리 힘으로 한 번 띄운 뒤 팔로 밀어 마무리한다. ' +
+      '팔로만 미는 스트릭트 프레스보다 훨씬 무겁게 할 수 있고, 다시 앉아서 받는 푸시 저크보다는 쉽다. ' +
+      '차이는 단 하나 — 딥이 한 번뿐이라는 것이다. 밀다가 다시 무릎을 굽히면 그건 저크지 푸시 프레스가 아니다.',
+    phases: [
+      {
+        name: '랙 포지션',
+        pose: 'dbRack',
+        desc: '덤벨을 양쪽 어깨에 얹고 팔꿈치는 앞아래를 향한다. 발은 골반 너비, 발바닥 전체로 바닥을 잡는다.',
+        cues: ['덤벨을 어깨에 얹어 팔로 들지 않기', '갈비뼈 닫기', '시선은 정면'],
+        emphasis: ['delts', 'core'],
+      },
+      {
+        name: '딥',
+        pose: 'dbDip',
+        desc: '상체를 수직으로 유지한 채 무릎만 10~15cm 짧게 굽힌다. 스쿼트가 아니라 아래로 짧게 누르는 동작이다.',
+        cues: ['뒤꿈치 유지', '상체는 수직 그대로', '깊이보다 속도'],
+        emphasis: ['quads', 'core'],
+      },
+      {
+        name: '드라이브',
+        pose: 'dbPressDrive',
+        desc: '멈추지 않고 다리를 폭발적으로 펴 덤벨을 위로 쏘아 올린다. 이 순간까지 팔은 아직 일하지 않는다.',
+        cues: ['딥에서 멈추지 않기', '발끝까지 밀어 완전 신전', '덤벨은 수직으로'],
+        emphasis: ['quads', 'glutes', 'calves'],
+      },
+      {
+        name: '프레스 아웃',
+        pose: 'dbPressOut',
+        desc:
+          '다리가 다 펴진 뒤 남은 거리를 팔로 밀어 올린다. 여기서 다시 무릎을 굽히면 푸시 저크가 되어 다른 동작이다.',
+        cues: ['다리는 멈추고 팔로만', '덤벨이 얼굴 옆을 지나가게', '무릎 다시 굽히지 않기'],
+        emphasis: ['delts', 'triceps'],
+      },
+      {
+        name: '락아웃',
+        pose: 'dbOverhead',
+        desc: '팔꿈치를 완전히 펴고 덤벨을 귀 뒤 수직선 위에 정지시킨다. 무릎·고관절까지 펴진 채 멈추면 1렙.',
+        cues: ['팔꿈치 완전 신전', '덤벨은 귀 뒤', '정지한 뒤에 내리기'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'triceps', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'glutes', level: 'secondary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'erectors', level: 'stabilizer' },
+      { key: 'forearms', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '딥이 스쿼트가 된다', fix: '깊게 앉을수록 방향 전환이 느려져 힘이 새어 나간다. 10~15cm 짧게, 빠르게.' },
+      { problem: '상체가 앞으로 기운다', fix: '덤벨이 앞으로 날아간다. 뒤꿈치에 체중을 두고 상체를 수직으로 눌러 내린다.' },
+      { problem: '밀다가 무릎을 다시 굽힌다', fix: '그건 푸시 저크다. 딥은 한 번뿐이고 나머지는 팔로 끝낸다.' },
+      { problem: '락아웃에서 덤벨이 앞에 있다', fix: '노렙이다. 마지막에 머리를 살짝 앞으로 밀어 덤벨을 귀 뒤 수직선까지 보낸다.' },
+      { problem: '내릴 때 어깨로 받는다', fix: '떨어뜨리듯 받으면 어깨가 금세 탄다. 팔꿈치를 굽히며 흡수해 랙에 얹는다.' },
+    ],
+    scaling: [
+      '가벼운 덤벨로 (22.5 → 15 → 10kg)',
+      '한 팔씩 번갈아 (덤벨 하나)',
+      '스트릭트 프레스로 대체 (다리 반동 없이)',
+      '반복 수를 줄이거나 세트를 나누기',
+    ],
+    related: ['dumbbell-shoulder-to-overhead', 'push-jerk', 'dumbbell-front-squat'],
+    terms: ['pp', 's2oh', 'dip-drive', 'lockout', 'dual-db'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'bike-erg',
+    seoTitle: '바이크 에르그 제대로 타는 법과 Cal 표기',
+    seoDesc:
+      '바이크 에르그는 페달 한 바퀴를 밟기·당기기로 나눠 도는 유산소 기구입니다. 4단계 분해와 15/12 Cal 표기, 댐퍼 설정, 로잉과 다른 점을 정리했습니다.',
+    thumb: 1,
+    ko: '바이크 에르그',
+    en: 'Bike Erg',
+    abbr: 'BIKE',
+    category: '모노스트럭처',
+    level: '초급',
+    equipment: ['바이크 에르그'],
+    tagline: '앉아서 페달만 돌리는, 로잉 다음으로 자주 나오는 유산소 기구',
+    intro:
+      '"15/12 Cal Bike erg" 는 남자 15칼로리 / 여자 12칼로리를 채우라는 뜻이다. ' +
+      '로잉과 달리 상체를 거의 쓰지 않아 팔·그립을 아껴야 하는 와드에 자주 들어간다 — ' +
+      '덤벨이나 바벨 스테이션 사이에 바이크가 끼어 있으면 "여기서 그립을 쉬라"는 신호로 읽으면 된다. ' +
+      '대신 다리만 쓰기 때문에 같은 칼로리라도 다리가 먼저 무거워진다.',
+    phases: [
+      {
+        name: '12시 (탑)',
+        pose: 'bikeTop',
+        desc: '무릎이 가장 높이 올라온 지점. 여기서부터 페달을 앞으로 밀어내며 힘을 싣기 시작한다.',
+        cues: ['안장에 앉은 채 상체는 고정', '무릎이 안쪽으로 무너지지 않게', '발목은 힘을 빼고'],
+        emphasis: ['hipflexors', 'quads'],
+      },
+      {
+        name: '다운스트로크',
+        pose: 'bikeDrive',
+        desc: '한 바퀴에서 힘이 가장 많이 나오는 구간. 아래가 아니라 앞아래 방향으로 밟아 내린다.',
+        cues: ['앞아래로 밟기', '엉덩이는 안장에 붙인 채', '상체는 흔들지 않기'],
+        emphasis: ['quads', 'glutes'],
+      },
+      {
+        name: '6시 (바텀)',
+        pose: 'bikeBottom',
+        desc: '다리가 거의 다 펴진 지점. 무릎이 완전히 잠기면 안장이 너무 높은 것이다.',
+        cues: ['무릎을 다 펴지 않기(약간 남기기)', '발바닥 앞부분으로 밟기', '엉덩이가 좌우로 흔들리면 안장을 낮춘다'],
+        emphasis: ['glutes', 'hamstrings', 'calves'],
+      },
+      {
+        name: '리커버리',
+        pose: 'bikeUp',
+        desc: '반대쪽 다리가 밟는 동안 이쪽 다리는 힘을 빼고 따라 올라온다. 여기서 버티면 자기 다리끼리 싸우게 된다.',
+        cues: ['올라오는 다리는 힘 빼기', '한쪽이 밟을 때 다른 쪽은 쉬기', '분당 회전수를 일정하게'],
+        emphasis: ['hamstrings', 'hipflexors'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'hipflexors', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'erectors', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '안장이 너무 낮다', fix: '무릎이 과하게 접혀 앞무릎이 아프고 힘도 안 나온다. 6시에서 무릎이 살짝만 굽는 높이로 맞춘다.' },
+      { problem: '엉덩이가 좌우로 흔들린다', fix: '안장이 너무 높다는 신호다. 한 칸 낮추고 발바닥 앞부분으로 밟는다.' },
+      { problem: '첫 10초에 전력으로 밟는다', fix: '바이크는 초반 스퍼트로 번 칼로리를 뒤에서 그대로 반납한다. 목표 칼로리를 시간으로 나눠 일정하게 간다.' },
+      { problem: '상체로 페달을 누른다', fix: '핸들을 당겨 몸을 흔들면 심박만 오르고 칼로리는 안 오른다. 상체는 고정하고 다리로만 돈다.' },
+      { problem: '댐퍼를 무조건 10에 놓는다', fix: '댐퍼는 무게가 아니라 들어오는 공기량이다. 와드에 지시가 없으면 중간에서 시작해 회전수가 유지되는 값으로 맞춘다.' },
+    ],
+    scaling: [
+      '칼로리 수를 줄이기 (15/12 → 12/9)',
+      '로잉·스키 에르그로 대체 (같은 칼로리 기준)',
+      '댐퍼를 낮춰 회전수 위주로',
+      '거리(m) 기준으로 바꾸기',
+    ],
+    related: ['row', 'double-under'],
+    terms: ['c2', 'cal', 'damper', 'emom'],
+  },
 ];

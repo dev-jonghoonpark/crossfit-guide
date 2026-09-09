@@ -40,7 +40,7 @@ export const site = {
 
   /** 콘텐츠 발행 · 최종 수정일 (ISO 8601). 내용을 크게 고치면 갱신할 것. */
   datePublished: '2026-08-28',
-  dateModified: '2026-08-28',
+  dateModified: '2026-09-09',
 
   /**
    * 저자 표기. 개인 이름을 넣고 싶으면 여기만 채우면
