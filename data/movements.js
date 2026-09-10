@@ -799,6 +799,76 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'pendlay-row',
+    seoTitle: '펜들레이 로우 하는 법 — 매 렙 바닥에서 다시 당기는 이유',
+    seoDesc:
+      '펜들레이 로우는 상체를 바닥과 나란히 둔 채 바를 바닥에서 명치까지 당기는 로우입니다. ' +
+      '일반 벤트오버 로우와 뭐가 다른지, 상체가 같이 올라오는 실수 교정법과 스케일링을 3단계로 정리했습니다.',
+    thumb: 1,
+    ko: '펜들레이 로우',
+    en: 'Pendlay Row',
+    abbr: 'PDL ROW',
+    category: '역도',
+    level: '중급',
+    equipment: ['바벨', '원판'],
+    tagline: '상체를 바닥과 나란히 고정한 채 바를 바닥에서 명치까지 당겼다 다시 내려놓는 로우',
+    intro:
+      '벤트오버 로우의 한 갈래인데, 매 렙 바가 바닥에 완전히 멈췄다 출발한다는 게 다르다. ' +
+      '반동이 끊기니까 순수하게 등으로만 당기게 되고, 그래서 같은 무게라도 훨씬 무겁게 느껴진다. ' +
+      '크로스핏에서는 그 자체로 점수를 내는 동작이라기보다 풀업·클린에 필요한 "당기는 힘"을 만드는 ' +
+      '보조 운동으로 나온다. 그래서 메트콘보다 앞 파트에 세트로 배치되는 경우가 많다.',
+    phases: [
+      {
+        name: '셋업',
+        pose: 'pendlaySetup',
+        desc: '바 위에 서서 고관절을 접어 상체를 바닥과 나란히 만든다. 그립은 어깨너비보다 살짝 넓게.',
+        cues: ['바는 발 중앙 위에', '상체를 바닥과 나란히', '허리는 편 채 배를 조인다'],
+        emphasis: ['erectors', 'hamstrings', 'core'],
+      },
+      {
+        name: '당기기',
+        pose: 'pendlayPull',
+        desc: '팔꿈치를 뒤·위로 접어 바를 명치까지 당긴다. 상체 각도는 시작할 때 그대로 유지한다.',
+        cues: ['팔꿈치를 뒤·위로', '견갑을 모으며 당기기', '상체는 움직이지 않게'],
+        emphasis: ['lats', 'traps', 'biceps'],
+      },
+      {
+        name: '내려놓기',
+        pose: 'pendlaySetup',
+        desc: '바를 바닥까지 완전히 내려 한 번 멈춘다. 여기서 반동이 끊기는 게 이 동작의 전부다.',
+        cues: ['바닥에 완전히 내려놓기', '허리가 말리지 않게', '멈췄다가 다음 렙'],
+        emphasis: ['lats', 'erectors', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'lats', level: 'primary' },
+      { key: 'traps', level: 'primary' },
+      { key: 'biceps', level: 'primary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'hamstrings', level: 'stabilizer' },
+      { key: 'glutes', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '당길 때 상체가 같이 올라온다', fix: '허리 힘으로 들어 올리는 것이라 정작 등에는 자극이 안 간다. 무게를 낮추고 상체 각도를 고정한 채 팔만 움직인다.' },
+      { problem: '바가 배꼽 쪽으로 온다', fix: '너무 아래로 당기면 광배 대신 팔만 쓴다. 명치(가슴 아래)를 목표로 잡는다.' },
+      { problem: '매 렙 바닥에 내려놓지 않는다', fix: '그러면 그냥 벤트오버 로우다. 바닥에서 멈췄다 출발하는 게 펜들레이의 정의다.' },
+      { problem: '허리가 둥글게 말린다', fix: '햄스트링이 짧으면 상체를 수평으로 만들 수 없다. 무릎을 조금 더 굽히거나 상체를 살짝 세워서 편 허리를 먼저 확보한다.' },
+    ],
+    scaling: [
+      '무게 낮추기',
+      '바를 원판·박스 위에 올려 가동 범위 줄이기',
+      '덤벨·케틀벨 한 팔 로우로 대체',
+      '상체를 조금 세운 벤트오버 로우',
+    ],
+    related: ['deadlift', 'pull-up', 'bench-press'],
+    terms: ['one-rm', 'unbroken'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'power-snatch',
     seoTitle: '파워 스내치 하는 법과 스쿼트 스내치와의 차이',
     seoDesc:
@@ -1410,6 +1480,72 @@ export const movements = [
     ],
     related: ['pull-up', 'chest-to-bar-pull-up'],
     terms: ['t2b', 'k2c', 'kipping', 'no-rep'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'v-up',
+    seoTitle: '브이업(V-Up) 하는 법과 허리가 뜨는 이유',
+    seoDesc:
+      '브이업은 누운 상태에서 상체와 다리를 동시에 접어 손끝과 발끝을 맞추는 코어 동작입니다. ' +
+      '크런치와 뭐가 다른지, 허리가 뜨는 실수 교정법과 싱글 레그 브이업 등 스케일링을 3단계로 정리했습니다.',
+    thumb: 1,
+    ko: '브이업',
+    en: 'V-Up',
+    abbr: 'V-UP',
+    category: '체조',
+    level: '초급',
+    equipment: ['맨몸'],
+    tagline: '누운 채 상체와 다리를 동시에 접어 손끝과 발끝을 맞추는 코어 동작',
+    intro:
+      '이름 그대로 몸으로 V 를 만드는 동작이다. 크런치와 다른 점은 상체와 다리가 동시에 올라온다는 것 하나다. ' +
+      '둘 중 하나만 먼저 움직이면 훨씬 쉬워지지만 그만큼 코어를 덜 쓴다. ' +
+      '메트콘에서는 개수가 많이 나오는 편이라(2-4-6-8… 처럼) 자세가 무너지기 시작하는 지점을 미리 알아 두는 게 중요하다.',
+    phases: [
+      {
+        name: '바닥',
+        pose: 'vupFlat',
+        desc: '등을 대고 누워 팔을 머리 위로 뻗는다. 허리는 바닥에 붙인 채 몸이 한 줄.',
+        cues: ['허리를 바닥에 붙이기', '팔은 귀 옆으로', '다리는 모아서'],
+        emphasis: ['core', 'hipflexors'],
+      },
+      {
+        name: '정점 (V)',
+        pose: 'vupTop',
+        desc: '상체와 다리를 동시에 접어 손끝이 발끝에 닿게 한다. 다리는 편 채로 올린다.',
+        cues: ['상체와 다리를 동시에', '다리는 편 채로', '숨을 내쉬며 접기'],
+        emphasis: ['core', 'hipflexors', 'quads'],
+      },
+      {
+        name: '내려가기',
+        pose: 'vupFlat',
+        desc: '통제하며 천천히 내려 다시 한 줄로 돌아온다. 바닥에 떨어뜨렸다 그 반동으로 올라오지 않는다.',
+        cues: ['천천히 내리기', '허리가 뜨지 않게', '반동 쓰지 않기'],
+        emphasis: ['core', 'hipflexors'],
+      },
+    ],
+    muscles: [
+      { key: 'core', level: 'primary' },
+      { key: 'hipflexors', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'erectors', level: 'stabilizer' },
+      { key: 'glutes', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '허리가 바닥에서 뜬다', fix: '복부 힘이 모자라 고관절 굴곡근으로만 당기는 것이다. 무릎을 굽힌 턱 업으로 낮추고, 허리가 붙어 있는 범위까지만 한다.' },
+      { problem: '상체만 먼저 올라온다', fix: '그건 크런치다. 다리와 상체가 같이 출발하도록 리듬을 맞춘다. 안 되면 싱글 레그로 낮춘다.' },
+      { problem: '반동으로 튕긴다', fix: '바닥에 쿵 떨어뜨렸다 그 탄성으로 올라오면 코어를 쓰는 게 아니다. 내려가는 속도를 통제한다.' },
+      { problem: '목이 아프다', fix: '팔을 머리 위로 뻗을 때 턱을 살짝 당겨 목을 길게 둔다. 손으로 머리를 잡아당기지 않는다.' },
+    ],
+    scaling: [
+      '턱 업 — 무릎을 굽혀서',
+      '싱글 레그 브이업 — 한쪽 다리씩 번갈아',
+      '앱매트를 대고 하는 시트업',
+      '반복 수를 줄여 세트로 나누기',
+    ],
+    related: ['toes-to-bar', 'push-up'],
+    terms: ['abmat', 'alt'],
   },
 
   /* ==================================================================== */
@@ -2538,6 +2674,84 @@ export const movements = [
     ],
     related: ['power-snatch', 'dumbbell-shoulder-to-overhead', 'dumbbell-hang-power-clean'],
     terms: ['alt', 'e2mom', 'lockout'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'devil-press',
+    seoTitle: '데빌 프레스 하는 법 — 버피와 덤벨 스내치를 붙인 동작',
+    seoDesc:
+      '데빌 프레스는 덤벨을 쥔 채 버피로 가슴을 바닥에 대고, 두 덤벨을 한 번에 머리 위로 보내는 동작입니다. ' +
+      '팔로 들면 안 되는 이유와 4단계 동작, 무게·분리 스케일링을 정리했습니다.',
+    thumb: 3,
+    ko: '데빌 프레스',
+    en: 'Devil Press',
+    abbr: 'DEVIL',
+    category: '덤벨',
+    level: '중급',
+    equipment: ['덤벨'],
+    tagline: '덤벨을 쥔 채 버피로 가슴을 바닥에 대고, 두 덤벨을 한 번에 머리 위로 보내는 동작',
+    intro:
+      '버피와 더블 덤벨 스내치를 하나로 붙인 동작이다. 이름값을 하는 건 마지막 구간 때문인데, ' +
+      '이미 숨이 찬 상태에서 덤벨 두 개를 바닥에서 머리 위까지 한 번에 보내야 한다. ' +
+      '팔로 들어 올리려 하면 몇 개 못 가고 어깨만 타므로, 고관절을 펴는 힘으로 덤벨을 띄워 보내는 게 전부다. ' +
+      '1렙에 드는 시간이 길어서 개수가 적어 보여도 체감은 훨씬 크다.',
+    phases: [
+      {
+        name: '바닥',
+        pose: 'devilFloor',
+        desc: '덤벨을 짚고 버피로 내려가 가슴이 바닥에 닿는다. 덤벨을 잡고 있어 손 위치가 높으니 그만큼 더 내려가야 한다.',
+        cues: ['가슴과 허벅지가 바닥에', '손목은 중립으로', '덤벨은 어깨너비'],
+        emphasis: ['chest', 'triceps', 'core'],
+      },
+      {
+        name: '스윙',
+        pose: 'devilSwing',
+        desc: '발을 덤벨 옆으로 당겨 일어서며, 덤벨이 다리 사이를 지나 뒤로 간다. 등은 편 채 고관절만 접는다.',
+        cues: ['발을 덤벨 옆으로 당기기', '등을 편 채 힙 힌지', '덤벨은 몸 가까이'],
+        emphasis: ['hamstrings', 'glutes', 'erectors'],
+      },
+      {
+        name: '신전',
+        pose: 'dbExtension',
+        desc: '고관절과 무릎을 한 번에 펴며 덤벨을 위로 쏘아 올린다. 이 힘으로 머리 위까지 보낸다.',
+        cues: ['고관절로 밀어 올리기', '팔은 방향만 잡기', '두 덤벨을 같은 속도로'],
+        emphasis: ['glutes', 'hamstrings', 'traps'],
+      },
+      {
+        name: '락아웃',
+        pose: 'dbOverhead',
+        desc: '두 덤벨을 머리 위에서 완전히 편다. 팔꿈치가 펴지고 몸이 곧게 서면 1렙이다.',
+        cues: ['팔꿈치를 끝까지 펴기', '덤벨은 귀 뒤쪽 위로', '갈비뼈 닫고 마무리'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'chest', level: 'secondary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'quads', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '팔로 들어 올린다', fix: '고관절을 펴는 힘으로 덤벨을 띄우고 팔은 방향만 잡는다. 팔로 들면 어깨가 먼저 타서 몇 개 못 간다.' },
+      { problem: '허리가 말린 채 스윙한다', fix: '덤벨이 무거우면 등이 먼저 굽는다. 무게를 낮추고 가슴을 편 채 고관절만 접는다.' },
+      { problem: '버피에서 가슴이 안 닿는다', fix: '노렙이다. 덤벨을 짚고 있어 손이 바닥보다 높으니, 평소 버피보다 더 내려가야 가슴이 닿는다.' },
+      { problem: '두 덤벨이 따로 논다', fix: '한쪽이 먼저 올라가면 어깨가 비틀린다. 시선을 앞에 고정하고 두 덤벨을 같은 속도로 보낸다.' },
+    ],
+    scaling: [
+      '무게 낮추기',
+      '덤벨 버피 + 덤벨 스내치 2회로 분리하기',
+      '한 팔 데빌 프레스 (덤벨 하나로 번갈아)',
+      '버피에서 가슴 대신 덤벨 높이까지만 내려가기',
+      '반복 수 줄이기',
+    ],
+    related: ['dumbbell-snatch', 'dumbbell-shoulder-to-overhead', 'push-up'],
+    terms: ['dual-db', 'no-rep', 'lockout'],
   },
 
   /* ==================================================================== */
