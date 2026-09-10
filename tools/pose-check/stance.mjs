@@ -42,6 +42,15 @@ function kip(p) {
   return { off: p.hip[0] - lineX, hipFlex: 180 - Math.abs(d), footBehindHip: p.toeF[0] < p.hip[0] };
 }
 
+/** 목이 상체 대비 얼마나 젖혀졌는가. 사람은 30° 남짓까지다.
+    엎드리거나 물구나무 선 자세는 "상체 위" 기준이 의미가 없어 건너뛴다. */
+function neckTilt(p) {
+  const t = Math.atan2(p.shoulder[1] - p.hip[1], p.shoulder[0] - p.hip[0]);
+  const h = Math.atan2(p.head[1] - p.neck[1], p.head[0] - p.neck[0]);
+  let d = ((h - t) * 180) / Math.PI;
+  return ((d % 360) + 540) % 360 - 180;
+}
+
 const only = process.argv.slice(2);
 let hits = 0;
 for (const [name, p] of Object.entries(poses)) {
@@ -49,6 +58,16 @@ for (const [name, p] of Object.entries(poses)) {
   const bend = kneeBend(p);
   // 다리가 거의 펴진 자세는 부호가 오차 수준이라 -8° 부터 본다
   if (bend < -8) { hits++; console.log('✗', name.padEnd(18), `무릎이 ${bend.toFixed(0)}° 반대로 꺾였다`); }
+
+  // 몸을 세우거나 매달린 자세에서만 목 각을 따진다.
+  // 엎드린 자세(플랭크·푸시업)는 앞을 보느라 머리를 드는 게 정상이다.
+  const torsoFromVertical = Math.abs(
+    ((Math.atan2(p.shoulder[1] - p.hip[1], p.shoulder[0] - p.hip[0]) * 180) / Math.PI + 90 + 540) % 360 - 180);
+  if (torsoFromVertical < 50) {
+    const nt = neckTilt(p);
+    if (Math.abs(nt) > 34) { hits++;
+      console.log('✗', name.padEnd(18), `목이 상체 대비 ${nt.toFixed(0)}° 젖혀졌다 — 사람은 30° 남짓이다`); }
+  }
 
   // 킵 자세(이름이 Arch / Hollow 로 끝나는 포즈)
   if (/Arch$/.test(name) || /Hollow$/.test(name)) {

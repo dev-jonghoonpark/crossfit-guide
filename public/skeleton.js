@@ -174,7 +174,8 @@
         boned.add(child);
       }
 
-      // 2) 고정점 보정 — 가장 덜 움직이는 발·손을 직선 보간 위치로 되돌린다
+      // 2) 고정점 보정 — 가장 덜 움직이는 발·손을 직선 보간 위치로 되돌린다.
+      //    디딘 발이면 몸 전체를 밀고, 봉을 잡은 손이면 팔만 역산한다(아래 주석).
       let anchor = null;
       let least = Infinity;
       for (const k of ANCHORS) {
@@ -182,7 +183,45 @@
         const moved = dist(A[k], B[k]);
         if (moved < least) { least = moved; anchor = k; }
       }
-      if (anchor) {
+      if (anchor === 'wristF' || anchor === 'wristB') {
+        /* 매달린 동작 — 손이 봉에 고정돼 있다.
+           뼈는 골반에서 손 끝으로 쌓이기 때문에, 팔 각도가 크게 바뀌는 구간에서는
+           체인이 만든 손이 봉에서 수십씩 떨어진다. 그걸 몸 전체를 평행이동해서
+           맞추면(발을 고정할 때 쓰는 방식) 그 거리만큼 몸이 통째로 끌려가,
+           체스트 투 바처럼 팔이 크게 도는 동작에서 몸이 화면 밖까지 튀어 나간다.
+           손은 보간 위치에 그대로 두고 팔만 두 뼈 역산으로 다시 푼다. */
+        for (const [sh, el, wr] of [['shoulder', 'elbowF', 'wristF'], ['shoulder', 'elbowB', 'wristB']]) {
+          if (!boned.has(wr) || !Array.isArray(A[wr]) || !Array.isArray(B[wr])) continue;
+          const tgt = [lerp(A[wr][0], B[wr][0], t), lerp(A[wr][1], B[wr][1], t)];
+          const l1 = lerp(dist(A[sh], A[el]), dist(B[sh], B[el]), t);
+          const l2 = lerp(dist(A[el], A[wr]), dist(B[el], B[wr]), t);
+          const s0 = out[sh];
+          let d = dist(s0, tgt);
+          const max = l1 + l2 - 0.01;
+          const min = Math.abs(l1 - l2) + 0.01;
+          const hit = [tgt[0], tgt[1]];
+          if (d > max || d < min) {                 // 팔이 닿지 않으면 사거리 안으로 당긴다
+            const k = Math.min(max, Math.max(min, d)) / (d || 1);
+            hit[0] = s0[0] + (tgt[0] - s0[0]) * k;
+            hit[1] = s0[1] + (tgt[1] - s0[1]) * k;
+            d = dist(s0, hit);
+          }
+          const ux = (hit[0] - s0[0]) / d;
+          const uy = (hit[1] - s0[1]) / d;
+          // 팔꿈치는 원래 있던 쪽에 그대로 둔다 (반대로 꺾이면 안 되니까)
+          const cur = out[el];
+          const side = Math.sign((cur[0] - s0[0]) * uy - (cur[1] - s0[1]) * ux) || 1;
+          const a = (l1 * l1 - l2 * l2 + d * d) / (2 * d);
+          const h = Math.sqrt(Math.max(0, l1 * l1 - a * a));
+          out[el] = [s0[0] + a * ux + side * h * uy, s0[1] + a * uy - side * h * ux];
+          out[wr] = hit;
+        }
+        // 팔이 짧아 손이 봉에 못 닿은 만큼만 몸을 민다. 체인이 만든 오차(수십)가
+        // 아니라 팔 사거리 부족분(보통 0)이라, 예전처럼 몸이 끌려가지 않는다.
+        const rx = lerp(A[anchor][0], B[anchor][0], t) - out[anchor][0];
+        const ry = lerp(A[anchor][1], B[anchor][1], t) - out[anchor][1];
+        if (rx || ry) for (const k of boned) out[k] = [out[k][0] + rx, out[k][1] + ry];
+      } else if (anchor) {
         const dx = lerp(A[anchor][0], B[anchor][0], t) - out[anchor][0];
         const dy = lerp(A[anchor][1], B[anchor][1], t) - out[anchor][1];
         for (const k of boned) out[k] = [out[k][0] + dx, out[k][1] + dy];
