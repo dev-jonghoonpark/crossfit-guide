@@ -369,15 +369,17 @@
       <circle class="sk-hub" r="5"/>
     </g>`,
     // 메디신볼 / 월볼
-    ball: (v) => `<g class="sk-ballgrp" transform="translate(${n1(v[0])} ${n1(v[1])})">
+    ball: (v, p) => `<g class="sk-ballgrp" transform="translate(${n1(v[0])} ${n1(v[1])}) scale(${scaleOf(p).toFixed(2)})">
       <circle class="sk-ball" r="18"/>
       <circle class="sk-ball-in" r="10"/>
     </g>`,
     dbF: (v) => dumbbellGlyph(v, 'sk-db'),
-    // 철봉 (측면에서는 점으로 보이므로 봉이 이어진다는 힌트를 함께 그린다)
-    rig: (v) => `<g class="sk-rig">
+    // 철봉 (측면에서는 점으로 보이므로 봉이 이어진다는 힌트를 함께 그린다).
+    // 사람을 줄여 그리는 계열에서는 봉도 같은 비율로 줄인다 — 안 그러면
+    // 0.6배 사람 옆에 원래 굵기 봉이 놓여 트랜지션에서 몸을 꿰뚫은 것처럼 보인다.
+    rig: (v, p) => `<g class="sk-rig">
       <line class="sk-rig-span" x1="16" y1="${n1(v[1])}" x2="${VB.w - 16}" y2="${n1(v[1])}"/>
-      <circle class="sk-rig-bar" cx="${n1(v[0])}" cy="${n1(v[1])}" r="7"/>
+      <circle class="sk-rig-bar" cx="${n1(v[0])}" cy="${n1(v[1])}" r="${(7 * scaleOf(p)).toFixed(1)}"/>
     </g>`,
     ringF: (v) => ringGlyph(v, ''),
     pedalF: (v) => pedalGlyph(v, ''),
