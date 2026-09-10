@@ -28,6 +28,20 @@ function balance(p) {
   return { com, back, front, ok: com >= back && com <= front };
 }
 
+/** 킵의 아치·호로우가 제 모양인지.
+    아치 = 가슴을 내밀고 발을 뒤로 → 고관절이 어깨-발목 선보다 앞
+    호로우 = 엉덩이를 빼고 발을 앞으로 → 고관절이 선보다 뒤
+    둘 다 다리는 편 채 흔든다 — 무릎이 많이 굽으면 "앉은" 모양이 된다. */
+function kip(p) {
+  const t = (p.hip[1] - p.shoulder[1]) / (p.ankleF[1] - p.shoulder[1]);
+  const lineX = p.shoulder[0] + t * (p.ankleF[0] - p.shoulder[0]);
+  const torsoUp = Math.atan2(p.shoulder[1] - p.hip[1], p.shoulder[0] - p.hip[0]);
+  const thigh = Math.atan2(p.kneeF[1] - p.hip[1], p.kneeF[0] - p.hip[0]);
+  let d = (thigh - torsoUp) * 180 / Math.PI;
+  d = ((d % 360) + 540) % 360 - 180;
+  return { off: p.hip[0] - lineX, hipFlex: 180 - Math.abs(d), footBehindHip: p.toeF[0] < p.hip[0] };
+}
+
 const only = process.argv.slice(2);
 let hits = 0;
 for (const [name, p] of Object.entries(poses)) {
@@ -35,6 +49,20 @@ for (const [name, p] of Object.entries(poses)) {
   const bend = kneeBend(p);
   // 다리가 거의 펴진 자세는 부호가 오차 수준이라 -8° 부터 본다
   if (bend < -8) { hits++; console.log('✗', name.padEnd(18), `무릎이 ${bend.toFixed(0)}° 반대로 꺾였다`); }
+
+  // 킵 자세(이름이 Arch / Hollow 로 끝나는 포즈)
+  if (/Arch$/.test(name) || /Hollow$/.test(name)) {
+    const k = kip(p);
+    const isArch = /Arch$/.test(name);
+    if (isArch && (k.off <= 2 || !k.footBehindHip)) { hits++;
+      console.log('✗', name.padEnd(18), `아치인데 고관절이 선보다 ${k.off.toFixed(0)}, 발끝이 고관절보다 ${k.footBehindHip?'뒤':'앞'} — 호로우와 구분이 안 된다`); }
+    if (!isArch && (k.off >= -2 || k.footBehindHip)) { hits++;
+      console.log('✗', name.padEnd(18), `호로우인데 고관절이 선보다 ${k.off.toFixed(0)}, 발끝이 고관절보다 ${k.footBehindHip?'뒤':'앞'}`); }
+    if (k.hipFlex > 32) { hits++;
+      console.log('✗', name.padEnd(18), `고관절이 ${k.hipFlex.toFixed(0)}° 접혔다 — 킵은 몸을 편 채 흔든다(앉은 모양이 된다)`); }
+    if (bend > 15) { hits++;
+      console.log('✗', name.padEnd(18), `무릎이 ${bend.toFixed(0)}° 굽었다 — 아치·호로우는 다리를 편다`); }
+  }
 
   // 오직 두 발로만 버티고 선 자세에서만 균형을 따진다.
   // 벤치에 누웠거나(bench) 손이 바닥에 닿아 있으면(핸드스탠드·월워크) 지지면이 발이 아니다.
