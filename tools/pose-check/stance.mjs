@@ -64,6 +64,18 @@ for (const [name, p] of Object.entries(poses)) {
       console.log('✗', name.padEnd(18), `무릎이 ${bend.toFixed(0)}° 굽었다 — 아치·호로우는 다리를 편다`); }
   }
 
+  // 철봉에 매달린 채 턱이 봉 근처까지 올라온 자세 — 봉은 턱 "앞"을 지나간다.
+  // 그래서 몸을 뒤로 눕히는 것이고, 머리는 봉보다 뒤에 있어야 한다.
+  // (봉 위로 이미 넘어간 자세는 어깨가 봉보다 위라 여기서 걸러진다)
+  if (Array.isArray(p.rig)) {
+    const r = 14 * (p.scale ?? 1);
+    const chinNearBar = p.head[1] + r <= p.rig[1] + 16;
+    const stillHanging = p.shoulder[1] > p.rig[1];
+    if (chinNearBar && stillHanging && p.head[0] > p.rig[0] + 2) { hits++;
+      console.log('✗', name.padEnd(18),
+        `머리가 봉보다 ${(p.head[0] - p.rig[0]).toFixed(0)} 앞 — 봉이 뒤통수 쪽에 오는 자세가 된다`); }
+  }
+
   // 오직 두 발로만 버티고 선 자세에서만 균형을 따진다.
   // 벤치에 누웠거나(bench) 손이 바닥에 닿아 있으면(핸드스탠드·월워크) 지지면이 발이 아니다.
   const handsDown = p.wristF[1] > GROUND - 30;
