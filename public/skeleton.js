@@ -234,9 +234,24 @@
     return `M ${hand[0].toFixed(1)} ${hand[1].toFixed(1)} Q ${ctrl[0].toFixed(1)} ${ctrl[1].toFixed(1)} ${tip[0].toFixed(1)} ${tip[1].toFixed(1)}`;
   }
 
+  /** 포즈가 몸을 줄여 그리는 계열이면(bmu·wb) 머리·관절도 같은 비율로 줄인다.
+      머리 반지름만 고정이면 줄인 몸에서는 머리가 팔을 통째로 덮어 버린다. */
+  const scaleOf = (p) => (typeof p.scale === 'number' && p.scale > 0 ? p.scale : 1);
+
+  const HEAD_R = 14;
+  const JOINT_R = 4.2;
+
+  /** 발이 바닥에서 뜬 정도(0 = 딛고 있음). 그림자를 그만큼 작고 옅게 만든다.
+      철봉 계열은 발이 화면 위쪽까지 올라가므로 2.5 에서 끊는다 —
+      안 끊으면 그림자 반지름이 음수가 되어 <ellipse> 가 렌더 오류를 낸다. */
+  function airborneOf(p) {
+    const lowest = Math.max(p.toeF ? p.toeF[1] : 0, p.toeB ? p.toeB[1] : 0);
+    return Math.min(2.5, Math.max(0, VB.ground - lowest) / 40);
+  }
+
   function headGeom(p) {
     // 목 → 머리 방향으로 반지름만큼 떨어진 곳이 머리 중심
-    return { cx: p.head[0], cy: p.head[1], r: 14 };
+    return { cx: p.head[0], cy: p.head[1], r: +(HEAD_R * scaleOf(p)).toFixed(1) };
   }
 
   /* ------------------------------------------------------------- 도구(prop)
@@ -403,16 +418,16 @@
             `<line class="${cls}" x1="${p[a][0].toFixed(1)}" y1="${p[a][1].toFixed(1)}" x2="${p[b][0].toFixed(1)}" y2="${p[b][1].toFixed(1)}" data-bone="${a}-${b}"/>`
         )
         .join('');
+    const jointR = (JOINT_R * scaleOf(p)).toFixed(1);
     const joints = (list, cls) =>
       list
         .filter((k) => p[k])
-        .map((k) => `<circle class="${cls}" cx="${p[k][0].toFixed(1)}" cy="${p[k][1].toFixed(1)}" r="4.2" data-joint="${k}"/>`)
+        .map((k) => `<circle class="${cls}" cx="${p[k][0].toFixed(1)}" cy="${p[k][1].toFixed(1)}" r="${jointR}" data-joint="${k}"/>`)
         .join('');
 
     const h = headGeom(p);
     const shadowY = VB.ground + 3;
-    const lowest = Math.max(p.toeF ? p.toeF[1] : 0, p.toeB ? p.toeB[1] : 0);
-    const airborne = Math.max(0, VB.ground - lowest) / 40;
+    const airborne = airborneOf(p);
 
     return `
 <svg viewBox="0 0 ${VB.w} ${VB.h}" xmlns="${NS}" class="skel" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -544,11 +559,11 @@
       const head = headEl;
       head.setAttribute('cx', p.head[0].toFixed(1));
       head.setAttribute('cy', p.head[1].toFixed(1));
+      head.setAttribute('r', headGeom(p).r);
 
       const shadow = shadowEl;
       if (shadow) {
-        const lowest = Math.max(p.toeF[1], p.toeB[1]);
-        const air = Math.max(0, VB.ground - lowest) / 40;
+        const air = airborneOf(p);
         shadow.setAttribute('cx', p.hip[0].toFixed(1));
         shadow.setAttribute('rx', (40 - air * 8).toFixed(1));
         shadow.setAttribute('ry', (5 - air * 1.5).toFixed(1));
