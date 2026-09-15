@@ -55,7 +55,9 @@ const only = process.argv.slice(2);
 let hits = 0;
 for (const [name, p] of Object.entries(poses)) {
   if (only.length && !only.includes(name)) continue;
-  const bend = kneeBend(p);
+  // 월 워크(ww*)는 머리가 왼쪽·배가 바닥(벽)을 향한 채 누운 자세라, 오른쪽을 보고 선
+  // 다른 포즈와 좌우가 뒤집혀 있다. 무릎이 제대로(벽 쪽으로) 굽으면 부호가 반대로 나온다.
+  const bend = /^ww/.test(name) ? -kneeBend(p) : kneeBend(p);
   // 다리가 거의 펴진 자세는 부호가 오차 수준이라 -8° 부터 본다
   if (bend < -8) { hits++; console.log('✗', name.padEnd(18), `무릎이 ${bend.toFixed(0)}° 반대로 꺾였다`); }
 
