@@ -52,7 +52,7 @@ export const formats = [
   {
     id: 'for-time',
     name: 'For Time / Rounds For Time',
-    wrote: ['10 Rounds For Time', '3 Rounds For Time'],
+    wrote: ['10 Rounds For Time', '3 Rounds For Time', 'For Time / 4Rounds of'],
     means: '정해진 양을 최대한 빨리 끝낸다. 앞의 숫자가 반복할 라운드 수다.',
     clock: '시계는 0부터 올라간다. 다 끝낸 순간의 시간이 기록.',
     score: '완료 시간 (짧을수록 좋음)',
@@ -84,7 +84,7 @@ export const formats = [
   {
     id: 'exmom',
     name: 'E2MOM · Every X:00',
-    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 70seconds x 12sets'],
+    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 2:00 x 4', 'Every 70seconds x 12sets'],
     means:
       'EMOM의 간격이 1분이 아닌 버전. E2MOM 20 은 2분 간격으로 20분(=10라운드), ' +
       'Every 2:00 x 5 는 2분 간격으로 5라운드(=10분)라는 뜻이다. ' +
@@ -119,7 +119,7 @@ export const formats = [
   {
     id: 'rep-scheme',
     name: '렙 스킴 (숫자-숫자-숫자)',
-    wrote: ['5-5-3-3-2'],
+    wrote: ['5-5-3-3-2', '5-4-3-3-3'],
     means:
       '라운드마다 개수가 바뀐다. 5-5-3-3-2 는 5회 → 5회 → 3회 → 3회 → 2회 다섯 세트라는 뜻. ' +
       '스트렝스 파트에서는 개수가 줄어드는 만큼 무게를 올린다.',
@@ -215,6 +215,7 @@ export const notationGroups = [
       { wrote: '(24"/20")', read: '남 24인치 / 여 20인치 높이', note: '박스 점프·디피싯의 높이. 큰따옴표는 인치.' },
       { wrote: '@Clean & Jerk 70-80%', read: '클린 앤 저크 1RM의 70~80%', note: '@ 뒤는 기준값. 1RM을 모르면 반복 가능한 무게로.', term: 'percentage' },
       { wrote: '60% Build to heavy', read: '60%에서 시작해 점점 올리기', note: '고정 무게가 아니라 세트마다 올린다.' },
+      { wrote: '*Start at 65% Build to Heavy', read: '65%에서 시작해 점점 올리기', note: '같은 표기인데 시작 퍼센트만 다르다. 렙이 적은 스킴일수록 시작점이 높아진다.', term: 'percentage' },
       { wrote: '-/- · -', read: '무게 표기 없음', note: '맨몸이거나 기구 자체 무게로 한다는 뜻.' },
     ],
   },
@@ -225,6 +226,7 @@ export const notationGroups = [
       { wrote: '*', read: '별표 = 조건·주석', note: '와드 본문이 아니라 "이렇게 하라"는 단서다.' },
       { wrote: '*Time Cap 15min', read: '15분 제한', note: '캡에 걸리면 그때까지 완료한 렙 수가 기록.', term: 'time-cap' },
       { wrote: 'x 8 · x 8sets', read: '8라운드 · 8세트', note: 'x 뒤 숫자가 반복 횟수.' },
+      { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '@Damper 10', read: '기구 설정값', note: '@ 는 무게 말고 설정에도 쓴다.' },
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
@@ -245,6 +247,7 @@ export const notationGroups = [
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
+      { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
     ],
   },
