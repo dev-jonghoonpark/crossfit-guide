@@ -440,8 +440,164 @@ export const movements = [
       '덤벨 푸시 저크',
       '무게 하향 후 세트 쪼개기 (예: 2렙을 1+1로)',
     ],
-    related: ['split-jerk', 'hang-squat-clean', 'clean-and-jerk'],
+    related: ['split-jerk', 'hang-squat-clean', 'clean-and-jerk', 'push-press'],
     terms: ['front-rack', 'dip-drive', 'lockout'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'shoulder-press',
+    seoTitle: '숄더 프레스(스트릭트 프레스) 하는 법과 사용 근육',
+    seoDesc:
+      '숄더 프레스는 다리 반동 없이 팔과 어깨만으로 바벨을 머리 위로 미는 동작입니다. 3단계 애니메이션, 바 경로와 머리 비키는 법, 흔한 실수를 정리했습니다.',
+    thumb: 1,
+    ko: '숄더 프레스',
+    en: 'Shoulder Press (Strict Press)',
+    abbr: 'SP',
+    category: '역도',
+    level: '입문',
+    equipment: ['바벨', '원판'],
+    tagline: '다리 반동 없이 어깨와 팔만으로 바벨을 머리 위까지 미는 동작',
+    intro:
+      '오버헤드 동작의 가장 기본형이다. 스트릭트 프레스라고도 부르며, 무릎을 전혀 쓰지 않기 때문에 ' +
+      '같은 사람이 푸시 프레스·저크보다 가장 가벼운 무게를 다룬다. ' +
+      '크로스핏에서는 푸시 프레스·저크의 "락아웃 힘"을 기르는 스트렝스 파트로 자주 나온다. ' +
+      '핵심은 바를 똑바로 위로 보내는 것 — 바가 얼굴을 피해 앞으로 돌아가면 그만큼 어깨에서 멀어져 무거워진다. ' +
+      '바를 돌리지 말고 머리를 비킨다.',
+    phases: [
+      {
+        name: '프론트 랙 셋업',
+        pose: 'frontRack',
+        desc:
+          '바를 쇄골 위에 얹고 손은 어깨보다 살짝 넓게 잡는다. 팔꿈치는 바보다 약간 앞, 클린 랙보다는 낮게 둔다. ' +
+          '엉덩이와 배를 조여 상체를 한 덩어리로 만든다.',
+        cues: ['팔꿈치는 바 살짝 앞', '엉덩이 조이기', '갈비뼈 닫기'],
+        emphasis: ['delts', 'core', 'glutes'],
+      },
+      {
+        name: '프레스 — 머리 비키기',
+        pose: 'pressMid',
+        desc:
+          '무릎은 그대로 편 채 팔로만 민다. 바가 턱을 지나는 동안 턱을 뒤로 살짝 당겨 길을 내 주면 바가 수직으로 올라간다. ' +
+          '허리를 뒤로 젖혀 길을 내는 게 아니다.',
+        cues: ['무릎 잠그기', '턱을 뒤로 — 허리가 아니라 머리', '바는 얼굴을 스치듯 수직으로'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+      {
+        name: '락아웃',
+        pose: 'overheadLockout',
+        desc:
+          '바가 이마를 지나면 머리를 다시 팔 사이로 밀어 넣으며 팔꿈치를 끝까지 편다. ' +
+          '바가 귀 뒤 수직선 위(발 중앙 위)에 정지하면 1렙.',
+        cues: ['머리를 창문 안으로', '어깨를 귀 쪽으로 으쓱', '정지한 뒤에 내리기'],
+        emphasis: ['delts', 'triceps', 'traps', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'triceps', level: 'primary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'chest', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'glutes', level: 'stabilizer' },
+      { key: 'erectors', level: 'stabilizer' },
+      { key: 'forearms', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '허리를 뒤로 크게 젖힌다', fix: '무거워질수록 가슴을 들어 벤치 프레스처럼 밀게 된다. 엉덩이와 배를 조이고, 길은 허리가 아니라 턱을 당겨서 낸다.' },
+      { problem: '바가 얼굴을 피해 앞으로 돈다', fix: '바가 어깨에서 멀어져 훨씬 무거워진다. 머리를 비키고 바는 수직으로 올린다.' },
+      { problem: '무릎이 살짝 굽었다 펴진다', fix: '그건 푸시 프레스다. 스트렝스 파트의 프레스라면 무릎을 잠근 채 시작한다.' },
+      { problem: '락아웃에서 바가 머리 앞에 있다', fix: '팔은 펴졌어도 어깨가 버티지 못하는 위치다. 머리를 팔 사이로 밀어 넣어 바를 귀 뒤 수직선까지 보낸다.' },
+    ],
+    scaling: [
+      '빈 바 또는 PVC 로 바 경로부터 연습',
+      '덤벨 스트릭트 프레스 (좌우 불균형 확인에도 좋다)',
+      '렙을 유지하고 무게를 낮추기',
+    ],
+    related: ['push-press', 'push-jerk', 'dumbbell-push-press'],
+    terms: ['front-rack', 'lockout', 'percentage'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'push-press',
+    seoTitle: '바벨 푸시 프레스 하는 법과 푸시 저크 차이',
+    seoDesc:
+      '푸시 프레스는 짧은 딥-드라이브로 바벨을 띄우고 팔로 끝까지 밀어 마무리하는 동작입니다. 5단계 애니메이션과 저크·스트릭트 프레스와의 차이를 정리했습니다.',
+    thumb: 3,
+    ko: '푸시 프레스',
+    en: 'Push Press',
+    abbr: 'PP',
+    category: '역도',
+    level: '초급',
+    equipment: ['바벨', '원판'],
+    tagline: '다리로 한 번 띄우고 팔로 끝까지 밀어 바벨을 머리 위로 보내는 동작',
+    intro:
+      '스트릭트 프레스에 다리 반동(딥-드라이브)을 한 번 더한 동작이다. 다리가 바를 이마 높이까지 띄워 주므로 ' +
+      '스트릭트 프레스보다 20~30% 더 무겁게 들 수 있고, 가장 힘든 구간(턱~이마)을 다리가 대신 지나 준다. ' +
+      '푸시 저크와의 차이는 딥이 한 번뿐이라는 것 — 팔로 밀다가 다시 무릎을 굽혀 밑으로 들어가면 저크다. ' +
+      '와드에서 12회 같은 높은 렙으로 나오면 락아웃보다 "랙 포지션에서 쉬는 법"이 기록을 좌우한다.',
+    phases: [
+      {
+        name: '프론트 랙',
+        pose: 'frontRack',
+        desc: '바를 쇄골 위에 얹고 발은 골반 너비. 팔꿈치는 바보다 살짝 앞, 체중은 발 전체에.',
+        cues: ['바를 어깨에 얹어 두기', '갈비뼈 닫기', '뒤꿈치에 체중'],
+        emphasis: ['delts', 'core'],
+      },
+      {
+        name: '딥',
+        pose: 'dip',
+        desc: '상체를 수직으로 둔 채 무릎만 10~15cm 짧게 굽힌다. 바는 어깨에 얹힌 채 같이 내려간다.',
+        cues: ['상체는 수직 그대로', '짧고 빠르게', '무릎은 발끝 방향으로'],
+        emphasis: ['quads', 'core'],
+      },
+      {
+        name: '드라이브',
+        pose: 'drive',
+        desc: '멈추지 않고 다리를 폭발적으로 펴 바를 어깨에서 띄운다. 이 순간까지 팔은 거들기만 한다.',
+        cues: ['딥에서 멈추지 않기', '발끝까지 밀어 완전 신전', '턱을 뒤로 당겨 바 길 내기'],
+        emphasis: ['quads', 'glutes', 'calves'],
+      },
+      {
+        name: '프레스 아웃',
+        pose: 'pressMid',
+        desc: '다리가 다 펴진 뒤 남은 거리를 팔로 밀어 올린다. 여기서 다시 무릎을 굽히면 푸시 저크가 된다.',
+        cues: ['다리는 멈추고 팔로만', '바는 얼굴을 스치듯 수직으로', '무릎 다시 굽히지 않기'],
+        emphasis: ['delts', 'triceps'],
+      },
+      {
+        name: '락아웃',
+        pose: 'overheadLockout',
+        desc: '팔꿈치를 완전히 펴고 머리를 팔 사이로 밀어 넣어 바를 귀 뒤 수직선 위에 정지시키면 1렙.',
+        cues: ['팔꿈치 완전 신전', '머리는 창문 안으로', '내릴 땐 무릎을 살짝 굽혀 흡수'],
+        emphasis: ['delts', 'triceps', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'triceps', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'glutes', level: 'secondary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'erectors', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '딥이 스쿼트가 된다', fix: '깊을수록 방향 전환이 느려 힘이 샌다. 10~15cm 짧게, 빠르게.' },
+      { problem: '딥에서 상체가 앞으로 숙여진다', fix: '바가 앞으로 날아가 몸이 따라 나간다. 뒤꿈치에 체중을 두고 수직으로 눌러 내린다.' },
+      { problem: '밀다가 무릎을 다시 굽힌다', fix: '그건 푸시 저크다. 딥은 한 번뿐이고 나머지는 팔로 끝낸다.' },
+      { problem: '내려올 때 바를 어깨로 그냥 받는다', fix: '높은 렙에서 쇄골이 금세 아프다. 바가 어깨에 닿는 순간 무릎을 살짝 굽혀 충격을 흡수하고, 그 굽힘을 다음 딥으로 이어 쓴다.' },
+    ],
+    scaling: [
+      '무게 낮추기 (115/75lb → 96/65 → 75/55)',
+      '덤벨 푸시 프레스',
+      '빈 바나 PVC 로 딥-드라이브 타이밍만 연습',
+      '세트를 미리 나눠 두기 (12 → 6+6)',
+    ],
+    related: ['shoulder-press', 'push-jerk', 'dumbbell-push-press'],
+    terms: ['pp', 'front-rack', 'dip-drive', 'lockout'],
   },
 
   /* ==================================================================== */
