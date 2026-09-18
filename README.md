@@ -204,9 +204,12 @@ GOOGLE_SITE_VERIFICATION=토큰값 npm run build
 크롤러가 보는 것은 호스트 루트의 `https://dev-jonghoonpark.github.io/robots.txt` 뿐이라,
 빌드가 만드는 `/crossfit-guide/robots.txt` 는 구글에 전달되지 않는다.
 그 안의 `Sitemap:` 줄과 AI 크롤러 허용 규칙도 마찬가지다.
-사이트맵은 서치 콘솔에 **직접 제출**해야 하고, 루트 규칙까지 통제하려면
-`dev-jonghoonpark.github.io` 이름의 사용자 사이트 저장소를 따로 만들어
-거기에 `robots.txt` 를 두어야 한다.
+
+실제 규칙은 사용자 사이트 저장소
+[`dev-jonghoonpark.github.io`](https://github.com/dev-jonghoonpark/dev-jonghoonpark.github.io)
+의 `robots.txt` 에서 관리한다. 이 저장소의 `dist/robots.txt` 는 빌드 산출물로 남겨 두지만
+(다른 크롤러가 읽을 수는 있다) 구글 기준으로는 루트 쪽이 정본이다.
+사이트맵은 그 `Sitemap:` 줄과 별개로 서치 콘솔에 **직접 제출**하는 편이 빠르다.
 
 ### 사이트맵 검사
 

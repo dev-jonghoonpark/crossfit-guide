@@ -120,11 +120,13 @@ if (!(await exists(robotsPath))) {
 // (크롤러는 호스트 루트의 /robots.txt 만 본다)
 const { pathname } = new URL(site.url);
 if (pathname !== '/' && pathname !== '') {
+  const origin = new URL(site.url).origin;
   warn(
-    `배포 주소가 하위 경로(${pathname})라 ${new URL(site.url).origin}/robots.txt 만 크롤러가 읽습니다.\n` +
-      `    → dist/robots.txt 의 Sitemap: 줄은 구글에 전달되지 않으니,\n` +
-      `      서치 콘솔에 ${prefix}sitemap.xml 을 직접 제출하세요.\n` +
-      `      속성도 ${prefix} 로 잡아야 합니다 (호스트 루트로 잡으면 사이트맵이 범위 밖).`
+    `배포 주소가 하위 경로(${pathname})라 ${origin}/robots.txt 만 크롤러가 읽습니다.\n` +
+      `    → 여기서 만드는 dist/robots.txt 는 구글이 보지 않습니다.\n` +
+      `      크롤링 규칙과 Sitemap: 선언은 사용자 사이트 저장소\n` +
+      `      (github.com/dev-jonghoonpark/dev-jonghoonpark.github.io) 의 robots.txt 에서 관리합니다.\n` +
+      `      서치 콘솔 속성은 ${prefix} 로 잡아야 합니다 (호스트 루트로 잡으면 사이트맵이 범위 밖).`
   );
 }
 
