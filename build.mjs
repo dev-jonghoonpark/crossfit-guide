@@ -184,7 +184,7 @@ function layout({
 <meta name="description" content="${esc(desc)}">
 <link rel="canonical" href="${esc(canonical)}">
 <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
-<meta name="theme-color" content="${site.themeColor}">
+${site.googleSiteVerification ? `<meta name="google-site-verification" content="${site.googleSiteVerification}">\n` : ''}<meta name="theme-color" content="${site.themeColor}">
 <meta property="og:type" content="${path === 'index.html' ? 'website' : 'article'}">
 <meta property="og:site_name" content="${esc(site.name)}">
 <meta property="og:locale" content="${site.locale}">

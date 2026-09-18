@@ -155,7 +155,7 @@ npm run build
 | canonical · og:* · twitter:* · robots meta | 각 페이지 `<head>` |
 | JSON-LD `@graph` | Organization + WebSite + 페이지별 노드 |
 | BreadcrumbList | 홈 제외 전 페이지 (화면 표시 + 스키마) |
-| `sitemap.xml` | 절대 URL · lastmod · priority |
+| `sitemap.xml` | 절대 URL · lastmod (`npm run build` 가 끝나면 자동 검사) |
 | `robots.txt` | GPTBot·ClaudeBot·PerplexityBot 등 AI 크롤러 명시 허용 |
 | `llms.txt` | AI 검색용 문서 지도 + 핵심 사실 목록 |
 | `.nojekyll` | GitHub Pages 용 |
@@ -175,6 +175,55 @@ npm run build
 AI 검색이 그대로 인용할 수 있는 130~170자 자립 문단을 만들어 두었다.
 
 콘텐츠를 크게 고쳤으면 `data/site.js` 의 `dateModified` 를 갱신할 것.
+
+### 구글 서치 콘솔 — "사이트맵을 읽을 수 없음" 이 뜰 때
+
+이 사이트는 `github.io` **프로젝트 사이트**라 주소가 호스트 루트가 아니라
+`https://dev-jonghoonpark.github.io/crossfit-guide/` 하위에 있다. 여기서 오는 함정이 둘 있다.
+
+**1. 속성(property)을 하위 경로로 잡아야 한다.**
+사이트맵은 자기가 놓인 경로 이하의 URL 만 다룰 수 있다. 속성을
+`https://dev-jonghoonpark.github.io/` (호스트 루트)로 잡으면 제출한 `sitemap.xml` 은
+`https://dev-jonghoonpark.github.io/sitemap.xml` 로 해석되는데 그 파일은 없다 → 읽기 실패.
+
+- 속성 유형: **URL 접두어**
+- 속성 주소: `https://dev-jonghoonpark.github.io/crossfit-guide/` (끝 슬래시까지)
+- 사이트맵 제출란에 입력: `sitemap.xml`
+- 최종 주소: `https://dev-jonghoonpark.github.io/crossfit-guide/sitemap.xml`
+
+소유권 확인은 HTML 파일 업로드 대신 메타 태그 방식을 쓰면 된다. 서치 콘솔에서 받은
+토큰을 저장소 **Settings → Secrets and variables → Actions → Variables** 에
+`GOOGLE_SITE_VERIFICATION` 으로 넣으면 배포 때 모든 페이지 `<head>` 에 들어간다.
+로컬에서는:
+
+```bash
+GOOGLE_SITE_VERIFICATION=토큰값 npm run build
+```
+
+**2. `robots.txt` 는 크롤러가 하위 경로에서 읽지 않는다.**
+크롤러가 보는 것은 호스트 루트의 `https://dev-jonghoonpark.github.io/robots.txt` 뿐이라,
+빌드가 만드는 `/crossfit-guide/robots.txt` 는 구글에 전달되지 않는다.
+그 안의 `Sitemap:` 줄과 AI 크롤러 허용 규칙도 마찬가지다.
+사이트맵은 서치 콘솔에 **직접 제출**해야 하고, 루트 규칙까지 통제하려면
+`dev-jonghoonpark.github.io` 이름의 사용자 사이트 저장소를 따로 만들어
+거기에 `robots.txt` 를 두어야 한다.
+
+### 사이트맵 검사
+
+`npm run build` 는 빌드 후 `tools/check-sitemap.mjs` 를 돌려 배포 전에 걸러낸다
+(CI 도 같은 검사를 하고, 실패하면 배포하지 않는다).
+
+- BOM · XML 선언 앞 공백 → 크롤러가 XML 로 인식 못 함
+- `<url>`/`<loc>` 태그 짝, URL 5만 개 · 50MB 상한
+- 이스케이프 안 된 문자, 퍼센트 인코딩 안 된 비ASCII
+- 사이트맵 위치(`SITE_URL`) 밖의 URL, 중복 URL
+- `dist` 에 실제로 없는 파일을 가리키는 URL (= 404)
+- `lastmod` 형식 · 미래 날짜
+- `robots.txt` 의 `Sitemap:` 주소가 실제 주소와 어긋남
+
+```bash
+npm run check                    # 이미 빌드해 둔 dist 만 검사
+```
 
 ### OG 이미지 다시 만들기
 

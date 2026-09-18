@@ -34,6 +34,13 @@ jobs:
         run: node build.mjs
         env:
           SITE_URL: ${{ steps.pages.outputs.base_url }}
+          GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
+
+      # 사이트맵이 깨진 채로 배포되면 서치 콘솔이 며칠씩 못 읽는다. 먼저 막는다.
+      - name: Check sitemap
+        run: node tools/check-sitemap.mjs
+        env:
+          SITE_URL: ${{ steps.pages.outputs.base_url }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

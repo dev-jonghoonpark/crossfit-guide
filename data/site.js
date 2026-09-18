@@ -16,6 +16,9 @@ const trim = (u) => String(u || '').replace(/\/+$/, '');
 /** GA 측정 ID 는 그대로 <script> 안에 박히므로 허용 문자만 남긴다 */
 const gaId = (v) => String(v || '').replace(/[^A-Za-z0-9-]/g, '');
 
+/** 소유권 확인 토큰도 그대로 <meta> 에 박히므로 허용 문자만 남긴다 */
+const token = (v) => String(v || '').replace(/[^A-Za-z0-9_-]/g, '');
+
 export const site = {
   url: trim(process.env.SITE_URL || DEFAULT_URL),
   name: '크로스핏 가이드',
@@ -34,6 +37,20 @@ export const site = {
    *   GA_ID= npm run build
    */
   gaId: gaId(process.env.GA_ID ?? 'G-KKQH4RTLZL'),
+
+  /**
+   * Google Search Console 소유권 확인용 토큰 (`<meta name="google-site-verification">`).
+   *
+   * GitHub Pages 프로젝트 사이트는 주소가 `.../crossfit-guide/` 하위라서,
+   * 서치 콘솔에서도 **속성을 `https://dev-jonghoonpark.github.io/crossfit-guide/` 로**
+   * 잡아야 sitemap.xml 이 같은 경로 안에 있는 것으로 인정된다.
+   * 그 속성을 확인할 때 받은 토큰을 여기에 넣으면 모든 페이지 <head> 에 들어간다:
+   *
+   *   GOOGLE_SITE_VERIFICATION=abc123... npm run build
+   *
+   * (GitHub Actions 는 저장소 Variables 의 GOOGLE_SITE_VERIFICATION 을 읽는다)
+   */
+  googleSiteVerification: token(process.env.GOOGLE_SITE_VERIFICATION),
 
   /** 소스 저장소. 동작·와드 추가 요청 안내가 여기 이슈로 연결된다. */
   repo: trim(process.env.SITE_REPO || 'https://github.com/dev-jonghoonpark/crossfit-guide'),
