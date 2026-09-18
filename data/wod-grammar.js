@@ -119,7 +119,7 @@ export const formats = [
   {
     id: 'rep-scheme',
     name: '렙 스킴 (숫자-숫자-숫자)',
-    wrote: ['5-5-3-3-2', '5-4-3-3-3'],
+    wrote: ['5-5-3-3-2', '5-4-3-3-3', '7-5-5-3-1'],
     means:
       '라운드마다 개수가 바뀐다. 5-5-3-3-2 는 5회 → 5회 → 3회 → 3회 → 2회 다섯 세트라는 뜻. ' +
       '스트렝스 파트에서는 개수가 줄어드는 만큼 무게를 올린다.',
@@ -127,6 +127,19 @@ export const formats = [
     score: '세트별 무게',
     term: null,
     tag: '스트렝스',
+  },
+  {
+    id: 'named-wod',
+    name: '이름 붙은 와드 (Hero · The Girls)',
+    wrote: ['JOSH'],
+    means:
+      '형식 대신 이름만 적혀 있는 줄. 내용이 이미 정해져 있는 벤치마크 와드라는 뜻이다. ' +
+      '순직한 군인·소방관·경찰을 기리는 히어로 와드(JOSH, Murph, DT)와 여성 이름이 붙은 걸스 와드(Fran, Cindy)가 있다. ' +
+      '이름 아래에 For Time 같은 실제 형식 줄이 따로 붙는다.',
+    clock: '이름 아래 붙은 형식 줄을 따른다.',
+    score: '그 형식의 기록. 내용이 고정돼 있어 다른 날·다른 박스의 기록과 그대로 비교된다.',
+    term: 'hero',
+    tag: '히어로 와드',
   },
   {
     id: 'odd-even',
@@ -216,6 +229,7 @@ export const notationGroups = [
       { wrote: '@Clean & Jerk 70-80%', read: '클린 앤 저크 1RM의 70~80%', note: '@ 뒤는 기준값. 1RM을 모르면 반복 가능한 무게로.', term: 'percentage' },
       { wrote: '60% Build to heavy', read: '60%에서 시작해 점점 올리기', note: '고정 무게가 아니라 세트마다 올린다.' },
       { wrote: '*Start at 65% Build to Heavy', read: '65%에서 시작해 점점 올리기', note: '같은 표기인데 시작 퍼센트만 다르다. 렙이 적은 스킴일수록 시작점이 높아진다.', term: 'percentage' },
+      { wrote: '*Start at 60% Build Up', read: '60%에서 시작해 세트마다 올리기', note: 'Build Up 은 Build to Heavy 의 줄임이다. 기준 1RM 은 그 줄에 적힌 동작 기준.', term: 'percentage' },
       { wrote: '-/- · -', read: '무게 표기 없음', note: '맨몸이거나 기구 자체 무게로 한다는 뜻.' },
     ],
   },
@@ -225,6 +239,7 @@ export const notationGroups = [
     rows: [
       { wrote: '*', read: '별표 = 조건·주석', note: '와드 본문이 아니라 "이렇게 하라"는 단서다.' },
       { wrote: '*Time Cap 15min', read: '15분 제한', note: '캡에 걸리면 그때까지 완료한 렙 수가 기록.', term: 'time-cap' },
+      { wrote: '*Time Cap : 12minute', read: '12분 제한', note: '같은 타임 캡이라도 분 수는 와드마다 다르다. 캡이 짧을수록 첫 줄부터 끊어 갈 계획이 필요하다.', term: 'time-cap' },
       { wrote: 'x 8 · x 8sets', read: '8라운드 · 8세트', note: 'x 뒤 숫자가 반복 횟수.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
@@ -245,6 +260,7 @@ export const notationGroups = [
       { wrote: 'HSH', read: '핸드스탠드 홀드', note: 'HSPU 를 못 하면 버티기로 대체.', term: 'hsh' },
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
+      { wrote: 'Black Band', read: '블랙 밴드 보조', note: '약어로 줄이지 않고 색 이름을 그대로 적기도 한다. BB 와 같은 뜻이다.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
       { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },
