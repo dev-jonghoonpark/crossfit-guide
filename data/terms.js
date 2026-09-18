@@ -395,7 +395,7 @@ export const termGroups = [
       { id: 'bmu', term: 'BMU', full: 'Bar Muscle-Up', ko: '바 뮤스클업', desc: '철봉 아래에서 봉 위로 넘어가 팔을 완전히 펴는 동작. 풀업 + 딥을 한 번에 이은 것.', movement: 'bar-muscle-up' },
       { id: 'rmu', term: 'RMU', full: 'Ring Muscle-Up', ko: '링 뮤스클업', desc: '같은 동작을 링에서 하는 버전. 링이 흔들려서 바 뮤스클업보다 한 단계 더 어렵다.' },
       { id: 'hspu', term: 'HSPU', full: 'Handstand Push-up', ko: '핸드스탠드 푸시업', desc: '물구나무 상태에서 하는 푸시업.', movement: 'handstand-push-up' },
-      { id: 'ohs', term: 'OHS', full: 'Overhead Squat', ko: '오버헤드 스쿼트', desc: '바를 머리 위에 든 채 하는 스쿼트. 스쿼트 스내치를 받는 자세이기도 하다.', movement: 'squat-snatch' },
+      { id: 'ohs', term: 'OHS', full: 'Overhead Squat', ko: '오버헤드 스쿼트', desc: '스내치 그립으로 바를 머리 위에 든 채 하는 스쿼트. 스쿼트 스내치를 받는 자세이기도 하다.', movement: 'overhead-squat' },
       { id: 'kbs', term: 'KBS', full: 'Kettlebell Swing', ko: '케틀벨 스윙', desc: '케틀벨을 힙 힌지로 스윙하는 동작.' },
       { id: 'wb', term: 'WB', full: 'Wall Ball', ko: '월볼', desc: '메디신볼로 스쿼트 후 벽 목표 지점에 던지는 동작.', movement: 'wall-ball' },
       { id: 'dl', term: 'DL', full: 'Deadlift', ko: '데드리프트', desc: '바닥의 바를 고관절 신전으로 세워 드는 동작.', movement: 'deadlift' },

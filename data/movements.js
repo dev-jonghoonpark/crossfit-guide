@@ -1296,6 +1296,83 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'overhead-squat',
+    seoTitle: '오버헤드 스쿼트 하는 법 — 바 위치와 깊이 기준',
+    seoDesc:
+      '오버헤드 스쿼트는 스내치 그립으로 바를 머리 뒤 수직선에 세운 채 앉는 동작입니다. 4단계 분해와 바가 앞으로 떨어지는 이유, 모빌리티 교정법을 정리했습니다.',
+    thumb: 2,
+    ko: '오버헤드 스쿼트',
+    en: 'Overhead Squat',
+    abbr: 'OHS',
+    category: '역도',
+    level: '중급',
+    equipment: ['바벨', '원판'],
+    tagline: '스내치 그립으로 바를 머리 위에 든 채 고관절이 무릎 아래까지 내려갔다 일어서는 스쿼트',
+    intro:
+      '크로스핏에서 가장 정직한 동작이다. 어깨·흉추·고관절·발목 중 한 군데만 굳어 있어도 바가 앞으로 떨어져서, ' +
+      '근력보다 가동성이 먼저 드러난다. 스쿼트 스내치를 받는 자세가 정확히 이 자세라 스내치의 선행 동작이기도 하다. ' +
+      '와드에는 OHS 로 적히고, 무게보다 자세가 먼저 무너지는 동작이라 렙 수가 많이 붙으면 체감 난도가 급격히 올라간다.',
+    phases: [
+      {
+        name: '셋업 (오버헤드 락아웃)',
+        pose: 'overheadLockout',
+        desc: '스내치 그립으로 바를 머리 위에 들고 선다. 바·어깨·고관절·발 중앙이 한 수직선 위에 오고, 바는 귀보다 뒤에 있다.',
+        cues: ['어깨를 위로 밀어 능동적으로 지지', '겨드랑이를 앞으로 돌려 팔꿈치 잠그기', '갈비뼈 닫고 배를 조이기'],
+        emphasis: ['delts', 'triceps', 'traps', 'core'],
+      },
+      {
+        name: '내려가기',
+        pose: 'ohsMid',
+        desc: '엉덩이를 뒤로 빼면서 앉는다. 바는 그 자리에 두고 몸만 바 밑으로 내려간다는 감각이다.',
+        cues: ['바를 계속 머리 뒤 수직선에', '무릎을 발끝 방향으로 밀어내기', '천천히 — 떨어지듯 내려가면 바가 앞으로 간다'],
+        emphasis: ['delts', 'quads', 'glutes', 'core'],
+      },
+      {
+        name: '바텀',
+        pose: 'snatchSquatCatch',
+        desc: '고관절이 무릎보다 아래로 내려간다. 가슴은 세우고 바는 여전히 어깨·고관절과 한 수직선 위에 있어야 버틴다.',
+        cues: ['고관절이 무릎 아래까지', '가슴을 세우고 등은 평평하게', '어깨는 끝까지 위로 밀어 둔 채'],
+        emphasis: ['delts', 'quads', 'glutes', 'erectors', 'core'],
+      },
+      {
+        name: '일어서기',
+        pose: 'overheadLockout',
+        desc: '뒤꿈치로 바닥을 밀어 일어선다. 무릎·고관절·팔꿈치가 전부 펴지고 바가 안정되면 1렙이다.',
+        cues: ['가슴과 엉덩이를 같이 올리기', '바가 앞으로 나오면 그 자리에서 멈추고 다시 세우기', '완전 신전으로 마무리'],
+        emphasis: ['quads', 'glutes', 'delts', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'delts', level: 'primary' },
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'lats', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '바가 앞으로 떨어진다', fix: '거의 항상 어깨·흉추 가동성 문제다. PVC 나 빈 바로 오버헤드 홀드 30초 × 3세트, 소트 프레스(바텀에서 프레스)로 어깨를 열고 나서 무게를 얹는다.' },
+      { problem: '뒤꿈치가 뜨고 상체가 숙여진다', fix: '발목 가동성이다. 역도화를 신거나 뒤꿈치 아래에 얇은 원판을 깔고 하면 그 자리에서 깊이가 나온다.' },
+      { problem: '바텀에서 팔꿈치가 굽는다', fix: '지지가 수동적이라 그렇다. 어깨를 계속 위로 밀어 올리는 힘을 유지한다. 무게를 내리고 오버헤드 홀드로 지지 시간을 먼저 늘린다.' },
+      { problem: '그립이 좁다', fix: '스내치 그립(바를 잡고 팔을 벌려 바가 고관절 접힘선에 닿는 너비)으로 넓게 잡는다. 좁을수록 어깨 가동 범위가 더 필요해 바가 앞으로 간다.' },
+      { problem: '깊이가 안 나온다', fix: '무게를 먼저 내린다. 오버헤드 스쿼트는 깊이가 나오는 무게가 그날 쓸 수 있는 무게다.' },
+    ],
+    scaling: [
+      'PVC 파이프 · 빈 바로 자세부터',
+      '뒤꿈치에 원판 받치기 · 역도화',
+      '프론트 스쿼트로 대체 (같은 깊이, 어깨 부담 없이)',
+      '반복 수를 줄여 세트로 나누기',
+    ],
+    related: ['squat-snatch', 'power-snatch', 'air-squat'],
+    terms: ['ohs', 'lockout', 'no-rep', 'rft'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'pull-up',
     seoTitle: '킵핑 풀업 하는 법 — 아치와 호로우 리듬',
     seoDesc:
