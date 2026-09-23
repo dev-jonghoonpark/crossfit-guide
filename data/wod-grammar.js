@@ -72,7 +72,7 @@ export const formats = [
   {
     id: 'emom',
     name: 'EMOM',
-    wrote: ['EMOM 32', 'EMOM 24', 'Every 1:00 x 8', 'Every 01:00 x 8'],
+    wrote: ['EMOM 32', 'EMOM 24', 'EMOM 21', 'Every 1:00 x 8', 'Every 01:00 x 8'],
     means:
       '매 분이 시작될 때 정해진 양을 하고 남은 시간은 쉰다. ' +
       '동작이 여러 개면 분마다 하나씩 번갈아 간다.',
@@ -211,6 +211,7 @@ export const notationGroups = [
       { wrote: "10m DB Farmer's Carry", read: '덤벨을 들고 10m 걷기', note: '동작 앞의 숫자가 개수가 아니라 거리(m)인 경우.', term: 'fc' },
       { wrote: 'Max Unbroken Hang Power Clean', read: '끊기지 않고 할 수 있는 최대 개수', note: '개수가 정해져 있지 않다. 바를 놓는 순간이 그 세트의 끝.', term: 'unbroken' },
       { wrote: 'Max Dumbbell(x2) Push Press', read: '그 시간 안에 할 수 있는 최대 개수', note: 'Max 앞에 Unbroken 이 없으면 끊어서 해도 된다. 정해진 시간이 끝나는 게 그 세트의 끝.' },
+      { wrote: '30sec Max Push-Up', read: '30초 동안 푸시업 최대 개수', note: '숫자 뒤에 sec 가 붙으면 개수가 아니라 시간이다. 그 시간이 끝나면 남은 시간은 쉰다.' },
       { wrote: '5 Wall Walk', read: '월 워크 5회', note: '올라갔다 내려와야 1렙이다. 올라간 것만 세지 않는다.', term: 'ww' },
       { wrote: '(Above knee) / (Below Knee)', read: '무릎 위 / 무릎 아래에서 시작', note: '같은 동작이라도 시작 높이를 지정한다.', term: 'hang' },
     ],
@@ -225,6 +226,9 @@ export const notationGroups = [
       { wrote: '20-15/12.5-10kg', read: '남 20~15kg / 여 12.5~10kg', note: '범위는 "이 사이에서 고르라"는 뜻.' },
       { wrote: 'All Dual 22.5/15kg', read: '덤벨을 양손에 하나씩', note: 'Dual = 양손. 무게는 한 개 기준이다.' },
       { wrote: 'Dumbbell(x2) ... (22.5/15)', read: '덤벨 두 개, 한 개당 22.5/15kg', note: '(x2) 도 Dual 과 같은 뜻. 실제로 드는 총 무게는 두 배다.', term: 'dual-db' },
+      { wrote: '(A,24/16kg)', read: '아메리칸 스윙, 남 24kg / 여 16kg', note: '케틀벨 스윙 괄호 안의 A 는 아메리칸(머리 위까지), R 은 러시안(눈높이까지). 무게와 같이 적는다.', term: 'kbs' },
+      { wrote: 'Dumbbell(x1)', read: '덤벨 한 개', note: '(x2) 의 반대. 드는 위치가 따로 적혀 있지 않으면 자유다.', term: 'single-db' },
+      { wrote: '(22.5/15 , 24"/20")', read: '덤벨 남 22.5 / 여 15kg, 박스 남 24 / 여 20인치', note: '한 괄호에 무게와 높이를 쉼표로 같이 적은 것. 큰따옴표가 붙은 쪽이 높이다.', term: 'box-height' },
       { wrote: '(24"/20")', read: '남 24인치 / 여 20인치 높이', note: '박스 점프·디피싯의 높이. 큰따옴표는 인치.' },
       { wrote: '@Clean & Jerk 70-80%', read: '클린 앤 저크 1RM의 70~80%', note: '@ 뒤는 기준값. 1RM을 모르면 반복 가능한 무게로.', term: 'percentage' },
       { wrote: '60% Build to heavy', read: '60%에서 시작해 점점 올리기', note: '고정 무게가 아니라 세트마다 올린다.' },
@@ -247,6 +251,7 @@ export const notationGroups = [
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
       { wrote: 'Score:Complete sets + HPC reps', read: '기록 방법을 코치가 직접 적어 둔 줄', note: '무엇으로 점수를 매기는지 = 이 와드의 목표가 뭔지.', term: 'score-line' },
       { wrote: 'Score:Finish Rounds + Push press reps', read: '완료 라운드 + 마지막 동작의 렙 수', note: '같은 Score 줄이라도 무엇을 더하는지는 와드마다 다르다. 그 줄이 곧 오늘의 목표다.', term: 'score-line' },
+      { wrote: '*Score:Finish Round + Push-Up reps', read: '완료 라운드 + 푸시업 렙 수', note: '앞 칸을 1분 안에 다 채웠는지와 개수가 열려 있는 마지막 칸의 합계를 같이 적는다.', term: 'score-line' },
       { wrote: '*Rxd+ : 2-3RMU', read: 'Rx 위 단계 옵션', note: 'Rx 가 쉬운 사람을 위해 더 어려운 동작으로 바꿔 두는 줄.', term: 'rx-plus' },
     ],
   },

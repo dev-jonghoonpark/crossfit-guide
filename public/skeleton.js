@@ -127,7 +127,7 @@
   /** 손·발에 붙어 있는 도구는 그 관절을 따라가야 봉이 손에서, 페달이 발에서 떨어지지 않는다.
       (페달은 크랭크 원을 도는데 x·y 를 직선으로 이으면 원 안쪽을 가로질러 발과 어긋난다) */
   const HELD_PROPS = [
-    ['bar', 'wristF'], ['ball', 'wristF'], ['dbF', 'wristF'], ['dbB', 'wristB'],
+    ['bar', 'wristF'], ['ball', 'wristF'], ['dbF', 'wristF'], ['dbB', 'wristB'], ['kb', 'wristF'],
     ['pedalF', 'ankleF'], ['pedalB', 'ankleB'],
   ];
   const HELD_RANGE = 30; // 이 안에 있으면 "들고 있다"고 본다
@@ -311,6 +311,26 @@
     </g>`;
   }
 
+  /* 케틀벨 — 값은 몸통(벨) 중심. 손잡이는 벨에서 손 쪽으로 세워 그린다.
+     손 위치를 따라 방향이 정해지니 스윙 바닥에서는 벨이 아래로,
+     아메리칸 스윙 탑에서는 벨이 머리 위로 뒤집혀 보인다. */
+  function kettlebellGlyph(v, p) {
+    const w = p.wristF || [v[0], v[1] - 14];
+    const d = Math.hypot(w[0] - v[0], w[1] - v[1]) || 1;
+    const ux = (w[0] - v[0]) / d;
+    const uy = (w[1] - v[1]) / d;
+    const R = 11;
+    const base = [v[0] + ux * (R - 2), v[1] + uy * (R - 2)];
+    const tip = [v[0] + ux * (R + 11), v[1] + uy * (R + 11)];
+    const hw = 8; // 손잡이 반폭
+    const a = [base[0] - uy * hw, base[1] + ux * hw];
+    const b = [base[0] + uy * hw, base[1] - ux * hw];
+    return `<g class="sk-kb">
+      <path class="sk-kb-handle" d="M ${n1(a[0])} ${n1(a[1])} Q ${n1(tip[0] - uy * hw * 1.2)} ${n1(tip[1] + ux * hw * 1.2)} ${n1(tip[0])} ${n1(tip[1])} Q ${n1(tip[0] + uy * hw * 1.2)} ${n1(tip[1] - ux * hw * 1.2)} ${n1(b[0])} ${n1(b[1])}"/>
+      <circle class="sk-kb-bell" cx="${n1(v[0])}" cy="${n1(v[1])}" r="${R}"/>
+    </g>`;
+  }
+
   function ringGlyph(p, cls) {
     return `<g class="${cls}">
       <line class="sk-strap" x1="${n1(p[0])}" y1="6" x2="${n1(p[0])}" y2="${n1(p[1] - 11)}"/>
@@ -413,6 +433,7 @@
       <circle class="sk-ball-in" r="10"/>
     </g>`,
     dbF: (v) => dumbbellGlyph(v, 'sk-db'),
+    kb: (v, p) => kettlebellGlyph(v, p),
     // 철봉 (측면에서는 점으로 보이므로 봉이 이어진다는 힌트를 함께 그린다).
     // 사람을 줄여 그리는 계열에서는 봉도 같은 비율로 줄인다 — 안 그러면
     // 0.6배 사람 옆에 원래 굵기 봉이 놓여 트랜지션에서 몸을 꿰뚫은 것처럼 보인다.
@@ -538,7 +559,7 @@
     const frontLayer = svg.querySelector('.sk-prop-front');
 
     // 도구 이동 경로(점선) — 바가 어떤 궤적을 그리는지, 월볼이면 볼이 얼마나 높이 가는지
-    const pathKey = phases.some((ph) => ph.pose.bar) ? 'bar' : 'ball';
+    const pathKey = phases.some((ph) => ph.pose.bar) ? 'bar' : phases.some((ph) => ph.pose.kb) ? 'kb' : 'ball';
     const pathPts = phases.map((ph) => ph.pose[pathKey]).filter(Boolean);
     if (pathPts.length > 1) {
       const d = pathPts.map((b, i) => `${i ? 'L' : 'M'} ${b[0]} ${b[1]}`).join(' ');
