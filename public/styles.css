@@ -452,6 +452,8 @@ a.card:hover { text-decoration: none; border-color: var(--accent-dim); transform
 /* 도구 — 바벨 외 (덤벨 · 볼 · 링 · 철봉 · 박스 · 벤치 · 로잉) */
 .sk-db-plate { fill: rgba(255,107,61,.18); stroke: var(--primary); stroke-width: 2.6; }
 .sk-db-hub { fill: var(--primary); }
+.sk-kb-bell { fill: rgba(255,107,61,.18); stroke: var(--primary); stroke-width: 2.6; }
+.sk-kb-handle { fill: none; stroke: var(--primary); stroke-width: 2.6; stroke-linejoin: round; }
 .sk-ball { fill: rgba(255,193,61,.18); stroke: var(--secondary); stroke-width: 2.6; }
 .sk-ball-in { fill: none; stroke: rgba(255,193,61,.5); stroke-width: 1.4; }
 .sk-ring { fill: none; stroke: var(--secondary); stroke-width: 3; }

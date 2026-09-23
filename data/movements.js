@@ -2386,6 +2386,81 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'kettlebell-swing',
+    seoTitle: '케틀벨 스윙 하는 법 — 아메리칸 스윙 기준',
+    seoDesc:
+      '케틀벨 스윙은 고관절을 접었다 펴는 힘으로 케틀벨을 띄우는 동작입니다. 크로스핏 기준인 아메리칸 스윙의 4단계와 러시안 스윙 스케일을 정리했습니다.',
+    thumb: 2,
+    ko: '케틀벨 스윙',
+    en: 'Kettlebell Swing',
+    abbr: 'KBS',
+    category: '기타 기구',
+    level: '초급',
+    equipment: ['케틀벨'],
+    tagline: '고관절을 접었다 펴는 힘으로 케틀벨을 머리 위까지 띄우는 동작',
+    intro:
+      '팔로 드는 동작처럼 보이지만 실제로는 데드리프트에 가깝다. 케틀벨을 다리 사이로 보냈다가 ' +
+      '고관절을 한 번에 펴는 힘으로 띄우고, 팔은 케틀벨이 날아가는 방향만 잡는다. ' +
+      '크로스핏의 기본은 아메리칸 스윙(American, 화이트보드에 A 로 적는다)으로, 케틀벨 바닥이 천장을 향할 때까지 머리 위로 보내야 1렙이다. ' +
+      '눈높이까지만 보내는 러시안 스윙(Russian, R)은 가동 범위가 짧아 주로 스케일로 쓴다.',
+    phases: [
+      {
+        name: '하이크',
+        pose: 'kbsHike',
+        desc: '발은 어깨너비보다 조금 넓게. 케틀벨을 두 손으로 잡고 등을 편 채 고관절을 접어 다리 사이로 보낸다. 손목이 허벅지 안쪽 높이를 지날 만큼 깊게.',
+        cues: ['무릎이 아니라 엉덩이를 뒤로', '등은 끝까지 편 채', '케틀벨은 무릎 아래가 아니라 사타구니 쪽으로'],
+        emphasis: ['hamstrings', 'glutes', 'erectors'],
+      },
+      {
+        name: '힙 스냅',
+        pose: 'kbsFloat',
+        desc: '고관절과 무릎을 한 번에 펴서 케틀벨을 앞으로 띄운다. 이 순간 몸은 이미 곧게 서 있고, 케틀벨은 관성으로 눈높이를 지나간다.',
+        cues: ['엉덩이를 앞으로 튕기기', '팔은 줄처럼 끌려가기만', '둔근을 꽉 조이며 서기'],
+        emphasis: ['glutes', 'hamstrings', 'core'],
+      },
+      {
+        name: '오버헤드',
+        pose: 'kbsTop',
+        desc: '케틀벨 바닥이 천장을 향하고 팔꿈치가 다 펴질 때까지 보낸다. 귀 옆에서 팔이 펴지면 1렙이다.',
+        cues: ['케틀벨 바닥이 천장을 향하게', '팔꿈치 완전히 펴기', '허리를 젖혀 올리지 않기 — 갈비뼈 닫기'],
+        emphasis: ['delts', 'core', 'lats'],
+      },
+      {
+        name: '내려오기',
+        pose: 'kbsDrop',
+        desc: '케틀벨을 끌어내리지 말고 떨어지게 둔다. 몸은 곧게 선 채 기다리다가 팔이 허벅지에 닿는 순간 고관절을 접어 다음 하이크로 받는다.',
+        cues: ['몸을 편 채 기다리기', '팔이 허벅지에 닿으면 힌지', '먼저 숙이면 허리로 받게 된다'],
+        emphasis: ['hamstrings', 'erectors', 'forearms'],
+      },
+    ],
+    muscles: [
+      { key: 'glutes', level: 'primary' },
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'secondary' },
+      { key: 'lats', level: 'stabilizer' },
+      { key: 'quads', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '팔로 들어 올린다', fix: '어깨가 먼저 탄다. 팔 힘을 빼고 엉덩이를 튕기는 힘만으로 케틀벨이 얼마나 뜨는지 먼저 느껴 본다.' },
+      { problem: '스쿼트처럼 앉는다', fix: '무릎이 앞으로 나가면 힘이 위로만 간다. 무릎은 살짝만 굽히고 엉덩이를 뒤 벽에 대듯이 접는다.' },
+      { problem: '탑에서 허리를 젖힌다', fix: '케틀벨을 머리 위로 보내려고 몸을 뒤로 눕히는 것. 복부를 조이고 갈비뼈를 닫은 채 팔만 귀 옆으로 보낸다. 안 되면 러시안 스윙으로.' },
+      { problem: '탑에서 케틀벨이 앞으로 넘어간다', fix: '바닥이 천장을 향하지 않고 앞으로 기운 것. 노렙이다. 탑에서 팔꿈치를 펴고 케틀벨을 수직으로 세운다.' },
+    ],
+    scaling: [
+      '무게 낮추기',
+      '러시안 스윙 — 눈높이까지만 (어깨 가동성이 부족할 때)',
+      '케틀벨 데드리프트로 힙 힌지부터 익히기',
+      '반복 수를 나눠 세트로',
+    ],
+    related: ['deadlift', 'sumo-deadlift-high-pull', 'devil-press'],
+    terms: ['kbs', 'no-rep', 'lockout'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'dumbbell-deadlift',
     seoTitle: '덤벨 데드리프트 하는 법 — Dual 표기 뜻',
     seoDesc:
@@ -2985,6 +3060,89 @@ export const movements = [
     ],
     related: ['dumbbell-snatch', 'dumbbell-shoulder-to-overhead', 'push-up'],
     terms: ['dual-db', 'no-rep', 'lockout'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-box-step-over',
+    seoTitle: '덤벨 박스 스텝 오버 하는 법과 기준',
+    seoDesc:
+      '덤벨 박스 스텝 오버는 덤벨을 든 채 박스를 한 발씩 올라 반대편으로 넘어가는 동작입니다. 5단계 동작과 (x1) 무게·높이 표기, 스케일링을 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 박스 스텝 오버',
+    en: 'Dumbbell Box Step Over',
+    abbr: 'DBSO',
+    category: '덤벨',
+    level: '초급',
+    equipment: ['덤벨', '플라이오 박스'],
+    tagline: '덤벨을 든 채 박스를 한 발씩 올라 반대편으로 넘어가는 동작',
+    intro:
+      '박스 점프의 점프를 걸음으로 바꾸고 무게를 얹은 동작이다. 박스 위에 올라가 넘어가는 방법은 자유다 — ' +
+      '박스 위에서 두 발로 서도 되고, 한 발만 딛고 바로 넘어가도 된다. 대신 두 발이 한 번은 박스 위를 지나가야 하고, ' +
+      '반대편 바닥에 내려서야 1렙이다. 덤벨을 드는 방법(옆구리·어깨·가슴 앞)도 대개 자유라서, ' +
+      '다리가 지치기 전에 그립이 먼저 지치지 않도록 드는 위치를 고르는 게 요령이다. 점프가 없어 정강이를 찧을 일은 없지만, ' +
+      '올라가는 다리 하나가 체중과 덤벨을 다 들어 올리므로 한 발 스쿼트에 가깝게 힘이 든다.',
+    phases: [
+      {
+        name: '셋업',
+        pose: 'bsoStand',
+        desc: '박스 앞에 서서 덤벨을 한 손에 든다. 이 그림은 옆구리에 드는 수트케이스 방식이다.',
+        cues: ['덤벨은 몸에 붙여서', '어깨는 수평으로', '박스와 거리는 반 걸음'],
+        emphasis: ['forearms', 'core', 'traps'],
+      },
+      {
+        name: '한 발 올리기',
+        pose: 'bsoStep',
+        desc: '한 발 전체를 박스 위에 올리고 상체를 앞으로 실어 그 무릎 위로 체중을 옮긴다. 바닥 발로 차 올리지 말고 박스 위 다리로 민다.',
+        cues: ['발바닥 전체를 박스에', '무릎은 발끝 방향으로', '바닥 발로 튀어 오르지 않기'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '박스 위',
+        pose: 'bsoTop',
+        desc: '박스 위 다리를 펴서 올라선다. 두 발로 서든 한 발로 지나가든, 두 발이 박스 위를 지나가야 한다.',
+        cues: ['박스 위에서 몸을 곧게', '무게 중심은 박스 가운데', '급하면 여기서 균형을 잃는다'],
+        emphasis: ['glutes', 'quads', 'core'],
+      },
+      {
+        name: '넘어 내려가기',
+        pose: 'bsoDown',
+        desc: '반대편으로 한 발을 내리며 박스 위 다리를 굽혀 몸을 천천히 내린다. 뛰어내리지 않는다.',
+        cues: ['박스 위 다리로 브레이크', '발끝부터 조용히 착지', '덤벨이 흔들리지 않게'],
+        emphasis: ['quads', 'glutes', 'calves'],
+      },
+      {
+        name: '반대편 착지',
+        pose: 'bsoLand',
+        desc: '두 발이 반대편 바닥에 닿으면 1렙이다. 몸을 돌려 같은 방법으로 다시 넘어간다. 올라가는 다리는 매번 바꿔 주는 편이 오래 간다.',
+        cues: ['두 발 모두 바닥에', '돌아서서 바로 다음 렙', '올라가는 다리 번갈아'],
+        emphasis: ['core', 'forearms'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'secondary' },
+      { key: 'calves', level: 'stabilizer' },
+      { key: 'traps', level: 'stabilizer' },
+      { key: 'erectors', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '바닥 발로 차 올라간다', fix: '박스 위 다리가 할 일을 반동이 대신하는 것. 빨라 보이지만 박스 위에서 균형을 잃기 쉽다. 박스 위 다리로 민다.' },
+      { problem: '반대편으로 뛰어내린다', fix: '덤벨을 든 채 뛰어내리면 발목·무릎 충격이 크다. 박스 위 다리를 굽혀 천천히 내려간다.' },
+      { problem: '덤벨을 한쪽에만 든다', fix: '한쪽 옆구리에만 들면 몸통이 계속 한쪽으로 기운다. 렙마다 손을 바꾸거나 어깨·가슴 앞에 든다.' },
+      { problem: '반대편 바닥에 한 발만 닿고 돌아선다', fix: '노렙이 될 수 있다. 두 발이 모두 반대편 바닥에 닿은 뒤 돌아선다.' },
+    ],
+    scaling: [
+      '덤벨 무게 낮추기 또는 맨몸',
+      '낮은 박스로 (24" → 20" → 12")',
+      '손으로 벽이나 박스 모서리를 짚고 올라가기',
+      '반복 수 줄이기',
+    ],
+    related: ['box-jump', 'dumbbell-farmers-carry', 'pistol-squat'],
+    terms: ['box-height', 'single-db', 'no-rep'],
   },
 
   /* ==================================================================== */
