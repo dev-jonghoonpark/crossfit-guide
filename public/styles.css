@@ -788,3 +788,6 @@ a.chipish:hover { color: var(--accent); border-color: var(--accent-dim); text-de
   * { animation: none !important; transition: none !important; }
   html { scroll-behavior: auto; }
 }
+
+/* 문서 하단 발행 · 수정일 */
+.page-dates { margin-top: 32px; font-size: 13px; }

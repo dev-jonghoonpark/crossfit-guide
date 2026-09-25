@@ -8,6 +8,7 @@
 
 import { readFile, writeFile, mkdir, rm, readdir, copyFile, stat } from 'node:fs/promises';
 import { dirname, join, relative } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 import { movements } from './data/movements.js';
@@ -71,6 +72,73 @@ if (!hasOgImage) {
   console.warn(`⚠ public${site.ogImage} 가 없어 og:image 를 넣지 않습니다.`);
 }
 
+/* ------------------------------------------------------- 페이지별 날짜 */
+// sitemap lastmod · JSON-LD datePublished/dateModified 를 페이지마다 git 이력에서 뽑는다.
+//   발행일 = 그 항목의 id 가 처음 들어온 커밋
+//   수정일 = 그 항목 블록(data/*.js 의 `  {` ~ `  },`) 줄들 중 가장 최근 커밋 (git blame)
+// 이력이 없으면(얕은 클론 · git 없음) site.datePublished / dateModified 로 대신한다.
+
+const git = (...args) => {
+  try {
+    return execFileSync('git', args, { cwd: ROOT, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+  } catch {
+    return '';
+  }
+};
+const hasHistory = git('rev-parse', '--is-shallow-repository') === 'false';
+if (!hasHistory) {
+  console.warn('⚠ git 전체 이력이 없어 모든 페이지 날짜를 data/site.js 값으로 씁니다.');
+}
+
+/** epoch 초 → 한국 날짜 YYYY-MM-DD */
+const kstDate = (sec) => new Date((Number(sec) + 9 * 3600) * 1000).toISOString().slice(0, 10);
+const maxDate = (...ds) => ds.filter(Boolean).sort().at(-1);
+
+/** 파일 전체의 마지막 커밋 날짜 */
+function fileModified(file) {
+  if (!hasHistory) return site.dateModified;
+  return kstDate(git('log', '-1', '--format=%ct', '--', file)) || site.dateModified;
+}
+
+/** data 파일 안 `    id: '<id>',` 로 시작하는 최상위 배열 항목의 발행일 · 수정일 */
+async function itemDates(file, id) {
+  const fallback = { published: site.datePublished, modified: site.dateModified };
+  if (!hasHistory) return fallback;
+
+  const lines = (await readFile(join(ROOT, file), 'utf8')).split('\n');
+  const at = lines.indexOf(`    id: '${id}',`);
+  if (at < 0) return fallback;
+  let start = at;
+  while (start > 0 && lines[start] !== '  {') start--;
+  let end = at;
+  while (end < lines.length - 1 && !/^  \},?$/.test(lines[end])) end++;
+
+  const times = [...git('blame', '--line-porcelain', '-L', `${start + 1},${end + 1}`, '--', file)
+    .matchAll(/^committer-time (\d+)$/gm)].map((m) => m[1]);
+  const first = git('log', '--reverse', '--format=%ct', '-S', `id: '${id}'`, '--', file).split('\n')[0];
+
+  // 커밋 안 된 줄은 blame 이 "지금" 으로 잡으므로 로컬 빌드에선 오늘 날짜가 된다
+  const modified = times.length ? kstDate(Math.max(...times)) : fallback.modified;
+  const published = first ? kstDate(first) : modified;
+  return { published, modified: maxDate(published, modified) };
+}
+
+const pageDates = {};
+for (const w of wods) pageDates[`wods/${w.id}.html`] = await itemDates('data/wods.js', w.id);
+for (const m of movements) pageDates[`movements/${m.id}.html`] = await itemDates('data/movements.js', m.id);
+{
+  const latest = (prefix) => maxDate(...Object.entries(pageDates).filter(([k]) => k.startsWith(prefix)).map(([, d]) => d.modified));
+  const doc = (modified) => ({ published: site.datePublished, modified: maxDate(site.datePublished, modified) });
+  pageDates['wods.html'] = doc(latest('wods/'));
+  pageDates['movements.html'] = doc(latest('movements/'));
+  pageDates['basics.html'] = doc(fileModified('data/basics.js'));
+  pageDates['terms.html'] = doc(fileModified('data/terms.js'));
+  pageDates['wod.html'] = doc(maxDate(fileModified('data/wod-grammar.js'), pageDates[`wods/${guideWod.id}.html`].modified));
+  pageDates['index.html'] = doc(maxDate(...Object.values(pageDates).map((d) => d.modified)));
+}
+/** 페이지 경로 → { published, modified } (목록에 없으면 사이트 기본값) */
+const datesOf = (path) => pageDates[path] || { published: site.datePublished, modified: site.dateModified };
+
 const NAV = [
   { href: 'index.html', label: '홈' },
   { href: 'basics.html', label: '처음 오셨나요' },
@@ -131,8 +199,8 @@ function articleLd({ path, headline, description, section }) {
     headline,
     description,
     inLanguage: site.lang,
-    datePublished: site.datePublished,
-    dateModified: site.dateModified,
+    datePublished: datesOf(path).published,
+    dateModified: datesOf(path).modified,
     author: AUTHOR_NODE,
     publisher: { '@id': site.url + '/#organization' },
     isPartOf: { '@id': site.url + '/#website' },
@@ -140,6 +208,14 @@ function articleLd({ path, headline, description, section }) {
     ...(section ? { articleSection: section } : {}),
     ...(hasOgImage ? { image: [abs(site.ogImage)] } : {}),
   };
+}
+
+/** 본문 하단 발행/수정일 — JSON-LD 날짜와 화면 표시를 일치시킨다 */
+function pageDateLine(path) {
+  const { published, modified } = datesOf(path);
+  return `<p class="muted page-dates">발행 <time datetime="${published}">${published}</time>${
+    modified !== published ? ` · 최종 수정 <time datetime="${modified}">${modified}</time>` : ''
+  }</p>`;
 }
 
 /* ------------------------------------------------------------ 레이아웃 */
@@ -155,6 +231,7 @@ function layout({
   bodyEnd = '',
   jsonld = [],
   breadcrumbs = null,   // [{name, path}] — 홈은 자동으로 앞에 붙음
+  noindex = false,      // 404 처럼 검색 결과에 나오면 안 되는 페이지
 }) {
   const pageTitle = fullTitle || `${title} | ${site.name}`;
   const canonical = canonicalFor(path);
@@ -182,8 +259,10 @@ function layout({
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(pageTitle)}</title>
 <meta name="description" content="${esc(desc)}">
-<link rel="canonical" href="${esc(canonical)}">
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+${noindex
+  ? '<meta name="robots" content="noindex, follow">'
+  : `<link rel="canonical" href="${esc(canonical)}">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">`}
 <meta name="theme-color" content="${site.themeColor}">
 <meta property="og:type" content="${path === 'index.html' ? 'website' : 'article'}">
 <meta property="og:site_name" content="${esc(site.name)}">
@@ -479,7 +558,7 @@ function pageHome() {
         description: site.description,
         inLanguage: site.lang,
         isPartOf: { '@id': site.url + '/#website' },
-        dateModified: site.dateModified,
+        dateModified: datesOf('index.html').modified,
       },
     ],
   });
@@ -966,7 +1045,7 @@ function pageWods() {
         description: '실제 박스 화이트보드 와드를 한 줄씩 해석한 모음',
         inLanguage: site.lang,
         isPartOf: { '@id': site.url + '/#website' },
-        dateModified: site.dateModified,
+        dateModified: datesOf('wods.html').modified,
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: wods.length,
@@ -1058,6 +1137,8 @@ function pageWodDetail(w, prev, next) {
       ${ids.map((id) => movementCard(mvById[id], base)).join('\n      ')}
     </div>
   </section>
+
+  ${pageDateLine(path)}
 
   <nav class="pager" aria-label="다른 와드">
     ${prev ? `<a class="card" href="${esc(prev.id)}.html"><span class="kicker">← 이전 와드</span><h3>${esc(prev.title)}</h3></a>` : '<span></span>'}
@@ -1229,7 +1310,7 @@ function pageMovements() {
         description: '크로스핏 주요 동작의 단계별 설명과 사용 근육 모음',
         inLanguage: site.lang,
         isPartOf: { '@id': site.url + '/#website' },
-        dateModified: site.dateModified,
+        dateModified: datesOf('movements.html').modified,
         mainEntity: {
           '@type': 'ItemList',
           numberOfItems: movements.length,
@@ -1403,6 +1484,8 @@ function pageMovement(mv) {
   </section>`
       : ''
   }
+
+  ${pageDateLine(path)}
 </article>
 </div>
 
@@ -1450,15 +1533,20 @@ function page404() {
     desc: '요청하신 페이지가 존재하지 않습니다.',
     active: '',
     path: '404.html',
+    // GitHub Pages 는 없는 주소(예: /wods/없는-와드.html)에서도 이 파일을 그대로 내려준다.
+    // 상대 경로면 하위 폴더에서 CSS · 링크가 깨지므로 사이트 절대 경로를 쓴다.
+    base: site.url + '/',
+    noindex: true,
     body: `
 <div class="wrap" style="text-align:center; padding:60px 0">
   <h1 style="font-size:clamp(48px,10vw,96px); opacity:.15; margin-bottom:0">404</h1>
   <p class="lead" style="margin-bottom:24px">요청하신 페이지를 찾을 수 없습니다.</p>
   <p>주소를 다시 확인하시거나, 아래 링크에서 원하는 내용을 찾아보세요.</p>
   <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap; margin-top:24px">
-    <a class="btn primary" href="index.html">홈으로 돌아가기</a>
-    <a class="btn" href="movements.html">동작 라이브러리</a>
-    <a class="btn" href="terms.html">용어 사전</a>
+    <a class="btn primary" href="${site.url}/">홈으로 돌아가기</a>
+    <a class="btn" href="${site.url}/movements.html">동작 라이브러리</a>
+    <a class="btn" href="${site.url}/wods.html">와드 아카이브</a>
+    <a class="btn" href="${site.url}/terms.html">용어 사전</a>
   </div>
 </div>`,
     jsonld: [],
@@ -1619,7 +1707,7 @@ ${pages
   .map(
     (p) => `  <url>
     <loc>${canonicalFor(p)}</loc>
-    <lastmod>${site.dateModified}</lastmod>
+    <lastmod>${datesOf(p).modified}</lastmod>
   </url>`
   )
   .join('\n')}
@@ -1668,7 +1756,7 @@ ${movements
 
 ## 편집 방침
 ${site.editorialNote}
-발행: ${site.name} / 최종 수정: ${site.dateModified}
+발행: ${site.name} / 최종 수정: ${datesOf('index.html').modified}
 `;
 }
 
@@ -1742,6 +1830,19 @@ for (const mv of movements) {
   // 가이드 와드에서 총량 계산 예시를 뽑으므로 메트콘 파트가 있어야 한다
   const gm = guideWod.parts.find((p) => p.kind === 'metcon') || guideWod.parts.at(-1);
   if (!gm?.lines?.length) throw new Error(`[grammar] guide 와드(${guideWod.id})에서 총량 예시를 뽑을 수 없습니다`);
+}
+
+// 검색 결과에서 잘리는 길이 — 실패시키진 않고 경고만 한다.
+// (제목은 " | 크로스핏 가이드" 접미사 제외 기준)
+{
+  const TITLE_MAX = 35;
+  const DESC_MAX = 110;
+  for (const [kind, list] of [['movement', movements], ['wod', wods]]) {
+    for (const x of list) {
+      if (x.seoTitle.length > TITLE_MAX) console.warn(`⚠ [${kind}:${x.id}] seoTitle ${x.seoTitle.length}자 > ${TITLE_MAX}자`);
+      if (x.seoDesc.length > DESC_MAX) console.warn(`⚠ [${kind}:${x.id}] seoDesc ${x.seoDesc.length}자 > ${DESC_MAX}자`);
+    }
+  }
 }
 
 if (!/^https?:\/\/[^/]+/.test(site.url)) {
