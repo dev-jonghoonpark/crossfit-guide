@@ -34,10 +34,9 @@ export const wods = [
     id: 'emom-21-kettlebell-swing-box-step-over-push-up',
     box: 'RNL CrossFit',
     title: 'EMOM 21 — 케틀벨 스윙 · 덤벨 박스 스텝 오버 · 푸시업',
-    seoTitle: '크로스핏 EMOM 21 와드 해석 — 케틀벨 스윙·박스 스텝 오버·푸시업',
+    seoTitle: '크로스핏 EMOM 21 와드 — 케틀벨 스윙·스텝 오버·푸시업',
     seoDesc:
-      'EMOM 21 — 15 Kettlebell Swings (A,24/16kg) · 12 Dumbbell(x1) Box Step Overs (22.5/15, 24"/20") · 30sec Max Push-Up. ' +
-      '3스테이션 7사이클 구성과 기록 방법, 1Scaled·2Scaled 스케일링을 화이트보드 표기 그대로 해석했습니다.',
+      'EMOM 21 — 케틀벨 스윙 15개, 덤벨 박스 스텝 오버 12개, 30초 맥스 푸시업. 3스테이션 7사이클 구성과 기록 방법, 스케일링을 해석했습니다.',
     focus: '21분 EMOM 3스테이션 · 푸시업이 점수',
     tags: ['EMOM', '롱 메트콘', '덤벨', '체조'],
     summary:
@@ -144,10 +143,9 @@ export const wods = [
     id: 'overhead-squat-josh-hero-wod',
     box: 'RNL CrossFit',
     title: '오버헤드 스쿼트 + JOSH — 풀업 · 오버헤드 스쿼트',
-    seoTitle: '크로스핏 와드 해석 — 오버헤드 스쿼트 Every 2:00 + 히어로 와드 JOSH',
+    seoTitle: '크로스핏 히어로 와드 JOSH — 오버헤드 스쿼트 해석',
     seoDesc:
-      'Every 2:00 x 5 · 7-5-5-3-1 Overhead Squat 뒤에 히어로 와드 JOSH — 풀업 21-15-9 · 오버헤드 스쿼트(95/65) 42-30-18, 12분 캡. ' +
-      '두 파트의 페이스 배분과 a·b 스케일링을 화이트보드 표기 그대로 해석했습니다.',
+      '오버헤드 스쿼트 Every 2:00 x 5 뒤에 히어로 와드 JOSH(풀업 21-15-9 · OHS 42-30-18, 12분 캡). 페이스 배분과 스케일링을 해석했습니다.',
     focus: 'OHS 스트렝스 → 히어로 와드 JOSH',
     tags: ['스트렝스', 'For Time', '히어로 와드', '역도', '체조'],
     summary:
@@ -321,10 +319,9 @@ export const wods = [
     id: 'shoulder-press-for-time-push-press-wallwalk-du',
     box: 'RNL CrossFit',
     title: '숄더 프레스 + For Time — 푸시 프레스 · 월 워크 · 더블 언더',
-    seoTitle: '크로스핏 와드 해석 — 숄더 프레스 Every 2:00 + 푸시 프레스·월 워크·더블 언더 For Time',
+    seoTitle: '크로스핏 와드 — 숄더 프레스 + 월 워크 For Time',
     seoDesc:
-      'Every 2:00 x 4 · 5-4-3-3-3 Shoulder Press 뒤에 For Time — 4Rounds 12 Push Press(115/75lb) · 35 DU, 이어서 4Rounds 4 Wall Walk · 35 DU, 15분 캡. ' +
-      '두 블록의 페이스 배분과 a·b 스케일링을 화이트보드 표기 그대로 해석했습니다.',
+      '숄더 프레스 Every 2:00 x 4 뒤에 푸시 프레스·더블 언더, 월 워크·더블 언더 4라운드씩 For Time(15분 캡). 페이스 배분과 스케일링 해석.',
     focus: '프레스 스트렝스 → 15분 캡 For Time',
     tags: ['스트렝스', 'For Time', '체조', '상체'],
     summary:
@@ -483,10 +480,9 @@ export const wods = [
     id: 'pendlay-row-amrap12-devil-press-vup',
     box: 'RNL CrossFit',
     title: '펜들레이 로우 + AMRAP 12 — 데빌 프레스 · 스트릭트 풀업 · 브이업 사다리',
-    seoTitle: '크로스핏 와드 해석 — 펜들레이 로우 Every 2:30 + 데빌 프레스·스트릭트 풀업 사다리 AMRAP 12',
+    seoTitle: '크로스핏 와드 — 펜들레이 로우 + 데빌 프레스 AMRAP 12',
     seoDesc:
-      'Every 2:30 x 4 · 12-12-12-Max Pendlay Row 뒤에 AMRAP 12 — Devil Press(Dual 15/10kg) · Strict Pull-Ups 1-2-3-4-5…, V-Up 2-4-6-8-10…. ' +
-      '사다리가 어디서 무너지는지와 a·b 스케일링을 화이트보드 표기 그대로 한 줄씩 해석했습니다.',
+      '펜들레이 로우 Every 2:30 x 4 뒤에 데빌 프레스·스트릭트 풀업·브이업 사다리 AMRAP 12. 사다리가 무너지는 지점과 스케일링을 해석했습니다.',
     focus: '로우 스트렝스 → 12분 사다리 AMRAP',
     tags: ['스트렝스', 'AMRAP', '덤벨', '체조', '상체'],
     summary:
@@ -619,10 +615,9 @@ export const wods = [
     id: 'emom-24-row-wallwalk-bike-push-press',
     box: 'RNL CrossFit',
     title: 'EMOM 24 — 로우 · 월 워크 · 바이크 · 덤벨 푸시 프레스',
-    seoTitle: '크로스핏 EMOM 24 와드 해석 — 로우·월 워크·바이크·덤벨 푸시 프레스',
+    seoTitle: '크로스핏 EMOM 24 — 로우·월 워크·바이크·푸시 프레스',
     seoDesc:
-      'EMOM 24 — 15/12 Cal Row · 5 Wall Walk · 15/12 Cal Bike erg · Max Dumbbell(x2) Push Press (22.5/15kg). ' +
-      '4스테이션 6사이클 구성과 기록 방법을 화이트보드 표기 그대로 한 줄씩 해석했습니다.',
+      'EMOM 24 — 로우 15/12 Cal, 월 워크 5개, 바이크 15/12 Cal, 맥스 덤벨 푸시 프레스. 4스테이션 6사이클 구성과 기록 방법을 해석했습니다.',
     focus: '24분 EMOM 4스테이션 · 마지막 칸이 점수',
     tags: ['EMOM', '롱 메트콘', '덤벨', '체조'],
     summary:
@@ -739,10 +734,9 @@ export const wods = [
     id: 'interval-row-every70-farmers-hpc',
     box: 'RNL CrossFit',
     title: '로우 인터벌 + Every 70초 x 12세트 (파머스 캐리 · HPC)',
-    seoTitle: '크로스핏 와드 — 로우 인터벌과 Every 70초 12세트 4스테이션 해석',
+    seoTitle: '크로스핏 와드 — 로우 인터벌 + Every 70초 x 12세트',
     seoDesc:
-      '30초 On / 60초 Off 로우 인터벌 5세트 뒤에 Every 70seconds x 12sets — 로우 · 덤벨 파머스 캐리 + 파워 클린 · Max Unbroken HPC · 휴식. ' +
-      '화이트보드 표기를 한 줄씩 해석했습니다.',
+      '30초 On / 60초 Off 로우 인터벌 5세트 뒤에 70초 간격 12세트 — 로우·파머스 캐리·파워 클린·언브로큰 HPC. 화이트보드를 한 줄씩 해석했습니다.',
     focus: '로우 스프린트 → 70초 간격 4스테이션 14분',
     tags: ['인터벌', 'EMOM', '덤벨'],
     summary:
@@ -903,10 +897,9 @@ export const wods = [
     id: 'team-wallball-db-front-squat-bmu',
     box: 'RNL CrossFit',
     title: '[2인] 월볼 · 덤벨 프론트 스쿼트 · 바 뮤스클업 AMRAP 25',
-    seoTitle: '크로스핏 팀 와드 — 월볼 · 덤벨 프론트 스쿼트 · 바 뮤스클업 AMRAP 25분 해석',
+    seoTitle: '크로스핏 팀 와드 — 월볼·프론트 스쿼트·BMU',
     seoDesc:
-      '[Team of 2] AMRAP 25, 9 Wallballs (20/14lb) · 6 Dumbbell(x2) Front Squat (22.5/15) · 3 Bar Muscle-Ups. ' +
-      '1BMU=2C2B=3PU 렙 환산과 Rxd+ · a/b/c 스케일링을 한 줄씩 해석했습니다.',
+      '2인 1조 AMRAP 25 — 월볼 9개, 덤벨 프론트 스쿼트 6개, 바 뮤스클업 3개. 1BMU=2C2B=3PU 렙 환산과 Rxd+ · a/b/c 스케일링을 해석했습니다.',
     focus: '2인 1조 · 25분 AMRAP',
     tags: ['팀 와드', 'AMRAP', '체조'],
     summary:
@@ -1036,7 +1029,7 @@ export const wods = [
     id: 'bench-press-tabata',
     box: 'RNL CrossFit',
     title: '벤치 프레스 5-5-3-3-2 + 4종 타바타',
-    seoTitle: '크로스핏 와드 — 벤치 프레스 5-5-3-3-2와 타바타 4종 해석',
+    seoTitle: '크로스핏 와드 — 벤치 프레스 5-5-3-3-2 + 타바타 4종',
     seoDesc:
       'Every 2:00 x 5 / 5-5-3-3-2 벤치 프레스와 링 딥·바이크·SDHP·디피싯 푸시업 타바타. 화이트보드 표기를 한 줄씩 해석했습니다.',
     focus: '상체 근력 → 4분 인터벌 4세트',
@@ -1154,9 +1147,9 @@ export const wods = [
     id: 'team-deadlift-hspu-wallball',
     box: 'RNL CrossFit',
     title: '[2인] 데드리프트 · HSPU · 월볼 AMRAP 23',
-    seoTitle: '크로스핏 팀 와드 — 데드리프트 HSPU 월볼 AMRAP 23분 해석',
+    seoTitle: '크로스핏 팀 와드 — 데드리프트·HSPU·월볼',
     seoDesc:
-      '[Team of 2] AMRAP 23, 3 Deadlifts (225/155) · 6 Handstand Push-ups · 9 Wall Ball Shots. 1:1 파트너 휴식 방식과 a/b/c 스케일링을 해석했습니다.',
+      '2인 1조 AMRAP 23 — 데드리프트 3개(225/155), 물구나무 푸시업 6개, 월볼 9개. 1:1 파트너 휴식 방식과 a/b/c 스케일링을 해석했습니다.',
     focus: '2인 1조 · 23분 AMRAP',
     tags: ['팀 와드', 'AMRAP', '체조'],
     summary:
@@ -1354,7 +1347,7 @@ export const wods = [
     id: 'snatch-complex-hopper-2026',
     box: 'RNL CrossFit',
     title: '스내치 콤플렉스 + "The Hopper 2026"',
-    seoTitle: '크로스핏 게임즈 The Hopper 2026 와드 해석 — 스내치 3종',
+    seoTitle: '크로스핏 게임즈 The Hopper 2026 와드 해석',
     seoDesc:
       'Every 01:00 x 8 스내치 콤플렉스와 2026 CrossFit Games Event 12 "The Hopper 2026" 3RFT. Unbroken 표기와 타임캡 해석을 정리했습니다.',
     focus: '스내치 기술 + 게임즈 종목',
@@ -1495,7 +1488,7 @@ export const wods = [
     id: 'team-dumbbell-cindy',
     box: 'RNL CrossFit',
     title: '[2인] 덤벨 3종 + 신디 변형 AMRAP 20',
-    seoTitle: '크로스핏 팀 와드 — 덤벨 3종과 신디 변형 AMRAP 20분 해석',
+    seoTitle: '크로스핏 팀 와드 — 덤벨 3종 + 신디 변형',
     seoDesc:
       '[Team of 2] AMRAP 20. 덤벨 데드리프트·행 파워 클린·숄더 투 오버헤드 1라운드 + 풀업·푸시업·에어 스쿼트 2라운드. Dual DB 표기와 렙 분배를 해석했습니다.',
     focus: '2인 1조 · 덤벨 + 맨몸',
@@ -1615,7 +1608,7 @@ export const wods = [
     title: 'EMOM 32 — 머신 · 피스톨 · 머신 · 월볼',
     seoTitle: '크로스핏 EMOM 32 와드 해석 — 머신·피스톨 스쿼트·월볼',
     seoDesc:
-      'EMOM 32, 12/9 Cal Machine · 16 Pistol Squats alt. · 12/9 Cal Machine · 12-15 Wallballs. 4동작 8사이클 구성과 페이스 배분을 정리했습니다.',
+      'EMOM 32 — 머신 12/9 Cal, 피스톨 스쿼트 16개, 머신 12/9 Cal, 월볼 12-15개. 4동작 8사이클 구성과 페이스 배분을 정리했습니다.',
     focus: '32분 롱 EMOM',
     tags: ['EMOM', '롱 메트콘', '하체'],
     summary:

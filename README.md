@@ -156,10 +156,20 @@ npm run build
 | canonical · og:* · twitter:* · robots meta | 각 페이지 `<head>` |
 | JSON-LD `@graph` | Organization + WebSite + 페이지별 노드 |
 | BreadcrumbList | 홈 제외 전 페이지 (화면 표시 + 스키마) |
-| `sitemap.xml` | 절대 URL · lastmod · priority |
+| `sitemap.xml` | 절대 URL · 페이지별 lastmod |
 | `robots.txt` | GPTBot·ClaudeBot·PerplexityBot 등 AI 크롤러 명시 허용 |
 | `llms.txt` | AI 검색용 문서 지도 + 핵심 사실 목록 |
 | `.nojekyll` | GitHub Pages 용 |
+
+**페이지별 날짜** — 와드·동작 페이지의 발행일/수정일(JSON-LD · sitemap lastmod · 본문 하단 표시)은
+git 이력에서 뽑는다. 발행일은 그 항목 `id` 가 처음 들어온 커밋, 수정일은 `data/*.js` 안 그 항목
+블록(`  {` ~ `  },`)을 `git blame` 했을 때 가장 최근 커밋이다. 목록·홈은 하위 페이지 중 가장 최근 날짜를 따른다.
+얕은 클론이면 `data/site.js` 의 날짜로 대신하므로 CI 는 `fetch-depth: 0` 으로 체크아웃한다.
+
+**길이 경고** — `seoTitle` 35자(접미사 제외) · `seoDesc` 110자를 넘으면 빌드가 경고를 띄운다.
+검색 결과에서 잘리는 길이라 실패시키지는 않는다.
+
+404 페이지는 `noindex` 이고, 어느 경로에서 내려와도 깨지지 않도록 사이트 절대 경로로 링크한다.
 
 페이지별 스키마 타입:
 
