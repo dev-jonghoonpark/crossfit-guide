@@ -280,6 +280,7 @@ ${hasOgImage ? `<meta property="og:image" content="${esc(abs(site.ogImage))}">
 ${hasOgImage ? `<meta name="twitter:image" content="${esc(abs(site.ogImage))}">` : ''}
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23d7ff3e'/%3E%3Ctext x='16' y='23' font-size='19' font-weight='900' text-anchor='middle' font-family='sans-serif' fill='%2310140a'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="${base}styles.css">
+<link rel="alternate" type="application/rss+xml" title="${esc(site.name)}" href="${esc(abs('rss.xml'))}">
 ${ld({ '@context': 'https://schema.org', '@graph': graph })}
 ${site.gaId ? `<link rel="preconnect" href="https://www.googletagmanager.com">
 <script async src="https://www.googletagmanager.com/gtag/js?id=${site.gaId}"></script>
@@ -1697,6 +1698,7 @@ Allow: /
 ${aiCrawlers.map((c) => `User-agent: ${c}\nAllow: /`).join('\n\n')}
 
 Sitemap: ${abs('sitemap.xml')}
+Sitemap: ${abs('rss.xml')}
 `;
 }
 
@@ -1712,6 +1714,53 @@ ${pages
   )
   .join('\n')}
 </urlset>
+`;
+}
+
+/** YYYY-MM-DD → RFC 822 (KST 자정) */
+const rfc822 = (d) => {
+  const [y, m, day] = d.split('-').map(Number);
+  const dow = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'][new Date(Date.UTC(y, m - 1, day)).getUTCDay()];
+  const mon = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][m - 1];
+  return `${dow}, ${String(day).padStart(2, '0')} ${mon} ${y} 00:00:00 +0900`;
+};
+
+/**
+ * RSS 2.0 — 서치 콘솔 · 서치어드바이저에 사이트맵 대신 제출할 수 있다.
+ * 구글은 RSS 의 <link> 를 URL, <pubDate> 를 수정일로 읽으므로 pubDate 에 수정일을 넣는다.
+ * 제목 · 설명은 이미 만든 HTML 의 <title> · meta description 을 그대로 쓴다 (둘 다 esc 된 상태).
+ */
+function rssXml(pages) {
+  const items = pages
+    .map(([p, html]) => ({
+      p,
+      title: html.match(/<title>([^<]*)<\/title>/)[1],
+      desc: html.match(/<meta name="description" content="([^"]*)">/)[1],
+      modified: datesOf(p).modified,
+    }))
+    .sort((a, b) => b.modified.localeCompare(a.modified));
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>${esc(site.name)}</title>
+  <link>${site.url}/</link>
+  <description>${esc(site.description)}</description>
+  <language>${site.lang}</language>
+  <lastBuildDate>${rfc822(datesOf('index.html').modified)}</lastBuildDate>
+  <atom:link href="${abs('rss.xml')}" rel="self" type="application/rss+xml"/>
+${items
+  .map(
+    (it) => `  <item>
+    <title>${it.title}</title>
+    <link>${canonicalFor(it.p)}</link>
+    <guid isPermaLink="true">${canonicalFor(it.p)}</guid>
+    <description>${it.desc}</description>
+    <pubDate>${rfc822(it.modified)}</pubDate>
+  </item>`
+  )
+  .join('\n')}
+</channel>
+</rss>
 `;
 }
 
@@ -1887,11 +1936,12 @@ await copyDir(join(ROOT, 'public'), DIST);
 
 const urls = pages.map(([f]) => f).filter((f) => f !== '404.html');
 await writeFile(join(DIST, 'sitemap.xml'), sitemapXml(urls), 'utf8');
+await writeFile(join(DIST, 'rss.xml'), rssXml(pages.filter(([f]) => f !== '404.html')), 'utf8');
 await writeFile(join(DIST, 'robots.txt'), robotsTxt(urls), 'utf8');
 await writeFile(join(DIST, 'llms.txt'), llmsTxt(), 'utf8');
 await writeFile(join(DIST, '.nojekyll'), '', 'utf8'); // GitHub Pages: Jekyll 처리 끄기
 
-console.log(`✔ ${pages.length}개 페이지 + sitemap.xml / robots.txt / llms.txt 생성 → dist/`);
+console.log(`✔ ${pages.length}개 페이지 + sitemap.xml / rss.xml / robots.txt / llms.txt 생성 → dist/`);
 console.log(`  기준 URL: ${site.url}`);
 if (site.url.includes('jonghoonpark.github.io')) {
   console.log('  ↑ 기본값입니다. 실제 주소가 다르면 data/site.js 의 DEFAULT_URL 을 고치거나');
