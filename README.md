@@ -157,6 +157,7 @@ npm run build
 | JSON-LD `@graph` | Organization + WebSite + 페이지별 노드 |
 | BreadcrumbList | 홈 제외 전 페이지 (화면 표시 + 스키마) |
 | `sitemap.xml` | 절대 URL · 페이지별 lastmod |
+| `rss.xml` | RSS 2.0 — 전 페이지, pubDate = 수정일. 서치 콘솔 · 네이버 서치어드바이저에 사이트맵 대신 제출 가능 |
 | `robots.txt` | GPTBot·ClaudeBot·PerplexityBot 등 AI 크롤러 명시 허용 |
 | `llms.txt` | AI 검색용 문서 지도 + 핵심 사실 목록 |
 | `.nojekyll` | GitHub Pages 용 |
