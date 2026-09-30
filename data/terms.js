@@ -124,6 +124,16 @@ export const termGroups = [
         example: '[Team of 2] AMRAP 23 · *1:1 Rest With partner',
       },
       {
+        id: 'synchro',
+        term: 'Synchro · Athlete 1/2/3',
+        full: 'Synchronized',
+        ko: '싱크로 · 선수별 분담',
+        desc:
+          '팀 와드에서 "Synchro" 가 붙은 동작은 팀원이 같은 렙을 동시에 해야 1렙으로 센다. 한 명이 늦으면 나머지는 기다려야 한다. ' +
+          '"Athlete 1: / Athlete2:" 처럼 선수 번호가 붙은 줄은 그 동작을 그 번호의 선수만 맡는다는 뜻이다.',
+        example: '20 Lateral Triangle Pogo Burpee Synchro.',
+      },
+      {
         id: 'chipper',
         term: 'Chipper',
         full: 'Chipper',
@@ -415,6 +425,9 @@ export const termGroups = [
       { id: 'damper', term: 'Damper', full: 'Damper Setting', ko: '댐퍼', desc: '에르그 옆 레버(1~10). 무게가 아니라 들어오는 공기량이다. 로잉은 3~5, 바이크는 와드 지시대로.', movement: 'row' },
       { id: 'single-db', term: 'Dumbbell(x1)', full: 'Single Dumbbell', ko: '덤벨 하나', desc: '덤벨 한 개만 든다는 뜻. (x2) 와 반대다. 드는 위치(옆구리·어깨·가슴 앞)는 따로 적혀 있지 않으면 자유다.', movement: 'dumbbell-box-step-over' },
       { id: 'bso', term: 'BSO', full: 'Box Step Over', ko: '박스 스텝 오버', desc: '박스를 한 발씩 올라 반대편으로 넘어가는 동작. 점프 대신 걸음이라 무게를 들고 하는 경우가 많다.', movement: 'dumbbell-box-step-over' },
+      { id: 'bjo', term: 'BJO · (Step down)', full: 'Box Jump Over', ko: '박스 점프 오버', desc: '두 발로 뛰어 박스를 넘어 반대편으로 내려가는 박스 점프 변형. 보통 박스 위에서 완전히 설 필요는 없고, (Step down) 이 붙으면 뛰어내리지 말고 걸어 내려오라는 뜻이다.', movement: 'box-jump' },
+      { id: 'burpee', term: 'Burpee', full: 'Burpee', ko: '버피', desc: '엎드려 가슴·허벅지를 바닥에 댔다가 일어나 점프하는 맨몸 동작. 앞에 붙는 말(Lateral · Over · Pogo …)이 점프 방식을 바꾼다.', movement: 'burpee' },
+      { id: 'up-down', term: 'Up Down', full: 'Up Down', ko: '업다운', desc: '가슴을 바닥에 대는 부분을 뺀 버피. 플랭크까지만 갔다가 일어난다. 버피의 스케일링으로 자주 쓴다.', movement: 'burpee' },
       { id: 'box-height', term: '(24"/20")', full: 'Box Height', ko: '박스 높이', desc: '슬래시 앞이 남성, 뒤가 여성 기준 박스 높이(인치).', movement: 'box-jump' },
     ],
   },
@@ -436,6 +449,7 @@ export const termGroups = [
       { id: 'games', term: 'CrossFit Games', full: 'The CrossFit Games', ko: '크로스핏 게임즈', desc: '크로스핏 세계 선수권. 여기서 나온 종목(Event)이 이후 박스 와드로 자주 재활용된다.' },
       { id: 'hopper', term: 'The Hopper', full: 'The Hopper', ko: '호퍼', desc: '"무작위로 뽑은 동작 조합"이라는 크로스핏의 오래된 개념. 무엇이 나올지 모르는 상태에 대비하는 것이 훈련 목표라는 뜻이다.' },
       { id: 'promoter', term: 'Promoter', full: 'Promoter', ko: '프로모터', desc: '그 와드를 만들었거나 대표적으로 수행한 선수 이름. 기록 비교의 기준으로 적어 둔다.' },
+      { id: 'throwdown', term: 'Throwdown', full: 'Throwdown', ko: '스로다운', desc: '박스나 지역 단위로 여는 작은 크로스핏 대회. 여기서 쓴 종목(Event)을 나중에 수업 와드로 그대로 가져오기도 한다.' },
     ],
   },
 ];

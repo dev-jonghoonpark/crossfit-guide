@@ -3490,4 +3490,85 @@ export const movements = [
     related: ['row', 'double-under'],
     terms: ['c2', 'cal', 'damper', 'emom'],
   },
+
+  /* ==================================================================== */
+  {
+    id: 'burpee',
+    seoTitle: '버피 하는 법과 크로스핏 버피 인정 기준',
+    seoDesc:
+      '버피를 스쿼트·플랭크·가슴 바닥·발 당기기·점프 5단계로 나눠 정리했습니다. 노렙이 나는 이유와 업다운 스케일링, 팀 싱크로 버피도 함께 다룹니다.',
+    thumb: 2,
+    ko: '버피',
+    en: 'Burpee',
+    abbr: 'BRP',
+    category: '체조',
+    level: '초급',
+    equipment: ['맨몸'],
+    tagline: '엎드려 가슴을 바닥에 댔다가 일어나 점프하는 전신 맨몸 동작',
+    intro:
+      '서 있다가 손을 짚고 발을 뒤로 보내 엎드리고, 가슴과 허벅지를 바닥에 붙였다가 다시 발을 당겨 일어나 점프한다. ' +
+      '크로스핏 기본 기준은 "가슴과 허벅지가 바닥에 닿기"와 "선 채로 점프하며 머리 위에서 박수" 두 가지다. ' +
+      '버피 오버 · 래터럴 버피처럼 이름이 붙으면 점프 방향과 넘을 대상이 바뀌니 그날 브리핑의 스탠다드를 따른다.',
+    phases: [
+      {
+        name: '손 짚기',
+        pose: 'burpeeSquat',
+        desc: '선 자리에서 스쿼트로 앉으며 두 손을 발 앞 바닥에 어깨 너비로 짚는다.',
+        cues: ['손은 어깨 너비', '엉덩이를 뒤로 빼며 앉기', '손을 짚고 바로 다음 동작'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '발 뒤로 · 플랭크',
+        pose: 'pushTop',
+        desc: '손에 체중을 싣고 두 발을 뒤로 뛰어 보내 플랭크 자세가 된다.',
+        cues: ['두 발 같이 뛰어 보내기', '팔은 편 채 어깨는 손 위', '착지할 때 허리가 꺾이지 않게'],
+        emphasis: ['core', 'delts', 'chest'],
+      },
+      {
+        name: '가슴 바닥',
+        pose: 'pushBottom',
+        desc: '가슴과 허벅지가 바닥에 닿을 때까지 내려간다. 푸시업처럼 내려가도 되고 그냥 엎드려도 된다.',
+        cues: ['가슴과 허벅지가 바닥에', '지치면 몸을 떨어뜨려도 됨 — 기준은 닿는 것', '손은 그대로 두기'],
+        emphasis: ['chest', 'triceps', 'core'],
+      },
+      {
+        name: '발 당기기',
+        pose: 'burpeeSquat',
+        desc: '바닥을 밀어 몸을 띄우고, 두 발을 손 가까이로 뛰어 당겨 스쿼트 자세로 돌아온다.',
+        cues: ['밀면서 엉덩이를 끌어올리기', '발은 손 바로 뒤까지', '발바닥 전체로 착지'],
+        emphasis: ['hipflexors', 'core', 'quads'],
+      },
+      {
+        name: '점프 · 박수',
+        pose: 'burpeeJump',
+        desc: '일어서며 두 발로 가볍게 뛰고, 머리 위에서 손뼉을 친다. 공중에서 몸이 완전히 펴져야 1렙이다.',
+        cues: ['고관절까지 완전히 펴기', '머리 위에서 박수', '높이 뛸 필요 없음 — 발만 떨어지면 된다'],
+        emphasis: ['glutes', 'quads', 'calves'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'chest', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'glutes', level: 'secondary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'hipflexors', level: 'secondary' },
+      { key: 'calves', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '가슴이 바닥에 닿지 않는다', fix: '노렙이다. 푸시업이 안 되면 무릎을 먼저 내리고 몸을 바닥에 내려놓아도 된다 — 기준은 닿는 것이지 푸시업이 아니다.' },
+      { problem: '점프에서 몸이 덜 펴진다', fix: '웅크린 채 뛰면 노렙이다. 발이 살짝만 떠도 되니 고관절을 끝까지 펴고 머리 위에서 박수 친다.' },
+      { problem: '발을 한 발씩 보낸다', fix: '틀린 건 아니지만 느리다. 지칠수록 한 발씩으로 바뀌니, 페이스를 낮추더라도 두 발을 같이 보낸다.' },
+      { problem: '플랭크에서 허리가 꺾여 떨어진다', fix: '발을 뒤로 보낼 때 배에 힘이 풀린 것. 착지 순간 배를 조이고, 허리가 아프면 한 발씩 걸어서 보낸다.' },
+    ],
+    scaling: [
+      '업다운 — 가슴을 바닥에 대지 않고 플랭크까지만 (푸시업 부분 생략)',
+      '한 발씩 걸어서 뒤로 보내고 걸어서 당기기',
+      '점프 대신 일어서서 박수만',
+      '박스·벤치에 손을 짚는 인클라인 버피',
+    ],
+    related: ['push-up', 'air-squat', 'box-jump'],
+    terms: ['no-rep', 'up-down', 'synchro'],
+  },
 ];
