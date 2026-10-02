@@ -97,7 +97,7 @@ export const formats = [
   {
     id: 'interval',
     name: 'Interval (On / Off)',
-    wrote: ['5set 30Seconds On 60Seconds Off'],
+    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set'],
     means:
       '앞이 운동 시간, 뒤가 휴식 시간이다. 정해진 세트만큼 반복한다. ' +
       '휴식이 운동보다 길면 매 세트를 전력으로 하라는 뜻이다.',
@@ -251,6 +251,11 @@ export const notationGroups = [
       { wrote: 'x 8 · x 8sets', read: '8라운드 · 8세트', note: 'x 뒤 숫자가 반복 횟수.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
+      { wrote: '(3Sec down 1sec up)', read: '3초 동안 내려가고 1초에 올라오기', note: '동작 이름 아래 괄호에 초가 붙으면 템포다. 개수보다 속도를 지키는 게 먼저다.', term: 'tempo' },
+      { wrote: '(Legs Only)', read: '다리로만', note: '팬 바이크처럼 팔 손잡이가 있는 기구에서 손잡이를 밀고 당기지 말라는 뜻. 팔은 쉬게 둔다.' },
+      { wrote: '(Light weight)', read: '가벼운 무게로', note: '숫자 대신 강도를 말로 적은 것. 회복일이나 워밍업에서 자세를 우선하라는 뜻이다.' },
+      { wrote: '*Keep HR at 60–70%.', read: '심박을 최대의 60~70% 안에서', note: '개수나 시간이 아니라 심박으로 강도를 정한다. 넘어가면 속도를 줄인다.', term: 'hr-zone' },
+      { wrote: '*Record : Todays mood', read: '기록 대신 오늘 컨디션을 적기', note: '점수를 매기지 않는 날이라는 신호. 회복일에 자주 붙는다.', term: 'recovery-day' },
       { wrote: '@Damper 10', read: '기구 설정값', note: '@ 는 무게 말고 설정에도 쓴다.' },
       { wrote: 'Same weight across', read: '전 세트 같은 무게', note: '올리지 말고 끝까지 유지하라는 뜻.' },
       { wrote: 'Score:Complete sets + HPC reps', read: '기록 방법을 코치가 직접 적어 둔 줄', note: '무엇으로 점수를 매기는지 = 이 와드의 목표가 뭔지.', term: 'score-line' },
