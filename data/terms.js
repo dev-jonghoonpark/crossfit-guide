@@ -225,6 +225,26 @@ export const termGroups = [
         ko: '개인 최고 기록',
         desc: '무게든 시간이든 본인 최고 기록. 갱신하면 박스에서 종을 치는 문화가 있다.',
       },
+      {
+        id: 'tempo',
+        term: '(3Sec down 1sec up)',
+        full: 'Tempo',
+        ko: '템포',
+        desc:
+          '동작의 구간별 속도를 초 단위로 정한 것. "3Sec down 1sec up" 은 3초 동안 내려가고 1초 만에 올라오라는 뜻이다. ' +
+          '무게 없이도 근육이 버티는 시간이 길어져서, 같은 개수라도 훨씬 힘들고 자세를 의식하게 된다.',
+        example: 'Air Squats (3Sec down 1sec up)',
+      },
+      {
+        id: 'hr-zone',
+        term: 'Keep HR at 60–70%',
+        full: 'Heart Rate Zone',
+        ko: '심박 구간',
+        desc:
+          'HR(Heart Rate)을 최대 심박수의 60~70% 안에 두라는 뜻. 대화가 가능한 정도의 강도다. ' +
+          '최대 심박수를 모르면 흔히 쓰는 어림식 "220 − 나이"로 잡는다 — 30세면 최대 190, 60~70% 는 분당 약 114~133회.',
+        example: '*Keep HR at 60–70%.',
+      },
     ],
   },
 
@@ -427,6 +447,8 @@ export const termGroups = [
       { id: 'bso', term: 'BSO', full: 'Box Step Over', ko: '박스 스텝 오버', desc: '박스를 한 발씩 올라 반대편으로 넘어가는 동작. 점프 대신 걸음이라 무게를 들고 하는 경우가 많다.', movement: 'dumbbell-box-step-over' },
       { id: 'bjo', term: 'BJO · (Step down)', full: 'Box Jump Over', ko: '박스 점프 오버', desc: '두 발로 뛰어 박스를 넘어 반대편으로 내려가는 박스 점프 변형. 보통 박스 위에서 완전히 설 필요는 없고, (Step down) 이 붙으면 뛰어내리지 말고 걸어 내려오라는 뜻이다.', movement: 'box-jump' },
       { id: 'burpee', term: 'Burpee', full: 'Burpee', ko: '버피', desc: '엎드려 가슴·허벅지를 바닥에 댔다가 일어나 점프하는 맨몸 동작. 앞에 붙는 말(Lateral · Over · Pogo …)이 점프 방식을 바꾼다.', movement: 'burpee' },
+      { id: 'abmat-situp', term: 'Ab Mat Sit-Up', full: 'AbMat Sit-Up', ko: '앱매트 싯업', desc: '허리 밑에 앱매트를 받치고 하는 싯업. 손이 머리 뒤 바닥과 발 앞을 번갈아 짚어야 1렙이다. HSPU 의 "1mat" 과 같은 매트를 다른 용도로 쓴다.', movement: 'sit-up' },
+      { id: 'mbc', term: 'Medicine Ball Clean', full: 'Medicine Ball Clean', ko: '메디신볼 클린', desc: '바닥의 메디신볼을 신전으로 띄워 프론트 스쿼트로 받는 동작. 바벨 클린의 순서를 가벼운 볼로 연습한다.', movement: 'medicine-ball-clean' },
       { id: 'up-down', term: 'Up Down', full: 'Up Down', ko: '업다운', desc: '가슴을 바닥에 대는 부분을 뺀 버피. 플랭크까지만 갔다가 일어난다. 버피의 스케일링으로 자주 쓴다.', movement: 'burpee' },
       { id: 'box-height', term: '(24"/20")', full: 'Box Height', ko: '박스 높이', desc: '슬래시 앞이 남성, 뒤가 여성 기준 박스 높이(인치).', movement: 'box-jump' },
     ],
@@ -449,6 +471,7 @@ export const termGroups = [
       { id: 'games', term: 'CrossFit Games', full: 'The CrossFit Games', ko: '크로스핏 게임즈', desc: '크로스핏 세계 선수권. 여기서 나온 종목(Event)이 이후 박스 와드로 자주 재활용된다.' },
       { id: 'hopper', term: 'The Hopper', full: 'The Hopper', ko: '호퍼', desc: '"무작위로 뽑은 동작 조합"이라는 크로스핏의 오래된 개념. 무엇이 나올지 모르는 상태에 대비하는 것이 훈련 목표라는 뜻이다.' },
       { id: 'promoter', term: 'Promoter', full: 'Promoter', ko: '프로모터', desc: '그 와드를 만들었거나 대표적으로 수행한 선수 이름. 기록 비교의 기준으로 적어 둔다.' },
+      { id: 'recovery-day', term: 'Recovery Day', full: 'Recovery Day', ko: '회복일', desc: '큰 와드·대회 앞뒤로 강도를 낮춰 몸을 푸는 날. 기록보다 심박과 자세를 지키는 게 목표라 점수 대신 컨디션을 적기도 한다. 대회 전날이면 "D-1" 처럼 남은 날짜를 붙인다.' },
       { id: 'throwdown', term: 'Throwdown', full: 'Throwdown', ko: '스로다운', desc: '박스나 지역 단위로 여는 작은 크로스핏 대회. 여기서 쓴 종목(Event)을 나중에 수업 와드로 그대로 가져오기도 한다.' },
     ],
   },
