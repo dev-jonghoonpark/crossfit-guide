@@ -52,7 +52,7 @@ export const formats = [
   {
     id: 'for-time',
     name: 'For Time / Rounds For Time',
-    wrote: ['10 Rounds For Time', '3 Rounds For Time', 'For Time / 4Rounds of'],
+    wrote: ['10 Rounds For Time', '3 Rounds For Time', 'For Time / 4Rounds of', 'For Time / 3 Rounds of'],
     means: '정해진 양을 최대한 빨리 끝낸다. 앞의 숫자가 반복할 라운드 수다.',
     clock: '시계는 0부터 올라간다. 다 끝낸 순간의 시간이 기록.',
     score: '완료 시간 (짧을수록 좋음)',
@@ -84,7 +84,7 @@ export const formats = [
   {
     id: 'exmom',
     name: 'E2MOM · Every X:00',
-    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 2:00 x 4', 'Every 70seconds x 12sets'],
+    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 02:00 x 5', 'Every 2:00 x 4', 'Every 70seconds x 12sets'],
     means:
       'EMOM의 간격이 1분이 아닌 버전. E2MOM 20 은 2분 간격으로 20분(=10라운드), ' +
       'Every 2:00 x 5 는 2분 간격으로 5라운드(=10분)라는 뜻이다. ' +
@@ -119,7 +119,7 @@ export const formats = [
   {
     id: 'rep-scheme',
     name: '렙 스킴 (숫자-숫자-숫자)',
-    wrote: ['5-5-3-3-2', '5-4-3-3-3', '7-5-5-3-1'],
+    wrote: ['5-5-3-3-2', '5-4-3-3-3', '7-5-5-3-1', '5-5-3-2-1'],
     means:
       '라운드마다 개수가 바뀐다. 5-5-3-3-2 는 5회 → 5회 → 3회 → 3회 → 2회 다섯 세트라는 뜻. ' +
       '스트렝스 파트에서는 개수가 줄어드는 만큼 무게를 올린다.',
@@ -237,6 +237,7 @@ export const notationGroups = [
       { wrote: '60% Build to heavy', read: '60%에서 시작해 점점 올리기', note: '고정 무게가 아니라 세트마다 올린다.' },
       { wrote: '*Start at 65% Build to Heavy', read: '65%에서 시작해 점점 올리기', note: '같은 표기인데 시작 퍼센트만 다르다. 렙이 적은 스킴일수록 시작점이 높아진다.', term: 'percentage' },
       { wrote: '*Start at 60% Build Up', read: '60%에서 시작해 세트마다 올리기', note: 'Build Up 은 Build to Heavy 의 줄임이다. 기준 1RM 은 그 줄에 적힌 동작 기준.', term: 'percentage' },
+      { wrote: '*70% Build to Heavy', read: '70%에서 시작해 세트마다 올리기', note: 'Start at 이 빠져도 같은 뜻이다. 퍼센트 기준은 그 파트 동작(여기선 프론트 스쿼트)의 1RM.', term: 'percentage' },
       { wrote: '-/- · -', read: '무게 표기 없음', note: '맨몸이거나 기구 자체 무게로 한다는 뜻.' },
     ],
   },
@@ -275,6 +276,7 @@ export const notationGroups = [
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
       { wrote: 'Black Band', read: '블랙 밴드 보조', note: '약어로 줄이지 않고 색 이름을 그대로 적기도 한다. BB 와 같은 뜻이다.', term: 'band-scale' },
+      { wrote: 'BB-GB PU', read: '블랙 밴드 또는 그린 밴드 보조 풀업', note: '하이픈은 "둘 중 골라서"라는 뜻. 본인 수준에 맞는 밴드를 고른다. PU 는 풀업.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
       { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },

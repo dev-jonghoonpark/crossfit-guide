@@ -3773,4 +3773,151 @@ export const movements = [
     related: ['pendlay-row', 'deadlift', 'pull-up'],
     terms: ['hang'],
   },
+  /* ==================================================================== */
+  {
+    id: 'front-squat',
+    seoTitle: '프론트 스쿼트 하는 법 — 팔꿈치를 높게, 상체를 세워서',
+    seoDesc:
+      '바벨을 어깨 앞(프론트 랙)에 얹고 하는 프론트 스쿼트를 랙·내려가기·바닥·일어서기 4단계로 정리했습니다. 팔꿈치가 처지는 실수와 손목이 아플 때의 그립, 스케일링도 다룹니다.',
+    thumb: 2,
+    ko: '프론트 스쿼트',
+    en: 'Front Squat',
+    abbr: 'FS',
+    category: '역도',
+    level: '초중급',
+    equipment: ['바벨', '원판'],
+    tagline: '바벨을 어깨 앞에 얹고 상체를 세운 채 풀 스쿼트까지 앉았다 일어서는 동작',
+    intro:
+      '바를 등 뒤가 아니라 쇄골 위·어깨 앞에 얹는 스쿼트다. 무게가 몸 앞에 있어서 상체를 세워야만 버틸 수 있고, ' +
+      '그만큼 허벅지 앞(대퇴사두)과 코어를 많이 쓴다. 클린을 받는 자세가 바로 프론트 스쿼트 바닥이라 ' +
+      '크로스핏에서는 클린을 위한 스트렝스 파트로 자주 나오고, 메트콘에서는 쉬지 않고 이어 가는 다리 동작으로 나온다.',
+    phases: [
+      {
+        name: '프론트 랙',
+        pose: 'frontRack',
+        desc: '랙에서 바를 꺼내 쇄골 위·어깨 앞에 얹는다. 손가락 끝으로 바를 걸고 팔꿈치를 앞·위로 높게 든다. 발은 어깨너비, 발끝은 살짝 바깥.',
+        cues: ['바는 손이 아니라 어깨에 얹기', '팔꿈치를 앞으로 높게', '숨을 크게 들이마시고 배를 조이기'],
+        emphasis: ['delts', 'core', 'traps'],
+      },
+      {
+        name: '내려가기',
+        pose: 'fsMid',
+        desc: '무릎과 고관절을 같이 접으며 곧게 내려간다. 무릎은 발끝 방향으로 앞으로 나가도 된다 — 그래야 상체가 서 있는다.',
+        cues: ['상체는 세운 채', '무릎은 발끝 방향으로', '무게는 발 중앙에'],
+        emphasis: ['quads', 'glutes', 'core', 'erectors'],
+      },
+      {
+        name: '스쿼트 바닥',
+        pose: 'squatCatch',
+        desc: '고관절이 무릎보다 아래로 내려간다. 클린을 받는 자세와 같다. 바닥에서 팔꿈치가 떨어지면 바가 앞으로 굴러간다.',
+        cues: ['고관절이 무릎 아래까지', '팔꿈치를 계속 높게', '허리는 말지 않기'],
+        emphasis: ['quads', 'glutes', 'core', 'erectors'],
+      },
+      {
+        name: '일어서기',
+        pose: 'frontRack',
+        desc: '팔꿈치를 위로 밀어 올린다는 느낌으로 일어선다. 고관절과 무릎이 함께 펴져 완전히 서면 1렙이다.',
+        cues: ['팔꿈치부터 위로', '엉덩이만 먼저 올라오지 않게', '끝에서 완전히 서기'],
+        emphasis: ['quads', 'glutes', 'hamstrings'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'delts', level: 'stabilizer' },
+      { key: 'traps', level: 'stabilizer' },
+      { key: 'calves', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '바닥에서 팔꿈치가 처진다', fix: '상체가 따라 숙여지고 바가 앞으로 굴러간다. 일어설 때 "팔꿈치부터 올린다"고 생각하고, 무거워질수록 이 점에 집중한다.' },
+      { problem: '손목이 아파서 랙이 안 된다', fix: '바를 손바닥으로 쥐려 해서다. 손가락 두세 개로만 걸어도 된다. 그래도 안 되면 팔을 앞으로 X 자로 교차해 잡는 크로스 그립을 쓴다.' },
+      { problem: '엉덩이가 먼저 솟는다', fix: '굿모닝처럼 상체가 숙여지면서 바가 앞으로 간다. 무게를 낮추고 바닥에서 가슴과 엉덩이가 같은 속도로 올라오게 연습한다.' },
+      { problem: '깊이가 안 나온다', fix: '발목이 뻣뻣하면 상체가 먼저 숙여진다. 뒤꿈치에 작은 원판을 받치거나 역도화를 신고, 깊이가 나오는 무게로 낮춘다.' },
+    ],
+    scaling: [
+      '무게 낮추기 (빈 바 · 트레이닝 바)',
+      '손목이 불편하면 크로스 그립',
+      '덤벨 프론트 스쿼트 · 고블릿 스쿼트',
+      '맨몸 에어 스쿼트',
+    ],
+    related: ['squat-clean', 'dumbbell-front-squat', 'air-squat'],
+    terms: ['fs', 'front-rack', 'percentage', 'lbs-notation'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'bar-lateral-burpee',
+    seoTitle: '바 래터럴 버피 하는 법 — 바를 옆으로 넘는 버피',
+    seoDesc:
+      '바 옆에 나란히 엎드렸다가 두 발로 옆으로 뛰어 바를 넘는 버피입니다. 일반 버피와 다른 인정 기준(박수 없음, 두 발 점프)과 4단계 동작, 빠르게 반복하는 요령을 정리했습니다.',
+    thumb: 3,
+    ko: '바 래터럴 버피',
+    en: 'Bar Lateral Burpee',
+    abbr: 'LBOB',
+    category: '체조',
+    level: '초급',
+    equipment: ['맨몸', '바벨'],
+    tagline: '바벨 옆에 몸과 나란히 엎드렸다가 일어나 두 발로 옆으로 뛰어 바를 넘는 버피',
+    intro:
+      '"Lateral Burpee Over the Bar"라고도 한다. 바닥에 놓인 바와 몸이 나란하도록 바 옆에 엎드렸다가, 일어나서 ' +
+      '두 발로 옆(측면)으로 뛰어 바를 넘으면 1렙이다. 넘은 쪽에서 다시 엎드려 반대 방향으로 넘으며 왔다 갔다 반복한다. ' +
+      '일반 버피와 달리 머리 위 박수가 없고, 앞으로가 아니라 옆으로 뛴다. 몸을 바 쪽으로 돌리지 않으니 방향 전환이 없어 일반 바 오버 버피보다 빠르다.',
+    phases: [
+      {
+        name: '바 옆에 엎드리기',
+        pose: 'burpeeSquat',
+        desc: '바와 나란히, 바를 몸 옆에 두고 선다. 앉으며 두 손을 바닥에 짚고 두 발을 뒤로 보낸다.',
+        cues: ['바와 몸을 나란히', '손은 어깨 너비로 바 옆에', '두 발 같이 뒤로'],
+        emphasis: ['quads', 'core', 'delts'],
+      },
+      {
+        name: '가슴 바닥',
+        pose: 'pushBottom',
+        desc: '가슴과 허벅지를 바닥에 붙인다. 일반 버피와 같은 기준이다.',
+        cues: ['가슴과 허벅지가 바닥에', '몸은 바와 나란히', '지치면 몸을 떨어뜨려도 됨'],
+        emphasis: ['chest', 'triceps', 'core'],
+      },
+      {
+        name: '발 당기기',
+        pose: 'burpeeSquat',
+        desc: '바닥을 밀며 두 발을 손 가까이로 당겨 웅크린 자세가 된다. 일어설 때 몸을 바 쪽으로 돌리지 않는다.',
+        cues: ['발은 손 바로 뒤로', '몸 방향은 그대로', '일어서자마자 바로 점프 준비'],
+        emphasis: ['hipflexors', 'core', 'quads'],
+      },
+      {
+        name: '옆으로 넘기',
+        pose: 'lbHop',
+        desc: '두 발을 동시에 떼어 옆으로 뛰어 바를 넘는다. 발이 바를 넘어 반대편에 착지하면 1렙이다. 바를 건드리거나 한 발씩 넘으면 노렙.',
+        cues: ['두 발 동시에 떠서 동시에 착지', '높이보다 옆으로 — 바만 넘으면 된다', '착지하면 바로 다음 버피로'],
+        emphasis: ['calves', 'quads', 'glutes'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'chest', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'glutes', level: 'secondary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'hipflexors', level: 'secondary' },
+      { key: 'delts', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '한 발씩 넘는다', fix: '노렙이다. 두 발이 같이 떠서 같이 내려와야 한다. 지쳐서 점프가 안 되면 높이를 줄이되 두 발은 지킨다.' },
+      { problem: '바 쪽으로 몸을 돌려 넘는다', fix: '그건 바 오버 버피(바를 앞으로 넘기)다. 래터럴은 엎드린 방향 그대로 옆으로 뛴다. 몸을 돌리는 만큼 느려진다.' },
+      { problem: '바에서 너무 멀리 엎드린다', fix: '넘는 거리가 길어져 점프가 커진다. 엎드릴 때 몸이 바 바로 옆에 오게 자리를 잡는다.' },
+      { problem: '일어선 뒤 멈췄다 뛴다', fix: '일어서는 힘을 그대로 점프로 쓰는 게 빠르다. 발을 당긴 웅크린 자세에서 반쯤 일어서며 바로 뛴다.' },
+    ],
+    scaling: [
+      '바 대신 바닥의 선이나 PVC 를 넘기',
+      '업다운 — 가슴을 대지 않고 플랭크까지만',
+      '점프 대신 바를 한 발씩 걸어 넘기',
+      '개수 줄이기',
+    ],
+    related: ['burpee', 'box-jump', 'push-up'],
+    terms: ['lbob', 'no-rep', 'up-down'],
+  },
 ];
