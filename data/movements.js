@@ -2380,7 +2380,7 @@ export const movements = [
       '원판을 쌓아 높이 조절',
       '점프 없이 스텝업 + 내려올 때 걸어 내려오기',
     ],
-    related: ['air-squat', 'pistol-squat', 'wall-ball'],
+    related: ['box-jump-over', 'air-squat', 'pistol-squat', 'wall-ball'],
     terms: ['box-height', 'no-rep', 'e2mom'],
   },
 
@@ -3919,5 +3919,170 @@ export const movements = [
     ],
     related: ['burpee', 'box-jump', 'push-up'],
     terms: ['lbob', 'no-rep', 'up-down'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'box-jump-over',
+    seoTitle: '박스 점프 오버(BJO) 하는 법과 인정 기준',
+    seoDesc:
+      '두 발로 뛰어 박스를 넘어 반대편으로 내려가는 박스 점프 오버입니다. 박스 위에서 서지 않아도 되는 인정 기준과 6단계 동작, 빨리 반복하는 요령을 정리했습니다.',
+    thumb: 3,
+    ko: '박스 점프 오버',
+    en: 'Box Jump Over',
+    abbr: 'BJO',
+    category: '기타 기구',
+    level: '초급',
+    equipment: ['플라이오 박스'],
+    tagline: '두 발로 뛰어 박스 위를 지나 반대편으로 내려가는 박스 점프',
+    intro:
+      '박스 점프와 다른 점은 두 가지다. 박스 위에서 고관절과 무릎을 다 펴고 설 필요가 없고, ' +
+      '올라온 쪽이 아니라 반대편으로 내려가야 1렙이다. 박스에 두 발로 착지했다가 넘어가도 되고, ' +
+      '박스를 건드리지 않고 한 번에 넘어가도 된다. 출발은 반드시 두 발이다. ' +
+      '반대편에 내려서면 몸을 돌려 다시 넘어오며 왔다 갔다 한다.',
+    phases: [
+      {
+        name: '셋업',
+        pose: 'bjoStand',
+        desc: '박스에서 한 걸음 거리에 두 발을 골반 너비로 두고 선다.',
+        cues: ['박스와 거리는 한 걸음', '시선은 박스 윗면 모서리', '두 발 나란히'],
+        emphasis: ['core', 'calves'],
+      },
+      {
+        name: '딥 · 팔 스윙',
+        pose: 'bjoDip',
+        desc: '1/4 스쿼트로 짧게 앉으며 팔을 뒤로 보낸다. 박스 점프와 같은 준비 동작이다.',
+        cues: ['짧고 빠르게', '팔을 뒤로', '뒤꿈치는 바닥에'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '점프',
+        pose: 'bjoAir',
+        desc: '팔을 앞위로 휘두르며 두 발로 동시에 뛴다. 무릎을 접어 발을 박스 위로 가져간다.',
+        cues: ['두 발 동시에 떠나기', '무릎을 접어 발 올리기', '박스 모서리를 보기'],
+        emphasis: ['quads', 'glutes', 'calves'],
+      },
+      {
+        name: '박스 위',
+        pose: 'bjoBox',
+        desc: '두 발이 박스 위에 닿는다. 일어설 필요가 없으니 무릎을 굽힌 채 그대로 다음 동작으로 넘어간다.',
+        cues: ['완전히 서지 않아도 된다', '발바닥 전체를 박스에', '멈추지 않고 이어 가기'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '반대편으로',
+        pose: 'bjoHop',
+        desc: '박스를 밀며 반대편으로 뛰어내리거나 한 발씩 걸어 내려간다. 와드에 (Step down) 이 붙으면 걸어 내려와야 한다.',
+        cues: ['내려가는 방법은 자유(지시가 없으면)', '피곤하면 걸어 내려가기', '착지 자리를 미리 보기'],
+        emphasis: ['quads', 'calves', 'core'],
+      },
+      {
+        name: '착지 · 방향 전환',
+        pose: 'bjoLand',
+        desc: '반대편 바닥에 내려서면 1렙. 무릎을 굽혀 받고, 몸을 돌려 다음 렙을 준비한다.',
+        cues: ['무릎으로 받기', '돌면서 바로 딥', '박스 쪽으로 다시 한 걸음'],
+        emphasis: ['quads', 'glutes', 'calves'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'calves', level: 'primary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'core', level: 'secondary' },
+      { key: 'hipflexors', level: 'secondary' },
+      { key: 'delts', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '한 발로 뛰어오른다', fix: '노렙이다. 출발은 두 발이 같이 떠야 한다. 지쳐서 안 되면 박스 높이를 낮춘다.' },
+      { problem: '박스 위에서 매번 일어선다', fix: '박스 점프 습관이다. BJO 는 서지 않아도 되니 굽힌 채 바로 넘어가면 렙마다 1초씩 줄어든다.' },
+      { problem: '지쳐서 정강이를 찧는다', fix: '박스 점프와 같은 위험이다. 발이 박스 모서리에 걸리기 시작하면 높이를 낮추거나 스텝업 오버로 바꾼다.' },
+      { problem: '뛰어내릴 때마다 아킬레스건이 당긴다', fix: '반대편으로 뛰어내리는 충격이 렙마다 쌓인다. 한 발씩 걸어 내려가면 느려지는 대신 오래 간다.' },
+    ],
+    scaling: [
+      '낮은 박스로 (24" → 20" → 12")',
+      '박스 스텝 오버 — 한 발씩 올라 넘어가기',
+      '원판을 쌓아 낮은 장애물 넘기',
+      '박스 위에 올라선 뒤 걸어 내려가기',
+    ],
+    related: ['box-jump', 'dumbbell-box-step-over', 'bar-lateral-burpee'],
+    terms: ['bjo', 'box-height', 'no-rep'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-front-rack-lunge',
+    seoTitle: '덤벨 프론트 랙 런지 하는 법 — 어깨에 얹고 런지',
+    seoDesc:
+      '덤벨 두 개를 어깨에 얹고 하는 런지입니다. 뒤 무릎이 바닥에 닿는 인정 기준, 4단계 동작, 상체가 숙여지는 원인과 스케일링을 정리했습니다.',
+    thumb: 2,
+    ko: '덤벨 프론트 랙 런지',
+    en: 'Dumbbell Front Rack Lunge',
+    abbr: 'DBFL',
+    category: '덤벨',
+    level: '초급',
+    equipment: ['덤벨 2개'],
+    tagline: '덤벨 두 개를 어깨 위(프론트 랙)에 얹은 채 한 발씩 앞으로 딛고 앉았다 일어서는 런지',
+    intro:
+      '덤벨은 덤벨 푸시 프레스를 시작할 때처럼 어깨 위에 얹는다. 한 손에 하나씩, 덤벨 끝이 어깨에 걸치게 한다. ' +
+      '한 발을 앞으로 딛고 뒤 무릎이 바닥에 살짝 닿을 때까지 내려갔다가 일어서서 두 발을 모으면 1렙이다. ' +
+      '다리는 매 렙 바꾼다. 앞으로 걸어가며 하는 워킹 런지로도, 제자리에서 번갈아 해도 된다. ' +
+      '덤벨을 옆구리에 드는 것보다 무게가 앞에 실려 상체를 세우는 코어와 상부 등이 같이 일한다.',
+    phases: [
+      {
+        name: '랙 셋업',
+        pose: 'dbRack',
+        desc: '덤벨 두 개를 어깨에 얹고 선다. 팔꿈치는 앞으로, 갈비뼈를 닫고 배를 조인다.',
+        cues: ['덤벨 끝을 어깨에 걸치기', '팔꿈치는 앞·위로', '배를 조이고 시선은 정면'],
+        emphasis: ['core', 'delts', 'traps'],
+      },
+      {
+        name: '딛기',
+        pose: 'dflStep',
+        desc: '한 발을 크게 앞으로 딛는다. 앞발 뒤꿈치부터 닿고, 뒷발은 발끝으로 남긴다.',
+        cues: ['보폭은 크게 — 앞 정강이가 세워질 만큼', '두 발은 골반 너비 그대로', '상체는 곧게'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '바닥',
+        pose: 'dflBottom',
+        desc: '뒤 무릎이 바닥에 살짝 닿을 때까지 똑바로 내려간다. 무릎으로 바닥을 찧지 않는다.',
+        cues: ['뒤 무릎이 바닥에 "톡"', '앞 무릎은 발끝 방향', '덤벨이 어깨에서 떨어지지 않게'],
+        emphasis: ['quads', 'glutes', 'hamstrings'],
+      },
+      {
+        name: '일어서기',
+        pose: 'dflStep',
+        desc: '앞발 뒤꿈치로 바닥을 밀어 일어서고, 뒷발을 앞으로 가져와 두 발을 모은다. 여기서 1렙.',
+        cues: ['앞발 뒤꿈치로 밀기', '고관절과 무릎을 다 펴기', '다음 렙은 반대 다리'],
+        emphasis: ['glutes', 'quads', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'core', level: 'primary' },
+      { key: 'hamstrings', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'delts', level: 'stabilizer' },
+      { key: 'traps', level: 'stabilizer' },
+      { key: 'forearms', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '상체가 앞으로 숙여진다', fix: '덤벨 무게가 앞으로 끌고 있다. 팔꿈치를 들어 덤벨을 어깨에 다시 얹고, 무거우면 무게를 낮춘다.' },
+      { problem: '뒤 무릎이 바닥까지 안 내려간다', fix: '노렙이다. 보폭이 짧으면 앞 무릎이 먼저 막힌다. 한 발 더 멀리 딛는다.' },
+      { problem: '뒤 무릎으로 바닥을 찧는다', fix: '무릎이 다친다. 바닥 직전에서 속도를 줄여 살짝 닿게 한다. 딱딱한 바닥이면 매트를 깐다.' },
+      { problem: '앞 무릎이 안쪽으로 무너진다', fix: '앞발 바깥쪽으로 바닥을 민다는 느낌으로 무릎을 발끝 방향에 둔다.' },
+      { problem: '두 발이 한 줄 위에 선다', fix: '외줄타기처럼 흔들린다. 두 발은 철로처럼 골반 너비를 유지한다.' },
+    ],
+    scaling: [
+      '덤벨 무게 낮추기 (22.5 → 15 → 8kg)',
+      '덤벨 하나만 고블릿으로 가슴 앞에',
+      '맨몸 런지',
+      '뒤로 딛는 리버스 런지 — 무릎 부담이 적다',
+    ],
+    related: ['dumbbell-front-squat', 'dumbbell-farmers-carry', 'pistol-squat'],
+    terms: ['dbfl', 'dual-db', 'alt'],
   },
 ];
