@@ -134,6 +134,27 @@ export const termGroups = [
         example: '20 Lateral Triangle Pogo Burpee Synchro.',
       },
       {
+        id: 'switch-anytime',
+        term: 'Switch Anytime · Split Anyway',
+        full: 'Switch Anytime / Split (the reps) Anyway',
+        ko: '아무 때나 교대 · 아무렇게나 분배',
+        desc:
+          '팀 와드에서 교대 시점과 렙 분배를 팀이 정하라는 뜻이다. "Switch Anytime" 은 정해진 개수를 채우지 않아도 원할 때 서로 자리를 바꿔도 된다는 것이고, ' +
+          '"Split Anyway" 는 한 사람이 몇 개를 하든 상관없다는 것이다. 지친 쪽이 먼저 신호를 보내고 바로 바꾸는 게 요령이다.',
+        example: '*Switch Anytime · *Split Anyway',
+      },
+      {
+        id: 'partner-hold',
+        term: 'Partner : … Hold',
+        full: 'Partner Hold',
+        ko: '파트너 버티기',
+        desc:
+          '한 명이 동작을 하는 동안 다른 한 명은 무게를 들고 버텨야 한다는 조건이다. 쉬는 사람이 없는 구성이다. ' +
+          '보통 버티던 파트너가 무게를 내려놓으면 동작하던 사람도 멈춰야 하고, 그동안 한 렙은 세지 않는다. 세부 규칙은 브리핑에서 확인한다.',
+        example: "*Partner : Dumbbell(x2) Farmer's Hold",
+        movement: 'dumbbell-farmers-carry',
+      },
+      {
         id: 'chipper',
         term: 'Chipper',
         full: 'Chipper',
@@ -418,6 +439,7 @@ export const termGroups = [
       { id: 'sj', term: 'SJ', full: 'Split Jerk', ko: '스플릿 저크', desc: '다리를 앞뒤로 갈라 받는 저크.', movement: 'split-jerk' },
       { id: 'cj', term: 'C&J', full: 'Clean & Jerk', ko: '클린 앤 저크', desc: '클린 + 저크를 이어서 하는 올림픽 역도 종목.', movement: 'clean-and-jerk' },
       { id: 'hpc', term: 'HPC', full: 'Hang Power Clean', ko: '행 파워 클린', desc: '허벅지에서 시작해 하프 스쿼트로 받는 클린. 무릎 아래까지 앉으면 스쿼트 클린이다.', movement: 'hang-power-clean' },
+      { id: 'dbfl', term: 'DBFL', full: 'Dumbbell Front rack Lunge', ko: '덤벨 프론트 랙 런지', desc: '덤벨 두 개를 어깨 위에 얹고 하는 런지. 뒤 무릎이 바닥에 닿았다가 일어서서 두 발을 모으면 1렙이고, 다리는 매 렙 바꾼다.', movement: 'dumbbell-front-rack-lunge' },
       { id: 'fc', term: 'FC', full: "Farmer's Carry", ko: '파머스 캐리', desc: '양손에 무거운 걸 들고 정해진 거리를 걷는 동작. 앞에 붙은 숫자가 거리(m)다.', movement: 'dumbbell-farmers-carry' },
       { id: 'du', term: 'DU', full: 'Double Under', ko: '더블 언더', desc: '한 번 점프에 줄이 두 번 지나가는 줄넘기.', movement: 'double-under' },
       { id: 't2b', term: 'T2B', full: 'Toes To Bar', ko: '토투바', desc: '철봉에 매달려 발끝을 봉에 닿게 올리는 동작.', movement: 'toes-to-bar' },
@@ -447,7 +469,7 @@ export const termGroups = [
       { id: 'damper', term: 'Damper', full: 'Damper Setting', ko: '댐퍼', desc: '에르그 옆 레버(1~10). 무게가 아니라 들어오는 공기량이다. 로잉은 3~5, 바이크는 와드 지시대로.', movement: 'row' },
       { id: 'single-db', term: 'Dumbbell(x1)', full: 'Single Dumbbell', ko: '덤벨 하나', desc: '덤벨 한 개만 든다는 뜻. (x2) 와 반대다. 드는 위치(옆구리·어깨·가슴 앞)는 따로 적혀 있지 않으면 자유다.', movement: 'dumbbell-box-step-over' },
       { id: 'bso', term: 'BSO', full: 'Box Step Over', ko: '박스 스텝 오버', desc: '박스를 한 발씩 올라 반대편으로 넘어가는 동작. 점프 대신 걸음이라 무게를 들고 하는 경우가 많다.', movement: 'dumbbell-box-step-over' },
-      { id: 'bjo', term: 'BJO · (Step down)', full: 'Box Jump Over', ko: '박스 점프 오버', desc: '두 발로 뛰어 박스를 넘어 반대편으로 내려가는 박스 점프 변형. 보통 박스 위에서 완전히 설 필요는 없고, (Step down) 이 붙으면 뛰어내리지 말고 걸어 내려오라는 뜻이다.', movement: 'box-jump' },
+      { id: 'bjo', term: 'BJO · (Step down)', full: 'Box Jump Over', ko: '박스 점프 오버', desc: '두 발로 뛰어 박스를 넘어 반대편으로 내려가는 박스 점프 변형. 보통 박스 위에서 완전히 설 필요는 없고, (Step down) 이 붙으면 뛰어내리지 말고 걸어 내려오라는 뜻이다.', movement: 'box-jump-over' },
       { id: 'burpee', term: 'Burpee', full: 'Burpee', ko: '버피', desc: '엎드려 가슴·허벅지를 바닥에 댔다가 일어나 점프하는 맨몸 동작. 앞에 붙는 말(Lateral · Over · Pogo …)이 점프 방식을 바꾼다.', movement: 'burpee' },
       { id: 'lbob', term: 'Bar Lateral Burpee', full: 'Lateral Burpee Over the Bar', ko: '바 래터럴 버피', desc: '바 옆에 몸과 나란히 엎드렸다가 두 발로 옆으로 뛰어 바를 넘는 버피. 머리 위 박수는 없고, 한 발씩 넘으면 노렙이다. 줄여서 LBOB.', movement: 'bar-lateral-burpee' },
       { id: 'abmat-situp', term: 'Ab Mat Sit-Up', full: 'AbMat Sit-Up', ko: '앱매트 싯업', desc: '허리 밑에 앱매트를 받치고 하는 싯업. 손이 머리 뒤 바닥과 발 앞을 번갈아 짚어야 1렙이다. HSPU 의 "1mat" 과 같은 매트를 다른 용도로 쓴다.', movement: 'sit-up' },
