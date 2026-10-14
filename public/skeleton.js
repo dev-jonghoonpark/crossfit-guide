@@ -145,6 +145,7 @@
   }
 
   const smooth = (x) => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+  const FORESHORTEN = 0.6; // 당기는 도중 팔꿈치를 선 쪽으로 당기는 비율 (구간 가운데 기준)
   const SIDE_SWAP = 0.3; // 팔꿈치가 반대쪽으로 넘어가는 구간 — 편 팔 쪽 끝에서 이만큼
 
   /** solveArms 가 팔꿈치를 놓을 쪽. -1 ~ 1 (0 이면 선 위), null 이면 각도 보간이 만든 쪽,
@@ -181,9 +182,12 @@
       keepSide 면 그 대신 키프레임이 정한 쪽에 고정한다 — 아래팔이 크게 도는
       구간은 각도 보간이 만든 팔꿈치가 도중에 선을 넘어가 버리기 때문이다. */
   function solveArms(A, B, t, out, boned, keepSide = false) {
+    let near = null; // 가까운 팔이 고른 쪽 — 먼 팔은 손이 x 로 몇 칸 밀려 있을 뿐이라 같은 쪽을 따라간다
     for (const [sh, el, wr] of [['shoulder', 'elbowF', 'wristF'], ['shoulder', 'elbowB', 'wristB']]) {
       if (!boned.has(wr) || !Array.isArray(A[wr]) || !Array.isArray(B[wr])) continue;
-      const fixed = elbowSideAt(A, B, t, sh, el, wr, keepSide);
+      let fixed = elbowSideAt(A, B, t, sh, el, wr, keepSide);
+      if (el === 'elbowF') near = fixed;
+      else if (!keepSide && near != null) fixed = near;
       if (fixed === 'skip') continue;
       const tgt = [lerp(A[wr][0], B[wr][0], t), lerp(A[wr][1], B[wr][1], t)];
       const l1 = lerp(dist(A[sh], A[el]), dist(B[sh], B[el]), t);
@@ -205,7 +209,12 @@
       let side = Math.sign((cur[0] - s0[0]) * uy - (cur[1] - s0[1]) * ux) || 1;
       if (fixed != null) side = fixed;
       const a = (l1 * l1 - l2 * l2 + d * d) / (2 * d);
-      const h = Math.sqrt(Math.max(0, l1 * l1 - a * a));
+      let h = Math.sqrt(Math.max(0, l1 * l1 - a * a));
+      /* 봉에 매달려 당기는 도중에는 팔꿈치가 옆으로 벌어진다. 옆에서 보면 그만큼
+         팔이 짧아 보여 팔꿈치가 손 밑으로 붙는데, 길이를 다 쓰면 팔꿈치가 봉보다
+         한 뼘 앞으로 튀어나온 그림이 된다. 구간 가운데에서 선과의 거리를 줄인다
+         (양 끝은 1 이라 키프레임 그대로). */
+      if (!keepSide && fixed != null) h *= 1 - FORESHORTEN * Math.sin(Math.PI * t);
       out[el] = [s0[0] + a * ux + side * h * uy, s0[1] + a * uy - side * h * ux];
       out[wr] = hit;
     }
