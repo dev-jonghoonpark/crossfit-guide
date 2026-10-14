@@ -72,7 +72,7 @@ export const formats = [
   {
     id: 'emom',
     name: 'EMOM',
-    wrote: ['EMOM 32', 'EMOM 24', 'EMOM 21', 'Every 1:00 x 8', 'Every 01:00 x 8'],
+    wrote: ['EMOM 32', 'EMOM 24', 'EMOM 21', 'Every 1:00 x 8', 'Every 01:00 x 8', 'Every 1:00 x 8 Sets'],
     means:
       '매 분이 시작될 때 정해진 양을 하고 남은 시간은 쉰다. ' +
       '동작이 여러 개면 분마다 하나씩 번갈아 간다.',
@@ -241,6 +241,7 @@ export const notationGroups = [
       { wrote: '*Start at 65% Build to Heavy', read: '65%에서 시작해 점점 올리기', note: '같은 표기인데 시작 퍼센트만 다르다. 렙이 적은 스킴일수록 시작점이 높아진다.', term: 'percentage' },
       { wrote: '*Start at 60% Build Up', read: '60%에서 시작해 세트마다 올리기', note: 'Build Up 은 Build to Heavy 의 줄임이다. 기준 1RM 은 그 줄에 적힌 동작 기준.', term: 'percentage' },
       { wrote: '*70% Build to Heavy', read: '70%에서 시작해 세트마다 올리기', note: 'Start at 이 빠져도 같은 뜻이다. 퍼센트 기준은 그 파트 동작(여기선 프론트 스쿼트)의 1RM.', term: 'percentage' },
+      { wrote: '*Build to Heavy', read: '세트마다 올려 무거운 무게까지', note: '시작 퍼센트가 빠진 표기다. 가볍게 시작해 그날 자세가 유지되는 가장 무거운 무게까지 올린다.', term: 'percentage' },
       { wrote: '(x2, 22.5/15kg)', read: '덤벨 두 개, 한 개당 남 22.5 / 여 15kg', note: '(x2) 와 무게를 한 괄호에 쉼표로 같이 적은 것. Dumbbell(x2) ... (22.5/15) 와 같은 뜻이다.', term: 'dual-db' },
       { wrote: '-/- · -', read: '무게 표기 없음', note: '맨몸이거나 기구 자체 무게로 한다는 뜻.' },
     ],
@@ -254,6 +255,7 @@ export const notationGroups = [
       { wrote: '*Time Cap : 12minute', read: '12분 제한', note: '같은 타임 캡이라도 분 수는 와드마다 다르다. 캡이 짧을수록 첫 줄부터 끊어 갈 계획이 필요하다.', term: 'time-cap' },
       { wrote: '*Time Cap 10min · *Original Time Cap 3min', read: '수업 캡 10분 · 대회 원본 캡 3분', note: 'Original 이 붙은 쪽은 원래 대회 종목의 캡이다. 수업은 보통 더 넉넉하게 주고, 원본 캡은 "선수들은 이만큼 빨랐다"는 참고치다.', term: 'time-cap' },
       { wrote: 'x 8 · x 8sets', read: '8라운드 · 8세트', note: 'x 뒤 숫자가 반복 횟수.' },
+      { wrote: '1 Hang Power Snatch · 2 Chest to Bar · 2 … · 4 … · ...', read: '줄을 풀어 쓴 사다리', note: '1-2-3… 처럼 한 줄로 적지 않고 첫 몇 라운드를 줄줄이 적은 뒤 … 로 끝낸 것. 줄 사이 개수가 늘어나는 규칙(여기선 1씩 · 2씩)을 찾아 그대로 이어 간다.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '(3Sec down 1sec up)', read: '3초 동안 내려가고 1초에 올라오기', note: '동작 이름 아래 괄호에 초가 붙으면 템포다. 개수보다 속도를 지키는 게 먼저다.', term: 'tempo' },
@@ -283,6 +285,7 @@ export const notationGroups = [
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
       { wrote: 'Black Band', read: '블랙 밴드 보조', note: '약어로 줄이지 않고 색 이름을 그대로 적기도 한다. BB 와 같은 뜻이다.', term: 'band-scale' },
+      { wrote: 'Band Pull-Up (Black) · (Green)', read: '블랙 밴드 · 그린 밴드 보조 풀업', note: '색을 괄호에 넣어 적기도 한다. 같은 사다리에서는 그린이 보조가 더 큰 쪽(더 낮은 단계)이다.', term: 'band-scale' },
       { wrote: 'BB-GB PU', read: '블랙 밴드 또는 그린 밴드 보조 풀업', note: '하이픈은 "둘 중 골라서"라는 뜻. 본인 수준에 맞는 밴드를 고른다. PU 는 풀업.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
