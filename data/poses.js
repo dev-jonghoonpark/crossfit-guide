@@ -496,23 +496,26 @@ export const poses = {
     bar: [125, 158],
   }),
 
-  // 스내치 풀 언더 — 팔꿈치를 높이 끌어올리며 바 밑으로
+  // 스내치 풀 언더 — 팔꿈치를 높이 끌어올리며 바 밑으로. 옆에서 보면 팔꿈치는 어깨 위로 짧게(옆으로 벌어져 있어서),
+  // 바는 눈높이에서 얼굴 앞에 있다. 여기서 캐치까지 바는 거의 수직으로 오르고 몸이 그 밑으로 들어간다.
   snatchPullUnder: pose({
+    handLine: true, // 바는 몸 앞을 직선으로 — 아래팔이 뒤집혀도 앞으로 원을 그리지 않게 (skeleton.js lerpPose)
     head: [117, 80],
     neck: [114, 98],
     shoulder: [114, 106],
-    elbowF: [148, 84],
-    wristF: [120, 110],
+    elbowF: [124, 80],
+    wristF: [134, 82],
     hip: [106, 186],
     kneeF: [126, 236],
     ankleF: [116, 292],
     toeF: [142, 297],
     heelF: [104, 297],
-    bar: [120, 106],
+    bar: [134, 82],
   }),
 
   // 파워 스내치 캐치 — 오버헤드 락아웃 + 1/4 스쿼트
   snatchPowerCatch: pose({
+    handLine: true, // 바는 몸 앞을 직선으로 — 아래팔이 뒤집혀도 앞으로 원을 그리지 않게 (skeleton.js lerpPose)
     head: [130, 96],
     neck: [120, 113],
     shoulder: [117, 122],
@@ -528,6 +531,7 @@ export const poses = {
 
   // 스쿼트 스내치 캐치 — 오버헤드 스쿼트 바닥
   snatchSquatCatch: pose({
+    handLine: true, // 바는 몸 앞을 직선으로 — 아래팔이 뒤집혀도 앞으로 원을 그리지 않게 (skeleton.js lerpPose)
     head: [124, 146],
     neck: [116, 163],
     shoulder: [113, 170],
