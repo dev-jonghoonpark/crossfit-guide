@@ -22,7 +22,7 @@ for (const mv of movements) {
     for(let s=1;s<20;s++){const p=lerpPose(ph[i],ph[i+1],ease(s/20));
       arm=Math.min(arm,D(p.shoulder,p.wristF)); leg=Math.min(leg,D(p.hip,p.ankleF));}
     // 두 키프레임보다 훨씬 더 접히면 보간이 만들어낸 가짜 자세다.
-    // 단 handLine 구간은 손을 직선으로 옮기고 팔을 역산한 것이라, 바가 가슴 앞을
+    // 단 handLine 구간은 손을 직선으로, 팔꿈치를 어깨 기준으로 옮긴 것이라, 바가 가슴 앞을
     // 지날 때 팔이 접히는 게 실제 자세다(스내치 하이 풀). 팔은 보지 않는다.
     const armBad = !ph[i+1].handLine && arm < armEnds-8;
     if (armBad || leg < legEnds-8)
