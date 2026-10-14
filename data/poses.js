@@ -676,7 +676,7 @@ export const poses = {
     head: [86, 32],
     neck: [98, 42],
     shoulder: [100, 48],
-    elbowF: [92, 66],
+    elbowF: [115, 79], // 팔 길이를 데드 행과 같게(위팔 34 · 아래팔 35) 두고 역산한 자리
     wristF: [120, 44],
     hip: [120, 102],
     kneeF: [129, 156],
@@ -694,7 +694,7 @@ export const poses = {
     head: [82, 24],
     neck: [96, 30],
     shoulder: [101, 35],
-    elbowF: [98, 57],
+    elbowF: [95, 69], // 팔 길이를 데드 행과 같게(위팔 34 · 아래팔 35) 두고 역산한 자리
     wristF: [120, 44],
     hip: [138, 80],
     kneeF: [147, 133],

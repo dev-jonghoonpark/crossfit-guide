@@ -132,11 +132,48 @@
   ];
   const HELD_RANGE = 30; // 이 안에 있으면 "들고 있다"고 본다
 
+  /** 팔꿈치가 어깨→손목 선에서 얼마나 떨어져 있는지 (부호 = 어느 쪽인지) */
+  function elbowOffset(P, sh, el, wr) {
+    const d = dist(P[sh], P[wr]) || 1;
+    return ((P[el][0] - P[sh][0]) * (P[wr][1] - P[sh][1]) - (P[el][1] - P[sh][1]) * (P[wr][0] - P[sh][0])) / d;
+  }
+
   /** 팔꿈치가 어깨→손목 선의 어느 쪽에 있는지 (+1 / -1), 팔이 거의 펴져 있으면 0 */
   function elbowSide(P, sh, el, wr) {
-    const d = dist(P[sh], P[wr]) || 1;
-    const c = ((P[el][0] - P[sh][0]) * (P[wr][1] - P[sh][1]) - (P[el][1] - P[sh][1]) * (P[wr][0] - P[sh][0])) / d;
+    const c = elbowOffset(P, sh, el, wr);
     return Math.abs(c) < 3 ? 0 : Math.sign(c);
+  }
+
+  const smooth = (x) => { x = Math.min(1, Math.max(0, x)); return x * x * (3 - 2 * x); };
+  const SIDE_SWAP = 0.3; // 팔꿈치가 반대쪽으로 넘어가는 구간 — 편 팔 쪽 끝에서 이만큼
+
+  /** solveArms 가 팔꿈치를 놓을 쪽. -1 ~ 1 (0 이면 선 위), null 이면 각도 보간이 만든 쪽,
+      'skip' 이면 역산하지 않는다.
+
+      두 키프레임에서 팔꿈치가 선의 반대쪽에 있으면, 한쪽에 고정하는 순간 다른 끝
+      키프레임과 어긋나 팔꿈치가 튄다. 그래서 편 팔 쪽 끝에서 SIDE_SWAP 구간 동안
+      부드럽게 넘긴다. 편 팔은 선에서 몇 칸밖에 안 떨어져 있어 넘어가는 게 안 보인다.
+
+      handLine(keepSide): 둘 다 거의 펴져 있으면 정할 수 없으니 각도 보간에 맡긴다
+        (오버헤드 스쿼트처럼 팔을 편 채 바만 내려가는 구간).
+      봉에 매달린 동작: 거의 편 팔(데드 행)과 깊게 접은 팔(풀업 정점)은 팔꿈치가
+        선의 반대쪽에 있을 수 있다. 각도 보간이 만든 팔꿈치를 따라가면 도중에
+        접힌 채로 선을 넘어가, 팔꿈치가 봉 위로 솟았다가 반대편으로 튄다.
+        한쪽이 깊게 접혀 있고 다른 쪽이 거의 펴져 있을 때만 손댄다. */
+  function elbowSideAt(A, B, t, sh, el, wr, keepSide) {
+    const ca = elbowOffset(A, sh, el, wr), cb = elbowOffset(B, sh, el, wr);
+    const sa = elbowSide(A, sh, el, wr), sb = elbowSide(B, sh, el, wr);
+    const straightA = Math.abs(ca) < Math.abs(cb);
+    const straight = straightA ? ca : cb, bent = straightA ? cb : ca;
+    if (keepSide) {
+      if (!sa && !sb) return 'skip';
+      if (!sa || !sb || sa === sb) return sa || sb;
+    } else {
+      if (!(A.rig && B.rig)) return null;
+      if (!sa || !sb || sa === sb || Math.abs(bent) < 15 || Math.abs(straight) > 6) return null;
+    }
+    const k = straightA ? smooth(t / SIDE_SWAP) : smooth((t - (1 - SIDE_SWAP)) / SIDE_SWAP);
+    return lerp(sa, sb, k);
   }
 
   /** 손을 두 포즈 사이 직선 위에 두고 팔꿈치를 두 뼈 역산으로 다시 푼다.
@@ -146,11 +183,8 @@
   function solveArms(A, B, t, out, boned, keepSide = false) {
     for (const [sh, el, wr] of [['shoulder', 'elbowF', 'wristF'], ['shoulder', 'elbowB', 'wristB']]) {
       if (!boned.has(wr) || !Array.isArray(A[wr]) || !Array.isArray(B[wr])) continue;
-      // 팔꿈치 쪽은 출발 포즈가, 출발 팔이 펴져 있으면 도착 포즈가 정한다.
-      // 둘 다 거의 펴져 있으면 정할 수 없으니 각도 보간에 맡긴다
-      // (오버헤드 스쿼트처럼 팔을 편 채 바만 내려가는 구간)
-      const fixed = keepSide ? elbowSide(A, sh, el, wr) || elbowSide(B, sh, el, wr) : 0;
-      if (keepSide && !fixed) continue;
+      const fixed = elbowSideAt(A, B, t, sh, el, wr, keepSide);
+      if (fixed === 'skip') continue;
       const tgt = [lerp(A[wr][0], B[wr][0], t), lerp(A[wr][1], B[wr][1], t)];
       const l1 = lerp(dist(A[sh], A[el]), dist(B[sh], B[el]), t);
       const l2 = lerp(dist(A[el], A[wr]), dist(B[el], B[wr]), t);
@@ -169,7 +203,7 @@
       const uy = (hit[1] - s0[1]) / d;
       const cur = out[el];
       let side = Math.sign((cur[0] - s0[0]) * uy - (cur[1] - s0[1]) * ux) || 1;
-      if (fixed) side = fixed;
+      if (fixed != null) side = fixed;
       const a = (l1 * l1 - l2 * l2 + d * d) / (2 * d);
       const h = Math.sqrt(Math.max(0, l1 * l1 - a * a));
       out[el] = [s0[0] + a * ux + side * h * uy, s0[1] + a * uy - side * h * ux];
