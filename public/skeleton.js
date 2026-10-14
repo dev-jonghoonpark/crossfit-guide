@@ -148,47 +148,53 @@
   const FORESHORTEN = 0.6; // 당기는 도중 팔꿈치를 선 쪽으로 당기는 비율 (구간 가운데 기준)
   const SIDE_SWAP = 0.3; // 팔꿈치가 반대쪽으로 넘어가는 구간 — 편 팔 쪽 끝에서 이만큼
 
-  /** solveArms 가 팔꿈치를 놓을 쪽. -1 ~ 1 (0 이면 선 위), null 이면 각도 보간이 만든 쪽,
-      'skip' 이면 역산하지 않는다.
+  /** solveArms 가 팔꿈치를 놓을 쪽. -1 ~ 1 (0 이면 선 위), null 이면 각도 보간이 만든 쪽.
 
       두 키프레임에서 팔꿈치가 선의 반대쪽에 있으면, 한쪽에 고정하는 순간 다른 끝
       키프레임과 어긋나 팔꿈치가 튄다. 그래서 편 팔 쪽 끝에서 SIDE_SWAP 구간 동안
       부드럽게 넘긴다. 편 팔은 선에서 몇 칸밖에 안 떨어져 있어 넘어가는 게 안 보인다.
 
-      handLine(keepSide): 둘 다 거의 펴져 있으면 정할 수 없으니 각도 보간에 맡긴다
-        (오버헤드 스쿼트처럼 팔을 편 채 바만 내려가는 구간).
-      봉에 매달린 동작: 거의 편 팔(데드 행)과 깊게 접은 팔(풀업 정점)은 팔꿈치가
+      봉에 매달린 동작만 해당한다: 거의 편 팔(데드 행)과 깊게 접은 팔(풀업 정점)은 팔꿈치가
         선의 반대쪽에 있을 수 있다. 각도 보간이 만든 팔꿈치를 따라가면 도중에
         접힌 채로 선을 넘어가, 팔꿈치가 봉 위로 솟았다가 반대편으로 튄다.
         한쪽이 깊게 접혀 있고 다른 쪽이 거의 펴져 있을 때만 손댄다. */
-  function elbowSideAt(A, B, t, sh, el, wr, keepSide) {
+  function elbowSideAt(A, B, t, sh, el, wr) {
+    if (!(A.rig && B.rig)) return null;
     const ca = elbowOffset(A, sh, el, wr), cb = elbowOffset(B, sh, el, wr);
     const sa = elbowSide(A, sh, el, wr), sb = elbowSide(B, sh, el, wr);
     const straightA = Math.abs(ca) < Math.abs(cb);
     const straight = straightA ? ca : cb, bent = straightA ? cb : ca;
-    if (keepSide) {
-      if (!sa && !sb) return 'skip';
-      if (!sa || !sb || sa === sb) return sa || sb;
-    } else {
-      if (!(A.rig && B.rig)) return null;
-      if (!sa || !sb || sa === sb || Math.abs(bent) < 15 || Math.abs(straight) > 6) return null;
-    }
+    if (!sa || !sb || sa === sb || Math.abs(bent) < 15 || Math.abs(straight) > 6) return null;
     const k = straightA ? smooth(t / SIDE_SWAP) : smooth((t - (1 - SIDE_SWAP)) / SIDE_SWAP);
     return lerp(sa, sb, k);
   }
 
+  /** handLine 구간 — 손은 두 키프레임 사이 직선으로, 팔꿈치는 어깨에 대한 상대 위치를
+      직선으로 옮긴다. 뼈 길이를 고정하지 않는 게 핵심이다: 스내치처럼 팔꿈치가 옆으로
+      벌어지는 동작은 옆에서 보면 팔이 짧아 보이는데(원근), 길이를 고정해 역산하면
+      팔꿈치가 몸 앞으로 한 뼘씩 튀어나간다. 상대 위치를 보간하면 신전→풀 언더 중간에
+      팔꿈치가 어깨 높이로 오르고 아래팔이 거기서 바로 바를 잡는다 — 하이 풀 그대로다. */
+  function lineArms(A, B, t, out, boned) {
+    for (const [sh, el, wr] of [['shoulder', 'elbowF', 'wristF'], ['shoulder', 'elbowB', 'wristB']]) {
+      if (!boned.has(wr) || !Array.isArray(A[el]) || !Array.isArray(B[el])) continue;
+      out[el] = [
+        out[sh][0] + lerp(A[el][0] - A[sh][0], B[el][0] - B[sh][0], t),
+        out[sh][1] + lerp(A[el][1] - A[sh][1], B[el][1] - B[sh][1], t),
+      ];
+      out[wr] = [lerp(A[wr][0], B[wr][0], t), lerp(A[wr][1], B[wr][1], t)];
+    }
+  }
+
   /** 손을 두 포즈 사이 직선 위에 두고 팔꿈치를 두 뼈 역산으로 다시 푼다.
       팔꿈치는 각도 보간이 만든 쪽에 그대로 둔다 (반대로 꺾이면 안 되니까).
-      keepSide 면 그 대신 키프레임이 정한 쪽에 고정한다 — 아래팔이 크게 도는
-      구간은 각도 보간이 만든 팔꿈치가 도중에 선을 넘어가 버리기 때문이다. */
-  function solveArms(A, B, t, out, boned, keepSide = false) {
+      봉에 매달린 당기기 구간은 elbowSideAt 이 정한 쪽에 둔다. */
+  function solveArms(A, B, t, out, boned) {
     let near = null; // 가까운 팔이 고른 쪽 — 먼 팔은 손이 x 로 몇 칸 밀려 있을 뿐이라 같은 쪽을 따라간다
     for (const [sh, el, wr] of [['shoulder', 'elbowF', 'wristF'], ['shoulder', 'elbowB', 'wristB']]) {
       if (!boned.has(wr) || !Array.isArray(A[wr]) || !Array.isArray(B[wr])) continue;
-      let fixed = elbowSideAt(A, B, t, sh, el, wr, keepSide);
+      let fixed = elbowSideAt(A, B, t, sh, el, wr);
       if (el === 'elbowF') near = fixed;
-      else if (!keepSide && near != null) fixed = near;
-      if (fixed === 'skip') continue;
+      else if (near != null) fixed = near;
       const tgt = [lerp(A[wr][0], B[wr][0], t), lerp(A[wr][1], B[wr][1], t)];
       const l1 = lerp(dist(A[sh], A[el]), dist(B[sh], B[el]), t);
       const l2 = lerp(dist(A[el], A[wr]), dist(B[el], B[wr]), t);
@@ -214,7 +220,7 @@
          팔이 짧아 보여 팔꿈치가 손 밑으로 붙는데, 길이를 다 쓰면 팔꿈치가 봉보다
          한 뼘 앞으로 튀어나온 그림이 된다. 구간 가운데에서 선과의 거리를 줄인다
          (양 끝은 1 이라 키프레임 그대로). */
-      if (!keepSide && fixed != null) h *= 1 - FORESHORTEN * Math.sin(Math.PI * t);
+      if (fixed != null) h *= 1 - FORESHORTEN * Math.sin(Math.PI * t);
       out[el] = [s0[0] + a * ux + side * h * uy, s0[1] + a * uy - side * h * ux];
       out[wr] = hit;
     }
@@ -290,11 +296,11 @@
           const dy = lerp(A[anchor][1], B[anchor][1], t) - out[anchor][1];
           for (const k of boned) out[k] = [out[k][0] + dx, out[k][1] + dy];
         }
-        /* 도착 포즈에 handLine 이 있으면 발은 그대로 디딘 채 손만 직선으로 옮기고
-           팔은 역산한다. 스내치 턴오버처럼 아래팔이 아래→위로 뒤집히는 구간은
+        /* 도착 포즈에 handLine 이 있으면 발은 그대로 디딘 채 손을 직선으로 옮긴다
+           (lineArms). 스내치 턴오버처럼 아래팔이 아래→위로 뒤집히는 구간은
            각도 보간이면 손이 아래팔 길이만큼 앞으로 원을 그리며 돌아 나가는데,
            실제 바는 몸 앞을 거의 수직으로 올라가고 몸이 그 밑으로 들어간다. */
-        if (B.handLine) solveArms(A, B, t, out, boned, true);
+        if (B.handLine) lineArms(A, B, t, out, boned);
       }
     }
 
