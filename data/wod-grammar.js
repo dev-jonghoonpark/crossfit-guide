@@ -72,7 +72,7 @@ export const formats = [
   {
     id: 'emom',
     name: 'EMOM',
-    wrote: ['EMOM 32', 'EMOM 24', 'EMOM 21', 'Every 1:00 x 8', 'Every 01:00 x 8', 'Every 1:00 x 8 Sets'],
+    wrote: ['EMOM 32', 'EMOM 24', 'EMOM 21', 'Every 1:00 x 8', 'Every 01:00 x 8', 'Every 1:00 x 8 Sets', 'Every 1:00 x 8Sets'],
     means:
       '매 분이 시작될 때 정해진 양을 하고 남은 시간은 쉰다. ' +
       '동작이 여러 개면 분마다 하나씩 번갈아 간다.',
@@ -97,7 +97,7 @@ export const formats = [
   {
     id: 'interval',
     name: 'Interval (On / Off)',
-    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set'],
+    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set', '3:00 Work / 2:00 Rest x 4Sets'],
     means:
       '앞이 운동 시간, 뒤가 휴식 시간이다. 정해진 세트만큼 반복한다. ' +
       '휴식이 운동보다 길면 매 세트를 전력으로 하라는 뜻이다.',
@@ -212,6 +212,7 @@ export const notationGroups = [
       { wrote: "10m DB Farmer's Carry", read: '덤벨을 들고 10m 걷기', note: '동작 앞의 숫자가 개수가 아니라 거리(m)인 경우.', term: 'fc' },
       { wrote: 'Max Unbroken Hang Power Clean', read: '끊기지 않고 할 수 있는 최대 개수', note: '개수가 정해져 있지 않다. 바를 놓는 순간이 그 세트의 끝.', term: 'unbroken' },
       { wrote: 'Max Dumbbell(x2) Push Press', read: '그 시간 안에 할 수 있는 최대 개수', note: 'Max 앞에 Unbroken 이 없으면 끊어서 해도 된다. 정해진 시간이 끝나는 게 그 세트의 끝.' },
+      { wrote: 'Max Hang Power Clean (155/105)', read: '앞 동작을 끝내고 남은 시간 동안 최대 개수', note: '인터벌의 마지막 줄에 Max 가 오면 위의 정해진 개수를 다 채운 뒤 그 세트의 운동 시간이 끝날 때까지 쌓는다. 앞에서 빨리 끝낼수록 Max 에 쓸 시간이 늘어난다.' },
       { wrote: '30sec Max Push-Up', read: '30초 동안 푸시업 최대 개수', note: '숫자 뒤에 sec 가 붙으면 개수가 아니라 시간이다. 그 시간이 끝나면 남은 시간은 쉰다.' },
       { wrote: '5 Wall Walk', read: '월 워크 5회', note: '올라갔다 내려와야 1렙이다. 올라간 것만 세지 않는다.', term: 'ww' },
       { wrote: '(Above knee) / (Below Knee)', read: '무릎 위 / 무릎 아래에서 시작', note: '같은 동작이라도 시작 높이를 지정한다.', term: 'hang' },
@@ -289,6 +290,7 @@ export const notationGroups = [
       { wrote: 'BB-GB PU', read: '블랙 밴드 또는 그린 밴드 보조 풀업', note: '하이픈은 "둘 중 골라서"라는 뜻. 본인 수준에 맞는 밴드를 고른다. PU 는 풀업.', term: 'band-scale' },
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
+      { wrote: 'HLR', read: '행잉 레그 레이즈', note: 'K2C 도 어려우면 매달려서 다리를 허리 높이까지만 든다. 토투바 스케일 사다리의 아래 칸.', term: 'hlr' },
       { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
       { wrote: 'b : Same', read: '보드에 적힌 그대로', note: '스케일 사다리 중 이 단계는 바꾸는 게 없다는 뜻.', term: 'tier' },

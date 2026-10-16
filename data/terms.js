@@ -325,6 +325,16 @@ export const termGroups = [
         movement: 'toes-to-bar',
       },
       {
+        id: 'hlr',
+        term: 'HLR',
+        full: 'Hanging Leg Raise',
+        ko: '행잉 레그 레이즈',
+        desc:
+          '철봉에 매달려 다리를 들어 올리는 동작. 토투바처럼 발을 봉까지 올리지 않고, 보통 다리를 편 채(또는 무릎을 굽혀) 허리 높이까지 든다. ' +
+          'K2C 보다 한 단계 아래 스케일로 쓰인다.',
+        movement: 'toes-to-bar',
+      },
+      {
         id: 'broken-ok',
         term: 'Broken ok',
         full: 'Broken OK',
@@ -438,6 +448,7 @@ export const termGroups = [
       { id: 'pj', term: 'PJ', full: 'Push Jerk', ko: '푸시 저크', desc: '발 위치를 유지한 채 1/4 스쿼트로 받는 저크.', movement: 'push-jerk' },
       { id: 'sj', term: 'SJ', full: 'Split Jerk', ko: '스플릿 저크', desc: '다리를 앞뒤로 갈라 받는 저크.', movement: 'split-jerk' },
       { id: 'cj', term: 'C&J', full: 'Clean & Jerk', ko: '클린 앤 저크', desc: '클린 + 저크를 이어서 하는 올림픽 역도 종목.', movement: 'clean-and-jerk' },
+      { id: 'pc', term: 'PC', full: 'Power Clean', ko: '파워 클린', desc: '바닥에서 시작해 하프 스쿼트로 받는 클린. 허벅지에서 시작하면 행 파워 클린(HPC)이다.', movement: 'power-clean' },
       { id: 'hpc', term: 'HPC', full: 'Hang Power Clean', ko: '행 파워 클린', desc: '허벅지에서 시작해 하프 스쿼트로 받는 클린. 무릎 아래까지 앉으면 스쿼트 클린이다.', movement: 'hang-power-clean' },
       { id: 'dbfl', term: 'DBFL', full: 'Dumbbell Front rack Lunge', ko: '덤벨 프론트 랙 런지', desc: '덤벨 두 개를 어깨 위에 얹고 하는 런지. 뒤 무릎이 바닥에 닿았다가 일어서서 두 발을 모으면 1렙이고, 다리는 매 렙 바꾼다.', movement: 'dumbbell-front-rack-lunge' },
       { id: 'fc', term: 'FC', full: "Farmer's Carry", ko: '파머스 캐리', desc: '양손에 무거운 걸 들고 정해진 거리를 걷는 동작. 앞에 붙은 숫자가 거리(m)다.', movement: 'dumbbell-farmers-carry' },
