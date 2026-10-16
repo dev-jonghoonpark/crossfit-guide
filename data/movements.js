@@ -285,6 +285,179 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'power-clean',
+    seoTitle: '파워 클린 하는 법 — 바닥에서 하프 스쿼트로 받기',
+    seoDesc:
+      '파워 클린은 바닥의 바벨을 하프 스쿼트 깊이에서 프론트 랙으로 받는 클린입니다. 행 파워 클린·스쿼트 클린과의 차이와 무게를 올릴 때 무너지는 지점을 정리했습니다.',
+    thumb: 4,
+    ko: '파워 클린',
+    en: 'Power Clean',
+    abbr: 'PC',
+    category: '역도',
+    level: '중급',
+    equipment: ['바벨', '원판'],
+    tagline: '바닥의 바벨을 고관절이 무릎보다 위인 하프 스쿼트에서 프론트 랙으로 받는 클린',
+    intro:
+      '스쿼트 클린과 출발(바닥)은 같고, 받는 깊이는 행 파워 클린과 같다. ' +
+      '바닥에서 시작하니 1차 풀로 속도를 붙일 수 있어 행 파워 클린보다 무거운 무게를 다룰 수 있지만, ' +
+      '풀 스쿼트까지 내려가지 않는 만큼 스쿼트 클린보다는 가볍다. 바를 높이 띄우는 신전이 이 동작의 전부다.',
+    phases: [
+      {
+        name: '셋업',
+        pose: 'floorSetup',
+        desc: '바를 발 중앙 위에 두고 정강이를 바에 붙인다. 손은 어깨너비보다 조금 넓게, 훅 그립.',
+        cues: ['가슴 들고 등은 평평하게', '어깨가 바보다 살짝 앞', '팔은 펴서 줄처럼'],
+        emphasis: ['erectors', 'forearms', 'lats'],
+      },
+      {
+        name: '1차 풀',
+        pose: 'firstPull',
+        desc: '다리로 바닥을 밀어 바를 무릎 위까지 올린다. 등 각도는 셋업 그대로 두고 무릎만 뒤로 빠진다.',
+        cues: ['천천히, 같은 각도로', '바는 정강이를 스치듯', '엉덩이가 먼저 뜨지 않게'],
+        emphasis: ['quads', 'hamstrings', 'erectors'],
+      },
+      {
+        name: '폭발적 신전',
+        pose: 'extension',
+        desc: '바가 허벅지 위쪽에 닿는 순간 발목·무릎·고관절을 한꺼번에 펴며 바를 쳐 올린다. 파워로 받으려면 바가 명치 높이까지 떠야 한다.',
+        cues: ['수직으로 점프하듯', '어깨를 귀 쪽으로 슈러그', '팔은 아직 펴진 채'],
+        emphasis: ['glutes', 'hamstrings', 'traps', 'calves'],
+      },
+      {
+        name: '풀 언더',
+        pose: 'pullUnder',
+        desc: '팔꿈치를 바 밑으로 빠르게 돌려 넣으며 몸을 살짝 내린다. 발은 점프 스탠스에서 스쿼트 스탠스로 조금 벌어진다.',
+        cues: ['팔꿈치 회전 속도', '바를 몸 가까이', '조금만 내려간다'],
+        emphasis: ['traps', 'delts', 'core'],
+      },
+      {
+        name: '파워 캐치',
+        pose: 'powerCatch',
+        desc: '고관절이 무릎보다 위인 하프 스쿼트에서 바를 어깨 앞에 받는다. 무릎 아래로 앉으면 스쿼트 클린이다.',
+        cues: ['팔꿈치 높게', '상체 수직', '발 전체로 받기'],
+        emphasis: ['quads', 'glutes', 'core'],
+      },
+      {
+        name: '일어서기',
+        pose: 'frontRack',
+        desc: '완전히 서면 1렙. 바는 허벅지까지 내렸다가 바닥에 놓고 다음 렙을 다시 셋업한다.',
+        cues: ['완전 신전으로 마무리', '내릴 땐 허벅지 거쳐서', '매 렙 셋업 다시'],
+        emphasis: ['quads', 'glutes'],
+      },
+    ],
+    muscles: [
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'quads', level: 'primary' },
+      { key: 'traps', level: 'primary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'lats', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '바닥에서 엉덩이가 먼저 뜬다', fix: '1차 풀에서 다리로 밀지 않고 등으로 들어 올린 것. 무릎 위까지는 등 각도를 고정하고 천천히 민다.' },
+      { problem: '바가 몸 앞으로 멀어진다', fix: '광배로 바를 몸 쪽으로 눌러 둔다. 바가 허벅지를 스치고 지나가야 신전의 힘이 위로 간다.' },
+      { problem: '무거워지면 풀 스쿼트로 떨어진다', fix: '바가 충분히 뜨지 않은 것이다. 파워 클린 기록이라면 그 무게는 실패로 보고 무게를 내린다.' },
+      { problem: '팔꿈치가 낮아 바가 손에 걸린다', fix: '받는 순간 팔꿈치를 앞으로 찌른다. 손목이 아프면 그립을 손가락 끝으로 풀어 바를 어깨에 얹는다.' },
+    ],
+    scaling: [
+      '무게 낮추기 — 빈 바나 1RM 의 50~60%에서 자세부터',
+      '행 파워 클린으로 시작해 바닥 구간 빼기',
+      '덤벨 파워 클린으로 대체',
+      '블록이나 원판 위에 바를 올려 시작 높이 높이기',
+    ],
+    related: ['hang-power-clean', 'squat-clean', 'clean-high-pull'],
+    terms: ['pc', 'front-rack', 'triple-extension', 'hook-grip', 'percentage'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'clean-high-pull',
+    seoTitle: '클린 하이 풀 하는 법 — 클린 전 신전 연습',
+    seoDesc:
+      '클린 하이 풀은 클린 그립으로 바닥의 바를 신전으로 띄워 명치 높이까지 당기고 받지 않는 동작입니다. 클린과 이어 할 때의 순서와 실수를 정리했습니다.',
+    thumb: 3,
+    ko: '클린 하이 풀',
+    en: 'Clean High Pull',
+    abbr: 'High Pull',
+    category: '역도',
+    level: '초중급',
+    equipment: ['바벨', '원판'],
+    tagline: '클린처럼 바를 띄우되 받지 않고, 팔꿈치를 높이 들어 명치 높이에서 멈추는 동작',
+    intro:
+      '클린에서 "받기"를 뺀 동작이다. 셋업·1차 풀·신전은 클린과 똑같고, 신전이 끝난 관성으로 팔꿈치를 높이 들어 바를 명치~가슴 높이까지 끌어올린 뒤 그대로 내린다. ' +
+      '와드에서 "1 High Pull + 1 Power Clean" 처럼 클린 앞에 붙어 나오면, 하이 풀로 바를 어디까지 띄워야 하는지 몸에 먼저 알려 주는 역할이다. ' +
+      '스모 데드리프트 하이 풀(SDHP)과 이름은 비슷하지만 스탠스와 그립이 클린과 같다.',
+    phases: [
+      {
+        name: '셋업',
+        pose: 'floorSetup',
+        desc: '클린과 같은 셋업. 발은 골반 너비, 손은 어깨너비보다 조금 넓게 훅 그립으로 잡는다.',
+        cues: ['가슴 들고 등 평평하게', '어깨가 바보다 살짝 앞', '정강이에 바 붙이기'],
+        emphasis: ['erectors', 'forearms', 'lats'],
+      },
+      {
+        name: '1차 풀',
+        pose: 'firstPull',
+        desc: '다리로 바닥을 밀어 바를 무릎 위까지 올린다. 클린과 똑같이, 서두르지 않는다.',
+        cues: ['등 각도 고정', '무릎을 뒤로 빼며', '바는 몸에 붙여서'],
+        emphasis: ['quads', 'hamstrings', 'erectors'],
+      },
+      {
+        name: '폭발적 신전',
+        pose: 'extension',
+        desc: '허벅지 위쪽에서 발목·무릎·고관절을 한 번에 편다. 여기까지 팔꿈치는 펴 있다.',
+        cues: ['수직으로 점프하듯', '슈러그', '팔은 마지막에'],
+        emphasis: ['glutes', 'hamstrings', 'traps', 'calves'],
+      },
+      {
+        name: '하이 풀',
+        pose: 'highPull',
+        desc: '신전의 관성을 이어받아 팔꿈치를 높이, 바깥으로 들어 바를 명치~가슴 높이까지 당긴다. 몸 밑으로 들어가지 않고 선 채로 끝난다.',
+        cues: ['팔꿈치를 천장으로', '팔꿈치가 손보다 위', '바는 몸을 스치듯'],
+        emphasis: ['traps', 'delts', 'biceps', 'forearms'],
+      },
+      {
+        name: '내리기',
+        pose: 'floorSetup',
+        desc: '허벅지를 거쳐 바닥까지 컨트롤해서 내린다. 콤플렉스라면 바닥에서 셋업을 다시 잡고 클린으로 이어 간다.',
+        cues: ['허벅지에 한 번 받기', '등이 말리지 않게', '셋업 다시'],
+        emphasis: ['erectors', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'traps', level: 'primary' },
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'delts', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'calves', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'biceps', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '팔로 먼저 당긴다', fix: '고관절이 다 펴지기 전에 팔꿈치가 굽으면 업라이트 로우다. 신전이 끝난 뒤에 팔꿈치가 따라 올라가게 한다.' },
+      { problem: '바가 배꼽 높이에서 멈춘다', fix: '신전이 약하거나 무게가 무겁다. 하이 풀은 클린보다 무거울 이유가 없으니 같은 무게에서 높이를 만든다.' },
+      { problem: '팔꿈치가 손보다 낮다', fix: '손목이 꺾이고 어깨 앞이 걸린다. 팔꿈치를 바깥·위로 먼저 보낸다.' },
+      { problem: '하이 풀 뒤 클린에서 셋업을 건너뛴다', fix: '바닥에 바를 놓고 등과 그립을 다시 잡은 뒤 클린을 친다. 서두르면 클린의 1차 풀이 무너진다.' },
+    ],
+    scaling: [
+      '빈 바나 PVC 로 신전 → 팔꿈치 순서만 익히기',
+      '행 포지션(허벅지)에서 시작하는 행 하이 풀',
+      '가슴 높이까지만 당기기 (어깨가 불편할 때)',
+      '클린 데드리프트(신전까지만)로 대체',
+    ],
+    related: ['power-clean', 'sumo-deadlift-high-pull', 'squat-clean'],
+    terms: ['triple-extension', 'hook-grip', 'emom'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'split-jerk',
     seoTitle: '스플릿 저크 동작 방법과 사용 근육',
     seoDesc:
