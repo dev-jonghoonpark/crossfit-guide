@@ -131,11 +131,11 @@ export const formats = [
   {
     id: 'named-wod',
     name: '이름 붙은 와드 (Hero · The Girls)',
-    wrote: ['JOSH'],
+    wrote: ['JOSH', 'Double "Diane"'],
     means:
       '형식 대신 이름만 적혀 있는 줄. 내용이 이미 정해져 있는 벤치마크 와드라는 뜻이다. ' +
-      '순직한 군인·소방관·경찰을 기리는 히어로 와드(JOSH, Murph, DT)와 여성 이름이 붙은 걸스 와드(Fran, Cindy)가 있다. ' +
-      '이름 아래에 For Time 같은 실제 형식 줄이 따로 붙는다.',
+      '순직한 군인·소방관·경찰을 기리는 히어로 와드(JOSH, Murph, DT)와 여성 이름이 붙은 걸스 와드(Fran, Cindy, Diane)가 있다. ' +
+      '이름 아래에 For Time 같은 실제 형식 줄이 따로 붙는다. 이름 앞에 Double 이 붙으면 그 와드를 두 번 이어서 한다는 뜻이다.',
     clock: '이름 아래 붙은 형식 줄을 따른다.',
     score: '그 형식의 기록. 내용이 고정돼 있어 다른 날·다른 박스의 기록과 그대로 비교된다.',
     term: 'hero',
@@ -205,6 +205,8 @@ export const notationGroups = [
     rows: [
       { wrote: '3 Hang Squat clean', read: '행 스쿼트 클린 3회', note: '숫자가 항상 동작 앞에 온다.' },
       { wrote: '5-5-3-3-2', read: '5회·5회·3회·3회·2회 다섯 세트', note: '개수가 줄면 무게를 올린다는 신호.' },
+      { wrote: '10-5-3-5-10 · 55-70-82.5-72.5-60%', read: '렙과 퍼센트를 한 칸씩 짝지어 읽는 웨이브', note: '렙이 줄었다 다시 느는 만큼 무게는 올랐다 내려간다. 가운데 칸이 그날 가장 무거운 세트다.', term: 'percentage' },
+      { wrote: '21-15-9-9-15-21', read: '21-15-9 를 한 번, 거꾸로 한 번 더', note: '줄의 동작들을 숫자마다 같은 개수씩 번갈아 한다. 뒤 절반은 개수가 늘어나는 방향이라 갈수록 힘들다.' },
       { wrote: '12 Dumbbell Snatch alt.', read: '덤벨 스내치 12회, 좌우 번갈아', note: 'alt. = alternating. 좌우 합쳐서 12회다.' },
       { wrote: '1. / 2. / 3. / 4.', read: '① ② ③ ④ 스테이션 번호', note: 'EMOM에서 분마다 하나씩 돌아가며 하는 순서.', term: 'emom' },
       { wrote: '7 Unbroken Power Snatch', read: '파워 스내치 7회를 쉬지 않고', note: '바를 내려놓거나 손을 놓으면 처음부터.', term: 'unbroken' },
@@ -258,6 +260,7 @@ export const notationGroups = [
       { wrote: 'x 8 · x 8sets', read: '8라운드 · 8세트', note: 'x 뒤 숫자가 반복 횟수.' },
       { wrote: '1 Hang Power Snatch · 2 Chest to Bar · 2 … · 4 … · ...', read: '줄을 풀어 쓴 사다리', note: '1-2-3… 처럼 한 줄로 적지 않고 첫 몇 라운드를 줄줄이 적은 뒤 … 로 끝낸 것. 줄 사이 개수가 늘어나는 규칙(여기선 1씩 · 2씩)을 찾아 그대로 이어 간다.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
+      { wrote: 'or Skill & Warm up', read: '또는 이 시간에 스킬 연습과 웜업', note: '파트 하나를 통째로 건너뛰어도 된다는 뜻. 그 시간에 뒤 와드의 어려운 동작을 연습하고 몸을 푼다.' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '(3Sec down 1sec up)', read: '3초 동안 내려가고 1초에 올라오기', note: '동작 이름 아래 괄호에 초가 붙으면 템포다. 개수보다 속도를 지키는 게 먼저다.', term: 'tempo' },
       { wrote: '(Legs Only)', read: '다리로만', note: '팬 바이크처럼 팔 손잡이가 있는 기구에서 손잡이를 밀고 당기지 말라는 뜻. 팔은 쉬게 둔다.' },
@@ -282,7 +285,10 @@ export const notationGroups = [
       { wrote: 'a: / b: / c:', read: '하향 단계', note: '화이트보드 구석에 코치가 미리 적어 둔 대안 사다리.', term: 'tier' },
       { wrote: '1Scaled / 2Scaled', read: '한 단계 / 두 단계 낮춘 버전', note: '숫자가 클수록 더 쉬운 쪽.', term: 'nscaled' },
       { wrote: '1mat / 2mat', read: 'HSPU 밑에 앱매트 1장 / 2장', note: '가동 범위를 줄여 주는 스케일.', term: 'abmat' },
+      { wrote: '1-2mat', read: '앱매트 1장 또는 2장', note: '하이픈은 범위다. 본인 수준에 맞게 고른다.', term: 'abmat' },
       { wrote: 'HSH', read: '핸드스탠드 홀드', note: 'HSPU 를 못 하면 버티기로 대체.', term: 'hsh' },
+      { wrote: 'x2sec Hold', read: '1렙을 2초 버티기로', note: 'HSH 를 줄여 쓰지 않고 Hold 로만 적은 것. 21회면 42초 핸드스탠드 홀드다.', term: 'hsh' },
+      { wrote: 'Pike push up', read: '파이크 푸시업', note: '물구나무 대신 엉덩이를 높이 든 ㅅ자 자세에서 하는 푸시업. HSPU 스케일 사다리의 아래 칸.', term: 'pike-push-up' },
       { wrote: 'K2C', read: '니 투 체스트', note: '토투바를 못 하면 무릎을 가슴까지.', term: 'k2c' },
       { wrote: 'BB / GB', read: '블랙 밴드 / 그린 밴드', note: '풀업·딥 보조에 쓰는 밴드 색.', term: 'band-scale' },
       { wrote: 'Black Band', read: '블랙 밴드 보조', note: '약어로 줄이지 않고 색 이름을 그대로 적기도 한다. BB 와 같은 뜻이다.', term: 'band-scale' },

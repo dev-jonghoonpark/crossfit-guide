@@ -313,7 +313,7 @@ export const termGroups = [
         ko: '핸드스탠드 홀드',
         desc:
           '핸드스탠드 푸시업을 못 할 때 렙 대신 버티는 시간으로 바꾸는 스케일링. ' +
-          '"x2 sec HSH" 는 1렙을 2초 버티기로 환산하라는 뜻이다.',
+          '"x2 sec HSH" 는 1렙을 2초 버티기로 환산하라는 뜻이다. "x2sec Hold" 처럼 HSH 없이 Hold 로만 적기도 한다.',
         movement: 'handstand-push-up',
       },
       {
@@ -458,6 +458,7 @@ export const termGroups = [
       { id: 'c2b', term: 'C2B', full: 'Chest To Bar', ko: '체스트투바', desc: '가슴이 봉에 닿는 풀업.', movement: 'chest-to-bar-pull-up' },
       { id: 'bmu', term: 'BMU', full: 'Bar Muscle-Up', ko: '바 뮤스클업', desc: '철봉 아래에서 봉 위로 넘어가 팔을 완전히 펴는 동작. 풀업 + 딥을 한 번에 이은 것.', movement: 'bar-muscle-up' },
       { id: 'rmu', term: 'RMU', full: 'Ring Muscle-Up', ko: '링 뮤스클업', desc: '같은 동작을 링에서 하는 버전. 링이 흔들려서 바 뮤스클업보다 한 단계 더 어렵다.' },
+      { id: 'pike-push-up', term: 'Pike Push-up', full: 'Pike Push-up', ko: '파이크 푸시업', desc: '엉덩이를 높이 들어 몸을 ㅅ자로 만든 채 머리를 손 사이 바닥으로 내렸다 미는 푸시업. 발을 박스에 올리면 물구나무에 가까워진다. HSPU 의 스케일링으로 쓴다.', movement: 'handstand-push-up' },
       { id: 'hspu', term: 'HSPU', full: 'Handstand Push-up', ko: '핸드스탠드 푸시업', desc: '물구나무 상태에서 하는 푸시업.', movement: 'handstand-push-up' },
       { id: 'fs', term: 'FS', full: 'Front Squat', ko: '프론트 스쿼트', desc: '바벨을 어깨 앞(프론트 랙)에 얹고 하는 스쿼트. 클린을 받는 자세와 같아서 클린 전 스트렝스 파트로 자주 나온다.', movement: 'front-squat' },
       { id: 'ohs', term: 'OHS', full: 'Overhead Squat', ko: '오버헤드 스쿼트', desc: '스내치 그립으로 바를 머리 위에 든 채 하는 스쿼트. 스쿼트 스내치를 받는 자세이기도 하다.', movement: 'overhead-squat' },
@@ -498,7 +499,7 @@ export const termGroups = [
       { id: 'box', term: 'Box', full: 'Box', ko: '박스', desc: '크로스핏 체육관을 부르는 말. 거울과 러닝머신 대신 바벨과 철봉이 있다.' },
       { id: 'metcon', term: 'Metcon', full: 'Metabolic Conditioning', ko: '대사 컨디셔닝', desc: '심폐·대사 능력을 자극하는 고강도 순환 운동. 사실상 WOD 본편.' },
       { id: 'hero', term: 'Hero WOD', full: 'Hero WOD', ko: '히어로 와드', desc: '순직한 군인·소방관·경찰의 이름을 딴 특별히 긴 와드. Murph, DT 등.' },
-      { id: 'girls', term: 'The Girls', full: 'The Girls', ko: '걸스 와드', desc: 'Fran, Cindy, Grace 처럼 여성 이름이 붙은 벤치마크 와드. 기록을 비교하는 기준이 된다.' },
+      { id: 'girls', term: 'The Girls', full: 'The Girls', ko: '걸스 와드', desc: 'Fran, Cindy, Grace, Diane 처럼 여성 이름이 붙은 벤치마크 와드. 기록을 비교하는 기준이 된다. 이름 앞에 Double 이 붙으면 같은 와드를 두 번 이어서 한다.' },
       { id: 'benchmark', term: 'Benchmark', full: 'Benchmark WOD', ko: '벤치마크 와드', desc: '주기적으로 반복해 성장을 측정하는 표준 와드.' },
       { id: 'dnf', term: 'DNF', full: 'Did Not Finish', ko: '미완주', desc: '타임캡 안에 끝내지 못한 경우. 완료 렙 수로 기록한다.' },
       { id: 'plate', term: 'Bumper Plate', full: 'Bumper Plate', ko: '범퍼 플레이트', desc: '바닥에 떨어뜨려도 되는 고무 원판. 크기(지름)는 같고 무게만 다르다.' },
