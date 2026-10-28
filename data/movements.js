@@ -973,6 +973,87 @@ export const movements = [
 
   /* ==================================================================== */
   {
+    id: 'deficit-deadlift',
+    seoTitle: '디피싯 데드리프트 하는 법 — 받침 높이와 무게',
+    seoDesc:
+      '디피싯 데드리프트는 원판 위에 올라서서 바닥의 바를 더 깊은 자세에서 드는 데드리프트입니다. 3단계 동작과 받침 높이, 무게 잡는 법을 정리했습니다.',
+    thumb: 0,
+    ko: '디피싯 데드리프트',
+    en: 'Deficit Deadlift',
+    abbr: 'Def. DL',
+    category: '역도',
+    level: '중급',
+    equipment: ['바벨', '원판'],
+    tagline: '원판 위에 올라서서, 평소보다 낮아진 바를 바닥부터 세워 드는 데드리프트',
+    intro:
+      '바벨은 그대로 바닥에 두고 발만 원판(보통 2~5cm, 2.5~10cm 범위) 위에 올린다. 발이 높아진 만큼 바가 상대적으로 낮아져 ' +
+      '셋업에서 엉덩이가 더 내려가고 무릎이 더 굽는다. 바닥에서 떼는 첫 구간이 길어지기 때문에, ' +
+      '일반 데드리프트에서 "바닥에서 안 떨어지는" 사람이 그 구간을 따로 강하게 만들려고 쓴다. ' +
+      '같은 무게라도 확실히 더 무겁게 느껴져서, 퍼센트는 보통 일반 데드리프트 1RM 을 기준으로 낮춰 잡는다.',
+    safety: {
+      title: '받침 높이보다 등이 먼저',
+      points: [
+        '가동 범위가 길어진 만큼 셋업에서 등이 말리기 쉽다. 등을 평평하게 유지할 수 없는 높이라면 받침을 낮추거나 일반 데드리프트로 한다.',
+        '받침은 미끄러지지 않는 원판·매트를 쓰고, 발 전체가 올라가게 선다. 발뒤꿈치가 받침 밖으로 나가면 균형을 잃는다.',
+      ],
+    },
+    phases: [
+      {
+        name: '셋업 (받침 위)',
+        pose: 'ddlSetup',
+        desc: '원판 위에 발 전체를 올리고 바를 발 중앙 위에 둔다. 바가 낮아진 만큼 엉덩이를 더 내리고 무릎을 더 굽혀 잡는다.',
+        cues: ['발 전체를 받침 위에', '엉덩이는 낮게, 가슴은 들고', '겨드랑이를 조여 바를 정강이 쪽으로'],
+        emphasis: ['quads', 'erectors', 'lats', 'forearms'],
+      },
+      {
+        name: '바닥에서 떼기',
+        pose: 'ddlKnee',
+        desc: '다리로 받침을 밀어 바를 무릎까지 올린다. 이 구간이 일반 데드리프트보다 길다 — 디피싯을 하는 이유가 바로 이 구간이다.',
+        cues: ['엉덩이가 먼저 솟지 않게', '바는 정강이를 스치듯 수직으로', '등 각도 유지'],
+        emphasis: ['quads', 'hamstrings', 'erectors'],
+      },
+      {
+        name: '락아웃',
+        pose: 'ddlStand',
+        desc: '무릎을 지나면 고관절을 밀어 완전히 편다. 받침 위에서 무릎과 엉덩이가 다 펴지면 1렙.',
+        cues: ['엉덩이를 앞으로 밀어 마무리', '뒤로 젖히지 않기', '어깨는 내려서 고정'],
+        emphasis: ['glutes', 'hamstrings', 'traps'],
+      },
+      {
+        name: '내리기',
+        pose: 'ddlKnee',
+        desc: '엉덩이를 먼저 뒤로 빼 무릎까지 내리고, 무릎을 굽혀 바를 바닥에 내려놓는다. 다음 렙도 셋업부터 다시 잡는다.',
+        cues: ['엉덩이 먼저 뒤로', '바닥에서 튕기지 않기', '렙마다 등을 다시 세팅'],
+        emphasis: ['hamstrings', 'erectors', 'core'],
+      },
+    ],
+    muscles: [
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'erectors', level: 'primary' },
+      { key: 'quads', level: 'primary' },
+      { key: 'lats', level: 'secondary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '셋업에서 등이 말린다', fix: '받침이 너무 높거나 고관절·햄스트링이 그만큼 안 접히는 것. 받침을 낮추고, 그래도 말리면 무게를 내린다.' },
+      { problem: '엉덩이가 먼저 솟는다', fix: '낮은 셋업이 불편해서 엉덩이부터 올려 일반 데드리프트 자세로 바꿔 버리는 것. 그러면 디피싯을 하는 의미가 없다. 무릎까지는 가슴과 엉덩이가 같이 올라온다.' },
+      { problem: '바닥에서 바를 튕긴다', fix: '렙마다 바를 바닥에 내려놓고 멈췄다 다시 든다. 튕기면 가장 약한 첫 구간을 건너뛰게 된다.' },
+    ],
+    scaling: [
+      '받침 높이 낮추기 (원판 두께를 얇게)',
+      '받침 없이 일반 데드리프트',
+      '무게 낮추기 — 일반 데드리프트보다 10~20% 가볍게',
+      '덤벨이나 케틀벨로 대체',
+    ],
+    related: ['deadlift', 'dumbbell-deadlift', 'deficit-push-up'],
+    terms: ['deficit', 'dl', 'percentage'],
+  },
+
+  /* ==================================================================== */
+  {
     id: 'sumo-deadlift-high-pull',
     seoTitle: '스모 데드리프트 하이 풀(SDHP) 하는 법',
     seoDesc:
@@ -4257,5 +4338,160 @@ export const movements = [
     ],
     related: ['dumbbell-front-squat', 'dumbbell-farmers-carry', 'pistol-squat'],
     terms: ['dbfl', 'dual-db', 'alt'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-overhead-squat',
+    seoTitle: '덤벨 오버헤드 스쿼트 하는 법과 기준',
+    seoDesc:
+      '덤벨 두 개를 머리 위로 편 채 앉았다 일어서는 덤벨 오버헤드 스쿼트를 4단계로 정리했습니다. 덤벨이 앞으로 떨어지는 이유와 스케일링도 다룹니다.',
+    thumb: 2,
+    ko: '덤벨 오버헤드 스쿼트',
+    en: 'Dumbbell Overhead Squat',
+    abbr: 'DB OHS',
+    category: '덤벨',
+    level: '중급',
+    equipment: ['덤벨'],
+    tagline: '덤벨 두 개를 머리 위로 곧게 든 채 고관절이 무릎 아래까지 내려갔다 일어서는 스쿼트',
+    intro:
+      '바벨 오버헤드 스쿼트의 덤벨 버전이다. 바가 양손을 묶어 주지 않아서 덤벨이 각자 따로 흔들리고, ' +
+      '한쪽 어깨가 덜 펴지면 그쪽 덤벨부터 앞으로 떨어진다. 대신 손 간격과 손목 각도를 자유롭게 잡을 수 있어 ' +
+      '바벨 OHS 보다 어깨가 편하다는 사람도 있다. 와드에서는 보통 앞 동작으로 덤벨을 머리 위에 올린 뒤 이어서 한다 — ' +
+      '머리 위로 올리는 방법(프레스·저크·스내치)은 대개 자유다.',
+    phases: [
+      {
+        name: '오버헤드 락아웃',
+        pose: 'dbOverhead',
+        desc: '덤벨 두 개를 머리 위로 곧게 들고 선다. 덤벨이 귀 바로 위나 살짝 뒤에 오고, 팔꿈치는 끝까지 잠근다.',
+        cues: ['어깨를 귀 쪽으로 밀어 올리기', '팔꿈치 잠그기', '갈비뼈 닫고 배를 조이기'],
+        emphasis: ['delts', 'triceps', 'traps', 'core'],
+      },
+      {
+        name: '내려가기',
+        pose: 'dbOhsMid',
+        desc: '덤벨은 제자리에 둔 채 엉덩이를 뒤로 빼며 앉는다. 상체가 앞으로 숙여질수록 덤벨도 앞으로 간다.',
+        cues: ['덤벨을 머리 뒤 수직선에', '무릎은 발끝 방향으로', '천천히 컨트롤'],
+        emphasis: ['delts', 'quads', 'glutes', 'core'],
+      },
+      {
+        name: '바텀',
+        pose: 'dbOhsBottom',
+        desc: '고관절이 무릎보다 아래로 내려간다. 덤벨 두 개가 여전히 같은 높이로 머리 위에 있어야 한다.',
+        cues: ['고관절이 무릎 아래까지', '가슴을 세우고', '양쪽 덤벨 높이를 맞추기'],
+        emphasis: ['delts', 'quads', 'glutes', 'erectors', 'core'],
+      },
+      {
+        name: '일어서기',
+        pose: 'dbOhsMid',
+        desc: '발 전체로 바닥을 밀어 일어선다. 완전히 서서 팔이 펴져 있으면 1렙.',
+        cues: ['가슴부터 올라오기', '덤벨이 흔들려도 팔은 잠근 채', '서서 한 번 멈추고 다음 렙'],
+        emphasis: ['quads', 'glutes', 'core', 'delts'],
+      },
+    ],
+    muscles: [
+      { key: 'quads', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'delts', level: 'primary' },
+      { key: 'core', level: 'secondary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'traps', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'hamstrings', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '덤벨이 앞으로 떨어진다', fix: '상체가 숙여졌거나 어깨가 덜 펴진 것. 깊이를 조금 줄이더라도 덤벨이 머리 뒤 수직선에 있는 범위에서 앉는다.' },
+      { problem: '한쪽 팔꿈치가 굽는다', fix: '덤벨은 좌우가 따로 움직여서 약한 쪽이 먼저 무너진다. 무게를 내리거나 개수를 끊는다.' },
+      { problem: '팔이 지쳐 덤벨을 머리 위에서 내리지 못한다', fix: '인터벌 끝에서 흔한 일이다. 덤벨을 어깨까지 컨트롤해서 내린 뒤 바닥에 놓는다. 머리 위에서 그냥 떨어뜨리지 않는다.' },
+    ],
+    scaling: [
+      '덤벨 하나로 — 한 팔만 머리 위에 (싱글 암 OHS)',
+      '가벼운 덤벨로',
+      '덤벨 대신 PVC 파이프로 바벨 OHS 자세',
+      '덤벨 프론트 스쿼트로 대체',
+    ],
+    related: ['overhead-squat', 'dumbbell-front-squat', 'dumbbell-snatch'],
+    terms: ['ohs', 'dual-db', 'lockout'],
+  },
+
+  /* ==================================================================== */
+  {
+    id: 'dumbbell-burpee-deadlift',
+    seoTitle: '덤벨 버피 데드리프트 하는 법과 렙 기준',
+    seoDesc:
+      '덤벨 손잡이를 짚고 버피를 한 뒤 그대로 덤벨을 들고 일어서는 덤벨 버피 데드리프트를 5단계로 정리했습니다. 렙 기준과 스케일링도 다룹니다.',
+    thumb: 1,
+    ko: '덤벨 버피 데드리프트',
+    en: 'Dumbbell Burpee Deadlift',
+    abbr: 'DB Burpee DL',
+    category: '덤벨',
+    level: '초중급',
+    equipment: ['덤벨'],
+    tagline: '덤벨을 짚고 버피를 한 뒤 발을 당겨 와 그대로 덤벨 데드리프트로 일어서는 동작',
+    intro:
+      '버피와 덤벨 데드리프트를 한 렙으로 붙인 동작이다. 바닥 대신 덤벨 손잡이를 짚고 발을 뒤로 보내 가슴과 허벅지를 바닥에 붙인 뒤, ' +
+      '발을 덤벨 쪽으로 당겨 오고 덤벨을 들고 완전히 일어서면 1렙이다. 일반 버피와 달리 마지막에 점프와 박수가 없다. ' +
+      '덤벨이 굴러가지 않게 손잡이를 꽉 쥐고 체중을 싣는 게 요령이고, 육각 덤벨이 아니면 손목이 꺾이기 쉬워 조심한다.',
+    phases: [
+      {
+        name: '덤벨 짚기',
+        pose: 'dbbdSquat',
+        desc: '덤벨 두 개를 바닥에 나란히 두고 앉아 손잡이를 잡는다. 손목은 손잡이 바로 위에 세운다.',
+        cues: ['손잡이를 꽉 쥐고', '손목을 손잡이 위에 세우기', '덤벨 간격은 어깨너비'],
+        emphasis: ['forearms', 'quads', 'core'],
+      },
+      {
+        name: '발 뒤로',
+        pose: 'dbbdPlank',
+        desc: '발을 뒤로 뛰어 보내 덤벨 위에서 플랭크를 만든다. 체중은 덤벨 손잡이에 수직으로 싣는다.',
+        cues: ['체중을 손잡이 위로', '덤벨이 굴러가지 않게', '허리가 처지지 않게'],
+        emphasis: ['core', 'delts', 'chest'],
+      },
+      {
+        name: '가슴 닿기',
+        pose: 'dbbdBottom',
+        desc: '가슴과 허벅지가 덤벨 사이 바닥에 닿을 때까지 내려간다. 팔은 굽혀도 되고, 무릎부터 내려가도 된다.',
+        cues: ['가슴과 허벅지가 바닥에', '팔꿈치는 몸 옆으로', '내려갈 때도 손잡이는 놓지 않기'],
+        emphasis: ['chest', 'triceps', 'core'],
+      },
+      {
+        name: '발 당겨 오기',
+        pose: 'dbbdSquat',
+        desc: '팔로 몸을 밀어 올리며 발을 덤벨 쪽으로 뛰어 당겨 온다. 손은 손잡이를 쥔 채로.',
+        cues: ['발은 덤벨 바로 뒤로', '발 전체로 착지', '등을 평평하게 세팅'],
+        emphasis: ['core', 'quads', 'hipflexors'],
+      },
+      {
+        name: '데드리프트',
+        pose: 'dbStand',
+        desc: '덤벨을 다리 옆으로 붙이며 등을 편 채 일어선다. 무릎과 고관절이 완전히 펴지면 1렙.',
+        cues: ['등 평평하게 유지', '덤벨은 다리 옆 라인으로', '서서 엉덩이를 끝까지 펴기'],
+        emphasis: ['hamstrings', 'glutes', 'erectors', 'forearms'],
+      },
+    ],
+    muscles: [
+      { key: 'hamstrings', level: 'primary' },
+      { key: 'glutes', level: 'primary' },
+      { key: 'chest', level: 'primary' },
+      { key: 'quads', level: 'secondary' },
+      { key: 'erectors', level: 'secondary' },
+      { key: 'triceps', level: 'secondary' },
+      { key: 'forearms', level: 'secondary' },
+      { key: 'core', level: 'stabilizer' },
+      { key: 'delts', level: 'stabilizer' },
+    ],
+    faults: [
+      { problem: '덤벨이 굴러간다', fix: '체중이 손잡이 앞이나 옆으로 실린 것. 손목을 손잡이 바로 위에 세우고 수직으로 누른다. 육각 덤벨을 쓰면 훨씬 덜 구른다.' },
+      { problem: '가슴이 바닥에 닿지 않는다', fix: '노렙이 될 수 있다. 팔로 버티기 어려우면 무릎부터 내려가도 된다 — 가슴과 허벅지가 닿기만 하면 된다.' },
+      { problem: '등을 말고 덤벨을 든다', fix: '발을 당겨 온 자세가 곧 데드리프트 셋업이다. 일어서기 전에 가슴을 한 번 들고 등을 평평하게 만든 뒤 든다.' },
+    ],
+    scaling: [
+      '가벼운 덤벨로',
+      '덤벨 없이 일반 버피 + 덤벨 데드리프트를 따로',
+      '발을 뛰지 말고 한 발씩 걸어서 뒤로·앞으로',
+      '반복 수 줄이기',
+    ],
+    related: ['burpee', 'dumbbell-deadlift', 'devil-press'],
+    terms: ['burpee', 'dual-db', 'no-rep'],
   },
 ];

@@ -97,7 +97,7 @@ export const formats = [
   {
     id: 'interval',
     name: 'Interval (On / Off)',
-    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set', '3:00 Work / 2:00 Rest x 4Sets'],
+    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set', '3:00 Work / 2:00 Rest x 4Sets', '90 Seconds On / 90 Seconds Off x 3 Sets'],
     means:
       '앞이 운동 시간, 뒤가 휴식 시간이다. 정해진 세트만큼 반복한다. ' +
       '휴식이 운동보다 길면 매 세트를 전력으로 하라는 뜻이다.',
@@ -244,8 +244,10 @@ export const notationGroups = [
       { wrote: '*Start at 65% Build to Heavy', read: '65%에서 시작해 점점 올리기', note: '같은 표기인데 시작 퍼센트만 다르다. 렙이 적은 스킴일수록 시작점이 높아진다.', term: 'percentage' },
       { wrote: '*Start at 60% Build Up', read: '60%에서 시작해 세트마다 올리기', note: 'Build Up 은 Build to Heavy 의 줄임이다. 기준 1RM 은 그 줄에 적힌 동작 기준.', term: 'percentage' },
       { wrote: '*70% Build to Heavy', read: '70%에서 시작해 세트마다 올리기', note: 'Start at 이 빠져도 같은 뜻이다. 퍼센트 기준은 그 파트 동작(여기선 프론트 스쿼트)의 1RM.', term: 'percentage' },
+      { wrote: '*Deadlift 50% Build to Heavy', read: '일반 데드리프트 1RM 의 50%에서 시작해 올리기', note: '퍼센트 앞에 다른 동작 이름이 붙으면 그 동작의 1RM 이 기준이다. 디피싯 데드리프트처럼 1RM 을 따로 재지 않는 변형 동작에 자주 쓴다.', term: 'percentage' },
       { wrote: '*Build to Heavy', read: '세트마다 올려 무거운 무게까지', note: '시작 퍼센트가 빠진 표기다. 가볍게 시작해 그날 자세가 유지되는 가장 무거운 무게까지 올린다.', term: 'percentage' },
       { wrote: '(x2, 22.5/15kg)', read: '덤벨 두 개, 한 개당 남 22.5 / 여 15kg', note: '(x2) 와 무게를 한 괄호에 쉼표로 같이 적은 것. Dumbbell(x2) ... (22.5/15) 와 같은 뜻이다.', term: 'dual-db' },
+      { wrote: 'Dual DB ... (x2, 22.5/15kg, 24"/20")', read: '양손 덤벨 한 개당 22.5/15kg, 박스 24/20인치', note: 'Dual DB 와 (x2) 는 같은 말을 두 번 적은 것이다. 괄호 안 쉼표 뒤에 인치가 오면 무게가 아니라 박스 높이다.', term: 'dual-db' },
       { wrote: '-/- · -', read: '무게 표기 없음', note: '맨몸이거나 기구 자체 무게로 한다는 뜻.' },
     ],
   },
