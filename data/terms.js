@@ -474,7 +474,7 @@ export const termGroups = [
       { id: 'sp', term: 'SP', full: 'Shoulder Press / Strict Press', ko: '숄더 프레스', desc: '다리 반동 없이 팔과 어깨만으로 바를 머리 위로 미는 프레스. 스트릭트 프레스라고도 한다.', movement: 'shoulder-press' },
       { id: 's2oh', term: 'S2OH', full: 'Shoulder to Overhead', ko: '숄더 투 오버헤드', desc: '어깨에서 머리 위로 보내기만 하면 방법은 자유. 프레스·푸시 프레스·저크 아무거나 된다.', movement: 'dumbbell-shoulder-to-overhead' },
       { id: 'ps-pistol', term: 'Pistol', full: 'Pistol Squat', ko: '피스톨 스쿼트', desc: '한 다리로 앉았다 일어서는 스쿼트.', movement: 'pistol-squat' },
-      { id: 'deficit', term: 'Deficit', full: 'Deficit', ko: '디피싯', desc: '손이나 발을 받침 위에 올려 가동 범위를 늘리는 것. (4.5"/2.5") 는 받침 높이다.', movement: 'deficit-push-up' },
+      { id: 'deficit', term: 'Deficit', full: 'Deficit', ko: '디피싯', desc: '손이나 발을 받침 위에 올려 가동 범위를 늘리는 것. (4.5"/2.5") 는 받침 높이다. Deficit Deadlift 처럼 동작 앞에 붙으면 발을 원판 위에 올리고 한다는 뜻.', movement: 'deficit-push-up' },
       { id: 'alt', term: 'alt.', full: 'Alternating', ko: '좌우 번갈아', desc: '매 렙 좌우를 번갈아 수행하라는 뜻. "16 Pistol Squats alt." 는 좌우 합쳐 16회다.' },
       { id: 'dual-db', term: 'Dual DB', full: 'Dual Dumbbell', ko: '양손 덤벨', desc: '양손에 각각 덤벨을 든다는 뜻. "Dual 22.5/15kg" 이나 "Dumbbell(x2) 22.5/15" 은 한쪽 손마다 그 무게다 — 실제로 드는 총 무게는 두 배.', movement: 'dumbbell-deadlift' },
       { id: 'cal', term: 'Cal', full: 'Calorie', ko: '칼로리', desc: '거리 대신 기구 화면의 칼로리로 목표를 정하는 방식. "15/12 Cal" 은 남 15 / 여 12 칼로리.', movement: 'row' },
