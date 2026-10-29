@@ -247,6 +247,16 @@ export const termGroups = [
         desc: '무게든 시간이든 본인 최고 기록. 갱신하면 박스에서 종을 치는 문화가 있다.',
       },
       {
+        id: 'rpe',
+        term: '@RPE 7-8',
+        full: 'Rate of Perceived Exertion',
+        ko: '체감 강도',
+        desc:
+          '무게를 퍼센트 대신 "얼마나 힘든지"로 정하는 10점 척도다. 10 은 더 이상 한 개도 못 하는 한계, ' +
+          '8 은 2개 더 할 수 있는 정도, 7 은 3개 더 할 수 있는 정도. 1RM 을 몰라도 되고 그날 컨디션에 맞춰진다는 게 장점이다.',
+        example: '7 Bamboo Overhead Squat @RPE 7-8',
+      },
+      {
         id: 'tempo',
         term: '(3Sec down 1sec up)',
         full: 'Tempo',
@@ -462,6 +472,7 @@ export const termGroups = [
       { id: 'hspu', term: 'HSPU', full: 'Handstand Push-up', ko: '핸드스탠드 푸시업', desc: '물구나무 상태에서 하는 푸시업.', movement: 'handstand-push-up' },
       { id: 'fs', term: 'FS', full: 'Front Squat', ko: '프론트 스쿼트', desc: '바벨을 어깨 앞(프론트 랙)에 얹고 하는 스쿼트. 클린을 받는 자세와 같아서 클린 전 스트렝스 파트로 자주 나온다.', movement: 'front-squat' },
       { id: 'ohs', term: 'OHS', full: 'Overhead Squat', ko: '오버헤드 스쿼트', desc: '스내치 그립으로 바를 머리 위에 든 채 하는 스쿼트. 스쿼트 스내치를 받는 자세이기도 하다.', movement: 'overhead-squat' },
+      { id: 'th', term: 'TH', full: 'Thruster', ko: '스러스터', desc: '프론트 스쿼트로 앉았다 일어서는 힘으로 바를 머리 위까지 밀어 올리는 동작. 걸스 와드 Fran 의 그 동작이다.', movement: 'thruster' },
       { id: 'kbs', term: 'KBS · (A) / (R)', full: 'Kettlebell Swing — American / Russian', ko: '케틀벨 스윙', desc: '케틀벨을 힙 힌지로 스윙하는 동작. 괄호 안 A 는 아메리칸(머리 위까지), R 은 러시안(눈높이까지)이다. 크로스핏 기본은 A.', movement: 'kettlebell-swing' },
       { id: 'wb', term: 'WB', full: 'Wall Ball', ko: '월볼', desc: '메디신볼로 스쿼트 후 벽 목표 지점에 던지는 동작.', movement: 'wall-ball' },
       { id: 'dl', term: 'DL', full: 'Deadlift', ko: '데드리프트', desc: '바닥의 바를 고관절 신전으로 세워 드는 동작.', movement: 'deadlift' },
@@ -504,6 +515,7 @@ export const termGroups = [
       { id: 'dnf', term: 'DNF', full: 'Did Not Finish', ko: '미완주', desc: '타임캡 안에 끝내지 못한 경우. 완료 렙 수로 기록한다.' },
       { id: 'plate', term: 'Bumper Plate', full: 'Bumper Plate', ko: '범퍼 플레이트', desc: '바닥에 떨어뜨려도 되는 고무 원판. 크기(지름)는 같고 무게만 다르다.' },
       { id: 'pvc', term: 'PVC', full: 'PVC Pipe', ko: 'PVC 파이프', desc: '무게가 거의 없는 연습용 봉. 역도 동작 폼 연습에 쓴다.' },
+      { id: 'bamboo-bar', term: 'Bamboo', full: 'Bamboo Bar', ko: '뱀부 바', desc: '잘 휘는 가벼운 봉 양 끝에 밴드로 케틀벨이나 원판을 매단 도구. 무게가 흔들리며 출렁여서, 어깨와 몸통이 계속 버텨야 한다. 무겁게 드는 용도가 아니라 어깨 안정성과 자세를 다지는 웜업·스킬 도구다.', movement: 'overhead-squat' },
       { id: 'c2', term: 'C2 / Erg', full: 'Concept2 Rower', ko: '로잉 머신', desc: '박스에 거의 반드시 있는 로잉 머신. Assault Bike, SkiErg, Bike Erg 도 같은 계열이라 와드에서 "Machine" 으로 묶어 부른다.', movement: 'row' },
       { id: 'games', term: 'CrossFit Games', full: 'The CrossFit Games', ko: '크로스핏 게임즈', desc: '크로스핏 세계 선수권. 여기서 나온 종목(Event)이 이후 박스 와드로 자주 재활용된다.' },
       { id: 'hopper', term: 'The Hopper', full: 'The Hopper', ko: '호퍼', desc: '"무작위로 뽑은 동작 조합"이라는 크로스핏의 오래된 개념. 무엇이 나올지 모르는 상태에 대비하는 것이 훈련 목표라는 뜻이다.' },
