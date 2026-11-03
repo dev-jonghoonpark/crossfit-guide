@@ -84,7 +84,7 @@ export const formats = [
   {
     id: 'exmom',
     name: 'E2MOM · Every X:00',
-    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 02:00 x 5', 'Every 2:00 x 4', 'Every 70seconds x 12sets'],
+    wrote: ['E2MOM 20', 'Every 2:00 x 5', 'Every 02:00 x 5', 'Every 2:00 x 4', 'Every 2-30 x 4', 'Every 70seconds x 12sets'],
     means:
       'EMOM의 간격이 1분이 아닌 버전. E2MOM 20 은 2분 간격으로 20분(=10라운드), ' +
       'Every 2:00 x 5 는 2분 간격으로 5라운드(=10분)라는 뜻이다. ' +
@@ -264,6 +264,11 @@ export const notationGroups = [
       { wrote: '1 Hang Power Snatch · 2 Chest to Bar · 2 … · 4 … · ...', read: '줄을 풀어 쓴 사다리', note: '1-2-3… 처럼 한 줄로 적지 않고 첫 몇 라운드를 줄줄이 적은 뒤 … 로 끝낸 것. 줄 사이 개수가 늘어나는 규칙(여기선 1씩 · 2씩)을 찾아 그대로 이어 간다.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or Skill & Warm up', read: '또는 이 시간에 스킬 연습과 웜업', note: '파트 하나를 통째로 건너뛰어도 된다는 뜻. 그 시간에 뒤 와드의 어려운 동작을 연습하고 몸을 푼다.' },
+      { wrote: 'or Skill', read: '또는 이 시간에 스킬 연습', note: 'or Skill & Warm up 을 줄인 것. 스트렝스 파트 대신 뒤 와드의 어려운 체조 동작(뮤스클업·토투바 등)을 연습한다.' },
+      { wrote: 'Every 2-30', read: '2분 30초마다', note: '콜론(:) 대신 하이픈으로 적은 시간. 2-30 은 2:30 과 같다. 렙 범위(3-5)와 헷갈리지 않게 Every 뒤에 오면 시간으로 읽는다.', term: 'e2mom' },
+      { wrote: '3-6-9-12...', read: '라운드마다 3씩 늘어나는 사다리', note: '끝 숫자가 없고 … 로 끝나면 AMRAP 시간이 끝날 때까지 같은 규칙으로 계속 늘린다. 몇 칸까지 갔는지가 곧 점수다.' },
+      { wrote: '1 Gymnastic Complex · *Gymnastic Complex', read: '아래 * 줄에 풀어 적은 체조 묶음을 1세트', note: '본문에는 이름만 적고 구성은 * 주석에 따로 적었다. 묶음 전체가 1렙처럼 세어진다.', term: 'gym-complex' },
+      { wrote: 'or -', read: '이 칸은 빼도 된다', note: '스케일 줄 끝의 - 는 해당 동작을 대체 없이 생략하라는 뜻으로 쓰인다. 확실하지 않으면 코치에게 확인한다.', term: 'tier' },
       { wrote: 'or', read: '둘 중 아무거나', note: 'Ski or Assault Bike 처럼 기구를 골라도 된다는 뜻.' },
       { wrote: '(3Sec down 1sec up)', read: '3초 동안 내려가고 1초에 올라오기', note: '동작 이름 아래 괄호에 초가 붙으면 템포다. 개수보다 속도를 지키는 게 먼저다.', term: 'tempo' },
       { wrote: '(Legs Only)', read: '다리로만', note: '팬 바이크처럼 팔 손잡이가 있는 기구에서 손잡이를 밀고 당기지 말라는 뜻. 팔은 쉬게 둔다.' },

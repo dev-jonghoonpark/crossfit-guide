@@ -162,6 +162,17 @@ export const termGroups = [
         desc: '여러 동작을 각각 많은 렙수로 한 번씩만, 위에서부터 순서대로 깎아 내려가듯 수행하는 와드.',
       },
       {
+        id: 'gym-complex',
+        term: 'Gymnastic Complex',
+        full: 'Gymnastic Complex',
+        ko: '체조 컴플렉스',
+        desc:
+          '체조 동작 몇 개를 정해진 순서로 쉬지 않고 이어 하는 묶음. 바벨 컴플렉스처럼 묶음 전체가 1세트다. ' +
+          '"2 Toes to Bar · 1 Pull-Up · 1 Bar Muscle-Up" 이면 철봉에서 토투바 2 → 풀업 1 → 바 뮤스클업 1 을 이어 해야 1 컴플렉스. ' +
+          '보통 봉에서 내려오지 않고 이어 가는 걸 목표로 하지만, Unbroken 이 적혀 있지 않으면 중간에 내려와도 된다.',
+        example: '1 Gymnastic Complex / *Gymnastic Complex : 2 Toes to Bar, 1 Pull-Up, 1 Bar Muscle-Up',
+      },
+      {
         id: 'emom-death',
         term: 'Death By ...',
         full: 'Death By',
@@ -468,6 +479,8 @@ export const termGroups = [
       { id: 'c2b', term: 'C2B', full: 'Chest To Bar', ko: '체스트투바', desc: '가슴이 봉에 닿는 풀업.', movement: 'chest-to-bar-pull-up' },
       { id: 'bmu', term: 'BMU', full: 'Bar Muscle-Up', ko: '바 뮤스클업', desc: '철봉 아래에서 봉 위로 넘어가 팔을 완전히 펴는 동작. 풀업 + 딥을 한 번에 이은 것.', movement: 'bar-muscle-up' },
       { id: 'rmu', term: 'RMU', full: 'Ring Muscle-Up', ko: '링 뮤스클업', desc: '같은 동작을 링에서 하는 버전. 링이 흔들려서 바 뮤스클업보다 한 단계 더 어렵다.' },
+      { id: 'toes-to-ring', term: 'Toes to Ring', full: 'Toes to Ring', ko: '토투링', desc: '토투바를 링에 매달려서 하는 것. 두 발끝이 링(또는 손)에 닿아야 1렙이다. 링이 흔들려 스윙 리듬을 잡기가 봉보다 어렵다.', movement: 'toes-to-bar' },
+      { id: 'jumping-pu', term: 'Jumping PU', full: 'Jumping Pull-Up', ko: '점핑 풀업', desc: '봉 아래 박스나 바닥을 딛고, 다리로 뛰어오르는 힘을 빌려 턱을 봉 위로 넘기는 풀업. 밴드 보조보다 한 단계 아래 스케일이다.', movement: 'pull-up' },
       { id: 'pike-push-up', term: 'Pike Push-up', full: 'Pike Push-up', ko: '파이크 푸시업', desc: '엉덩이를 높이 들어 몸을 ㅅ자로 만든 채 머리를 손 사이 바닥으로 내렸다 미는 푸시업. 발을 박스에 올리면 물구나무에 가까워진다. HSPU 의 스케일링으로 쓴다.', movement: 'handstand-push-up' },
       { id: 'hspu', term: 'HSPU', full: 'Handstand Push-up', ko: '핸드스탠드 푸시업', desc: '물구나무 상태에서 하는 푸시업.', movement: 'handstand-push-up' },
       { id: 'fs', term: 'FS', full: 'Front Squat', ko: '프론트 스쿼트', desc: '바벨을 어깨 앞(프론트 랙)에 얹고 하는 스쿼트. 클린을 받는 자세와 같아서 클린 전 스트렝스 파트로 자주 나온다.', movement: 'front-squat' },
