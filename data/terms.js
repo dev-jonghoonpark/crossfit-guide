@@ -478,6 +478,7 @@ export const termGroups = [
       { id: 'pu', term: 'PU', full: 'Pull-Up', ko: '풀업', desc: '턱이 봉 위로 올라가는 풀업. 스케일 줄에서는 "BB-GB PU" 처럼 밴드 색 뒤에 붙여 "밴드 보조 풀업"을 짧게 적는다.', movement: 'pull-up' },
       { id: 'c2b', term: 'C2B', full: 'Chest To Bar', ko: '체스트투바', desc: '가슴이 봉에 닿는 풀업.', movement: 'chest-to-bar-pull-up' },
       { id: 'bmu', term: 'BMU', full: 'Bar Muscle-Up', ko: '바 뮤스클업', desc: '철봉 아래에서 봉 위로 넘어가 팔을 완전히 펴는 동작. 풀업 + 딥을 한 번에 이은 것.', movement: 'bar-muscle-up' },
+      { id: 'hrpu', term: 'HRPU', full: 'Hand Release Push-Up', ko: '핸드 릴리스 푸시업', desc: '매 렙 가슴과 허벅지를 바닥에 완전히 붙이고 손바닥을 바닥에서 잠깐 뗐다가 다시 미는 푸시업. 바닥에서 반동을 쓸 수 없어 가동 범위가 확실하고, 개수를 세기 쉽다.', movement: 'push-up' },
       { id: 'rmu', term: 'RMU', full: 'Ring Muscle-Up', ko: '링 뮤스클업', desc: '같은 동작을 링에서 하는 버전. 링이 흔들려서 바 뮤스클업보다 한 단계 더 어렵다.' },
       { id: 'toes-to-ring', term: 'Toes to Ring', full: 'Toes to Ring', ko: '토투링', desc: '토투바를 링에 매달려서 하는 것. 두 발끝이 링(또는 손)에 닿아야 1렙이다. 링이 흔들려 스윙 리듬을 잡기가 봉보다 어렵다.', movement: 'toes-to-bar' },
       { id: 'jumping-pu', term: 'Jumping PU', full: 'Jumping Pull-Up', ko: '점핑 풀업', desc: '봉 아래 박스나 바닥을 딛고, 다리로 뛰어오르는 힘을 빌려 턱을 봉 위로 넘기는 풀업. 밴드 보조보다 한 단계 아래 스케일이다.', movement: 'pull-up' },
