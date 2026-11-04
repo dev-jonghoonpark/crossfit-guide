@@ -97,7 +97,7 @@ export const formats = [
   {
     id: 'interval',
     name: 'Interval (On / Off)',
-    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set', '3:00 Work / 2:00 Rest x 4Sets', '90 Seconds On / 90 Seconds Off x 3 Sets'],
+    wrote: ['5set 30Seconds On 60Seconds Off', '0:30 Work 0:30 Easy Jog x 20Set', '3:00 Work / 2:00 Rest x 4Sets', '90 Seconds On / 90 Seconds Off x 3 Sets', '3:00 On 1:00 Off x 5Sets'],
     means:
       '앞이 운동 시간, 뒤가 휴식 시간이다. 정해진 세트만큼 반복한다. ' +
       '휴식이 운동보다 길면 매 세트를 전력으로 하라는 뜻이다.',
@@ -264,6 +264,7 @@ export const notationGroups = [
       { wrote: '1 Hang Power Snatch · 2 Chest to Bar · 2 … · 4 … · ...', read: '줄을 풀어 쓴 사다리', note: '1-2-3… 처럼 한 줄로 적지 않고 첫 몇 라운드를 줄줄이 적은 뒤 … 로 끝낸 것. 줄 사이 개수가 늘어나는 규칙(여기선 1씩 · 2씩)을 찾아 그대로 이어 간다.' },
       { wrote: '-Directly into-', read: '쉬지 않고 바로 다음 블록으로', note: '위아래 블록이 시계 하나를 같이 쓴다는 뜻. 휴식 없이 이어 가고 기록도 하나다.' },
       { wrote: 'or Skill & Warm up', read: '또는 이 시간에 스킬 연습과 웜업', note: '파트 하나를 통째로 건너뛰어도 된다는 뜻. 그 시간에 뒤 와드의 어려운 동작을 연습하고 몸을 푼다.' },
+      { wrote: 'Stretching & Warm-Up', read: '스트레칭과 웜업', note: '파트 1 자리에 스트렝스 대신 이것만 적혀 있으면 그날은 메트콘 하나에 집중하는 날이다. 뒤 와드에 나오는 동작을 가볍게 미리 해 둔다.' },
       { wrote: 'or Skill', read: '또는 이 시간에 스킬 연습', note: 'or Skill & Warm up 을 줄인 것. 스트렝스 파트 대신 뒤 와드의 어려운 체조 동작(뮤스클업·토투바 등)을 연습한다.' },
       { wrote: 'Every 2-30', read: '2분 30초마다', note: '콜론(:) 대신 하이픈으로 적은 시간. 2-30 은 2:30 과 같다. 렙 범위(3-5)와 헷갈리지 않게 Every 뒤에 오면 시간으로 읽는다.', term: 'e2mom' },
       { wrote: '3-6-9-12...', read: '라운드마다 3씩 늘어나는 사다리', note: '끝 숫자가 없고 … 로 끝나면 AMRAP 시간이 끝날 때까지 같은 규칙으로 계속 늘린다. 몇 칸까지 갔는지가 곧 점수다.' },
@@ -306,6 +307,7 @@ export const notationGroups = [
       { wrote: '(1BMU=2C2B=3PU)', read: '뮤스클업 1개 = C2B 2개 = 풀업 3개', note: '못 하는 동작을 개수를 늘려 바꾸는 환산표.', term: 'rep-conversion' },
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
       { wrote: 'HLR', read: '행잉 레그 레이즈', note: 'K2C 도 어려우면 매달려서 다리를 허리 높이까지만 든다. 토투바 스케일 사다리의 아래 칸.', term: 'hlr' },
+      { wrote: 'Wave Ok', read: '몸이 물결치듯 올라와도 인정', note: '푸시업에서 엉덩이와 가슴이 한 번에 올라오지 않고 가슴 → 엉덩이 순서로 출렁이며 올라오는 웜(worm)을 이 단계에서는 노렙으로 치지 않는다는 뜻.', term: 'hrpu' },
       { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
       { wrote: 'b : Same', read: '보드에 적힌 그대로', note: '스케일 사다리 중 이 단계는 바꾸는 게 없다는 뜻.', term: 'tier' },
