@@ -52,7 +52,7 @@ export const formats = [
   {
     id: 'for-time',
     name: 'For Time / Rounds For Time',
-    wrote: ['10 Rounds For Time', '3 Rounds For Time', 'For Time / 4Rounds of', 'For Time / 3 Rounds of'],
+    wrote: ['10 Rounds For Time', '3 Rounds For Time', 'For Time / 4Rounds of', 'For Time / 3 Rounds of', 'For Time / 3Rounds of'],
     means: '정해진 양을 최대한 빨리 끝낸다. 앞의 숫자가 반복할 라운드 수다.',
     clock: '시계는 0부터 올라간다. 다 끝낸 순간의 시간이 기록.',
     score: '완료 시간 (짧을수록 좋음)',
@@ -308,6 +308,7 @@ export const notationGroups = [
       { wrote: 'Half WW / 4Step WW', read: '하프 월 워크 / 4스텝 월 워크', note: '월 워크를 끝까지 올라가지 않고 절반 또는 정해진 걸음 수까지만 하는 스케일.', term: 'ww' },
       { wrote: 'HLR', read: '행잉 레그 레이즈', note: 'K2C 도 어려우면 매달려서 다리를 허리 높이까지만 든다. 토투바 스케일 사다리의 아래 칸.', term: 'hlr' },
       { wrote: 'Wave Ok', read: '몸이 물결치듯 올라와도 인정', note: '푸시업에서 엉덩이와 가슴이 한 번에 올라오지 않고 가슴 → 엉덩이 순서로 출렁이며 올라오는 웜(worm)을 이 단계에서는 노렙으로 치지 않는다는 뜻.', term: 'hrpu' },
+      { wrote: 'Scaled WW', read: '낮춘 월 워크', note: '몇 걸음까지 갈지 숫자로 정하지 않은 표기. 보통 하프 WW 보다 더 낮게 — 벽 쪽으로 몇 걸음만 오르거나 플랭크 워크로 바꾼다. 범위는 코치가 정한다.', term: 'ww' },
       { wrote: 'High Jump SU', read: '높이 뛰는 싱글 언더', note: '더블 언더 대신 싱글 언더를 하되, 더블 언더처럼 높게 뛰어 리듬을 흉내 낸다. 개수는 그대로.', term: 'du' },
       { wrote: 'Broken ok', read: '끊어서 해도 됨', note: 'Unbroken 조건을 푸는 표기.', term: 'broken-ok' },
       { wrote: 'b : Same', read: '보드에 적힌 그대로', note: '스케일 사다리 중 이 단계는 바꾸는 게 없다는 뜻.', term: 'tier' },
